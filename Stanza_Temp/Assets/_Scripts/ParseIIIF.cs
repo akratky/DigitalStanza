@@ -57,7 +57,7 @@ public class ParseIIIF : MonoBehaviour
     }
 
     void GetNewImage(int index) {
-        string temp = json.sequences[0].canvases[index].images[0].resource.service["@id"] + "/0,0,2128,3072/266,/0/native.jpg";
+        string temp = json.sequences[0].canvases[index].images[0].resource.service["@id"] + "/200,200,3000,2550/512,/0/native.jpg";
         DownloadImage(temp);
     }
 
