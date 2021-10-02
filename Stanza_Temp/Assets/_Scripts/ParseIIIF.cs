@@ -39,32 +39,78 @@ public class ParseIIIF : MonoBehaviour
         //get the image uri
         //eg. https://digi.vatlib.it/iiifimage/MSS_Vat.lat.1125/Vat.lat.1125_0004_cy_0001v.jp2/0,0,2128,3072/266,/0/native.jpg
 
-        GetNewImage(book_index);
+        string temp = json.sequences[0].canvases[book_index].images[0].resource.service["@id"] + "/200,200,3000,2550/512,/0/native.jpg";
+        DownloadImage(temp, "init");
     }
 
     /* Change Images in Book */
 
-    public void OnMouseDown()
+    public void GetLeft() {
+        if (book_index < 4)
+        {
+            Debug.Log("Warning: Start of book. Cannot go back");
+        }
+        else
+        {
+            GetNewImage("getleft");
+        }
+    }
+
+    public void GetRight()
     {
         if (book_index < max_pages)
         {
-            GetNewImage(++book_index);
+            GetNewImage("getright");
         }
-        else {
-            book_index = -1;
+        else
+        {
+            book_index = 3;
             Debug.Log("Warning: End of book reached; Resetting scene");
         }
     }
 
-    void GetNewImage(int index) {
-        string temp = json.sequences[0].canvases[index].images[0].resource.service["@id"] + "/200,200,3000,2550/512,/0/native.jpg";
-        DownloadImage(temp);
+    void GetNewImage(string type) {
+
+        if (type == "getright")
+        {
+            if (book_index < max_pages)
+            {
+                int left_index = book_index + 1;
+
+                string left = json.sequences[0].canvases[left_index].images[0].resource.service["@id"] + "/200,200,3000,2550/512,/0/native.jpg";
+                DownloadImage(left, "left");
+                Debug.Log("Left index = " + left_index);
+
+                
+                string right = json.sequences[0].canvases[book_index+=2].images[0].resource.service["@id"] + "/200,200,3000,2550/512,/0/native.jpg";
+                DownloadImage(right, "right");
+
+                Debug.Log("Right index = " + book_index);
+            }
+        }
+        else {
+            if (book_index > 4)
+            {
+                int left_index = book_index - 3; 
+                string left = json.sequences[0].canvases[left_index].images[0].resource.service["@id"] + "/200,200,3000,2550/512,/0/native.jpg";
+                DownloadImage(left, "left");
+                Debug.Log("Left index = " + left_index);
+
+                string right = json.sequences[0].canvases[book_index-=2].images[0].resource.service["@id"] + "/200,200,3000,2550/512,/0/native.jpg";
+                DownloadImage(right, "right");
+
+                Debug.Log("Right index = " + book_index);
+
+
+                
+            }
+        }
     }
 
 
     /* Download Remote Assets */
 
-    public void DownloadImage(string url) {
+    public void DownloadImage(string url, string type) {
          
         StartCoroutine(ImageRequest(url, (UnityWebRequest req) => {
             if (req.isHttpError || req.isNetworkError)
@@ -73,18 +119,19 @@ public class ParseIIIF : MonoBehaviour
             }
             else {
                 Texture2D texture = DownloadHandlerTexture.GetContent(req);
-                
-                if (book_index == 0)
+
+                if (type == "left")
+                {
+                    Debug.Log("Left index is ");
+                    page1.SetTexture("_MainTex", texture);
+                }
+                else if (type == "right")
                 {
                     page2.SetTexture("_MainTex", texture);
-                    curr_tex = texture;
                 }
-                else {
+                else if (type == "init") {
                     page2.SetTexture("_MainTex", texture);
-                    page1.SetTexture("_MainTex", curr_tex);
-                    curr_tex = texture;
                 }
-               // book.GetComponent<SpriteRenderer>().sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
             }
         }));
     }
