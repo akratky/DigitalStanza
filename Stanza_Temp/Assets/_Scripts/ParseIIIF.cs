@@ -107,6 +107,20 @@ public class ParseIIIF : MonoBehaviour
         }
     }
 
+    //copies values of p into this object
+    public void Copy(ParseIIIF p)
+    {
+        path = p.path;
+        book = p.book;
+        page1 = p.page1;
+        page2 = p.page2;
+        book_index = p.book_index;
+        curr_tex = p.curr_tex;
+        json = p.json;
+        max_pages = p.max_pages;
+
+    }
+
 
     /* Download Remote Assets */
 
