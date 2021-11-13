@@ -21,6 +21,7 @@ namespace ANVC.Scalar
         public static string untitledNodeString = "(No title)";
 
         public string bookUrlPrefix;
+        public WriteToFile writefile;
 
         void Awake()
         {
@@ -69,11 +70,14 @@ namespace ANVC.Scalar
             queryString += "&prov=" + (provenance ? 1 : 0);
             queryString += "&versions" + (allVersions ? 1 : 0);
             UnityWebRequest request = UnityWebRequest.Get(urlPrefix + "rdf/node/" + uriSegment + "?" + queryString);
-            Debug.Log("Load node: " + request.url);
+            //Debug.Log("Load node: " + request.url);
             yield return request.SendWebRequest();
             if (!request.isNetworkError && !request.isHttpError)
             {
-                Debug.Log(request.downloadHandler.text);
+               // Debug.Log(request.downloadHandler.text);
+                
+                
+                WriteToFile.WriteString(request.downloadHandler.text);
                 JSONNode data = JSON.Parse(request.downloadHandler.text);
                 ParseNodes(data);
                 ParseRelations(data);

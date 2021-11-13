@@ -8,18 +8,20 @@ using UnityEngine.Networking;
 public class ParseIIIF : MonoBehaviour
 {
     public string path; 
-    
-
     public GameObject book;
 
     public Material page1;
     public Material page2;
     public int book_index = 3;
 
+    public LoadScalarNode scalarNodeManager;
+    public GameObject camObj;
+
     Texture2D curr_tex;
     Manifest json;
   //  WWW file;
     public int max_pages = 0;
+    public int coord_counter = 0;
 
     //tester
     //https://digi.vatlib.it/iiif/MSS_Vat.lat.1125/manifest.json
@@ -28,6 +30,9 @@ public class ParseIIIF : MonoBehaviour
     void Start()
     {
         StartCoroutine(LoadRemoteURL(path));
+
+     
+
     }
 
     /* Parse JSON */
@@ -53,6 +58,10 @@ public class ParseIIIF : MonoBehaviour
         else
         {
             GetNewImage("getleft");
+            if (coord_counter > 0)
+            {
+                TranslateCamera(scalarNodeManager.CamCoordList[coord_counter--]);
+            }
         }
     }
 
@@ -61,12 +70,23 @@ public class ParseIIIF : MonoBehaviour
         if (book_index < max_pages)
         {
             GetNewImage("getright");
+            if (coord_counter < 15)
+            {
+                TranslateCamera(scalarNodeManager.CamCoordList[coord_counter++]);
+            }
         }
         else
         {
             book_index = 3;
             Debug.Log("Warning: End of book reached; Resetting scene");
         }
+    }
+
+    void TranslateCamera(float[] coords) {
+
+        camObj.transform.position = new Vector3(coords[0], coords[1], coords[2]);
+        Debug.Log($" {coords[0]}  {coords[1]}  {coords[2]} " );
+
     }
 
     void GetNewImage(string type) {
@@ -79,13 +99,13 @@ public class ParseIIIF : MonoBehaviour
 
                 string left = json.sequences[0].canvases[left_index].images[0].resource.service["@id"] + "/200,200,3000,2550/512,/0/native.jpg";
                 DownloadImage(left, "left");
-                Debug.Log("Left index = " + left_index);
+               // Debug.Log("Left index = " + left_index);
 
                 
                 string right = json.sequences[0].canvases[book_index+=2].images[0].resource.service["@id"] + "/200,200,3000,2550/512,/0/native.jpg";
                 DownloadImage(right, "right");
 
-                Debug.Log("Right index = " + book_index);
+               // Debug.Log("Right index = " + book_index);
             }
         }
         else {
@@ -94,12 +114,12 @@ public class ParseIIIF : MonoBehaviour
                 int left_index = book_index - 3; 
                 string left = json.sequences[0].canvases[left_index].images[0].resource.service["@id"] + "/200,200,3000,2550/512,/0/native.jpg";
                 DownloadImage(left, "left");
-                Debug.Log("Left index = " + left_index);
+               // Debug.Log("Left index = " + left_index);
 
                 string right = json.sequences[0].canvases[book_index-=2].images[0].resource.service["@id"] + "/200,200,3000,2550/512,/0/native.jpg";
                 DownloadImage(right, "right");
 
-                Debug.Log("Right index = " + book_index);
+               // Debug.Log("Right index = " + book_index);
 
 
                 
@@ -123,14 +143,14 @@ public class ParseIIIF : MonoBehaviour
                 if (type == "left")
                 {
                     Debug.Log("Left index is ");
-                    page1.SetTexture("_MainTex", texture);
+                    page1.SetTexture("_BaseMap", texture);
                 }
                 else if (type == "right")
                 {
-                    page2.SetTexture("_MainTex", texture);
+                    page2.SetTexture("_BaseMap", texture);
                 }
                 else if (type == "init") {
-                    page2.SetTexture("_MainTex", texture);
+                    page2.SetTexture("_BaseMap", texture);
                 }
             }
         }));
