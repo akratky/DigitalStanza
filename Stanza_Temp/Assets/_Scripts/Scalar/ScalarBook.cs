@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using ANVC.Scalar;
 using SimpleJSON;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -23,10 +24,13 @@ public class ScalarBook : MonoBehaviour
     private ScalarNode _rootNode;
     private ScalarNode _currentLeftPage;
     private ScalarNode _currentRightPage;
-    // Start is called before the first frame update
+    public TextMeshProUGUI textMeshPro;
+        
+
     void Start()
     {
         LoadManuscriptRoot();
+        
     }
 
     #region Root Page
@@ -36,7 +40,7 @@ public class ScalarBook : MonoBehaviour
         StartCoroutine(ScalarAPI.LoadNode(manuscriptRootURLSlug,
             OnLoadRootSuccess,
             OnLoadRootFailure,
-            2,
+            3,
             true,
             "referee"));
     }
@@ -44,7 +48,6 @@ public class ScalarBook : MonoBehaviour
     private void OnLoadRootSuccess(JSONNode jsonNode)
     {
         _rootNode = ScalarAPI.GetNode(manuscriptRootURLSlug);
-        
         //subtract by two because we are actually starting on page 0
         _lastPageindex = _rootNode.outgoingRelations.Count - 2 ;
         LoadPages(_currentPageindex);
@@ -64,6 +67,7 @@ public class ScalarBook : MonoBehaviour
 
     private void Update()
     {
+        //temporary - TODO - replace this with proper input scripts
         if (Input.GetKey(KeyCode.LeftArrow))
             GotoPreviousPage();
         else if (Input.GetKey(KeyCode.RightArrow))
@@ -99,6 +103,8 @@ public class ScalarBook : MonoBehaviour
     {
         _currentLeftPage = _rootNode.outgoingRelations[pageNum].target;
         
+        //todo - add error checking for trying to open page that doesn't exist
+        
         //iterate through outgoing relations of page to find image
         foreach (var rel in _currentLeftPage.outgoingRelations)
         {
@@ -114,7 +120,13 @@ public class ScalarBook : MonoBehaviour
                 if(thumbStart != -1)
                     imgURL = imgURL.Remove(thumbStart, 6);
                     
+                //download manuscript image and set ingame material
                 StartCoroutine(DownloadImage(imgURL, true));
+                
+                
+                //get annotation for this page
+                textMeshPro.text = ScalarUtilities.ExtractRichTextFromHTMLSource(_currentLeftPage.current.content,
+                    this);
 
             }
 
@@ -139,6 +151,9 @@ public class ScalarBook : MonoBehaviour
 
             }
         }
+        
+        //after we load these pages we 'load' them again to be able to go deeper on the scalar node tree
+        //todo - see above
     }
 
     
@@ -166,4 +181,6 @@ public class ScalarBook : MonoBehaviour
                 rightPage.mainTexture = ((DownloadHandlerTexture) request.downloadHandler).texture;
         }
     }
+
+    
 }
