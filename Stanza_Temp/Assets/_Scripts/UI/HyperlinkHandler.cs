@@ -7,14 +7,14 @@ using UnityEngine.EventSystems;
 
 //from: https://deltadreamgames.com/unity-tmp-hyperlinks/
 
-[RequireComponent(typeof(TextMeshProUGUI))]
+[RequireComponent(typeof(TextMeshPro))]
 public class HyperlinkHandler : MonoBehaviour, IPointerClickHandler
 {
     public delegate void OnHyperlinkClicked(string s);
 
     public static OnHyperlinkClicked onHyperlinkClickedEvent;
     
-    private TextMeshPro _textMeshPro;
+    public TextMeshPro _textMeshPro;
     private Camera _cam;
     private void Start()
     {

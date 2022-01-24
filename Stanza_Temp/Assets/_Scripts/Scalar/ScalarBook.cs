@@ -24,7 +24,7 @@ public class ScalarBook : MonoBehaviour
     private ScalarNode _rootNode;
     private ScalarNode _currentLeftPage;
     private ScalarNode _currentRightPage;
-    public TextMeshProUGUI textMeshPro;
+    public TextMeshPro textMeshPro;
         
 
     void Start()
