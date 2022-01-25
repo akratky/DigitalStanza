@@ -19,7 +19,7 @@ public class ScalarUtilities
 
         //find instances of '<a href...' which indicates inline link
         s = s.Replace("<a href", "<color=\"blue\"><link");
-        s = s.Replace("</a>", "</a></color>");
+        s = s.Replace("</a>", "</link></color>");
         
         
         return s;

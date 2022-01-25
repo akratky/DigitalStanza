@@ -7,30 +7,13 @@ using UnityEngine.EventSystems;
 
 //from: https://deltadreamgames.com/unity-tmp-hyperlinks/
 
-[RequireComponent(typeof(TextMeshPro))]
-public class HyperlinkHandler : MonoBehaviour, IPointerClickHandler
+public class HyperlinkHandler : MonoBehaviour
 {
-    public delegate void OnHyperlinkClicked(string s);
 
-    public static OnHyperlinkClicked onHyperlinkClickedEvent;
-    
-    public TextMeshPro _textMeshPro;
-    private Camera _cam;
-    private void Start()
+    public void OnLinkClick(string s1, string s2, int index)
     {
-        _textMeshPro = GetComponent<TextMeshPro>();
-        _cam = Camera.main;
-    }
+        Debug.Log("Clicked on: " + s2);
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        int linkIndex = TMP_TextUtilities.FindIntersectingLink(_textMeshPro, Input.mousePosition, _cam);
-        if (linkIndex != -1)
-        {
-            TMP_LinkInfo linkInfo = _textMeshPro.textInfo.linkInfo[linkIndex];
-            
-            
-        }
     }
     
 }
