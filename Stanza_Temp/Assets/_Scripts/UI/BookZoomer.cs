@@ -30,14 +30,14 @@ public class BookZoomer : MonoBehaviour
     public void ChangeBookView(){
         // if we're at the first position, go to the second, and vice versa
         if(heldBook.transform.position == pos1){
-            Debug.Log("Zooming in");
+            //Debug.Log("Zooming in");
             startPos = pos1;
             endPos = pos2;
             startRot = rot1;
             endRot = rot2;
         }
         else if(heldBook.transform.position == pos2){
-            Debug.Log("Zooming out");
+            //Debug.Log("Zooming out");
             startPos = pos2;
             endPos = pos1;
             startRot = rot2;
