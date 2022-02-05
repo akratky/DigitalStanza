@@ -7,6 +7,7 @@ using System;
 namespace TMPro
 {
 
+    //TODO - slim this down
     public class TMP_TextEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [Serializable]
@@ -24,6 +25,8 @@ namespace TMPro
         [Serializable]
         public class LinkSelectionEvent : UnityEvent<string, string, int> { }
 
+        public delegate void OnLinkSelectedDelegate(string linkID,string linkText, int linkIndex);
+        public static OnLinkSelectedDelegate OnLinkSelectedEvent;
 
         /// <summary>
         /// Event delegate triggered when pointer is over a character.
@@ -194,7 +197,9 @@ namespace TMPro
                     TMP_LinkInfo linkInfo = m_TextComponent.textInfo.linkInfo[linkIndex];
 
                     // Send the event to any listeners.
-                    SendOnLinkSelection(linkInfo.GetLinkID(), linkInfo.GetLinkText(), linkIndex);
+                    //SendOnLinkSelection(linkInfo.GetLinkID(), linkInfo.GetLinkText(), linkIndex);
+                    Debug.Log("Link clicked");
+                    OnLinkSelectedEvent?.Invoke(linkInfo.GetLinkID(),linkInfo.GetLinkText(), linkIndex);
                 }
                 #endregion
             }

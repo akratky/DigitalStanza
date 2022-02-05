@@ -4,6 +4,7 @@ using UnityEngine;
 using SimpleJSON;
 using UnityEngine.Events;
 using System.Runtime.InteropServices;
+using TMPro;
 
 namespace ANVC.Scalar
 {
@@ -13,7 +14,7 @@ namespace ANVC.Scalar
         public AnnotationSelectedExternallyEvent annotationSelectedExternallyEvent;
         public UnityEvent annotationsUpdatedExternallyEvent;
         public MessageReceivedEvent messageReceivedEvent;
-
+        
         private Camera _camera;
         private Vector3 _targetPosition;
 
@@ -24,6 +25,7 @@ namespace ANVC.Scalar
         void Start()
         {
             _camera = GetComponent<Camera>();
+            TMP_TextEventHandler.OnLinkSelectedEvent += OnHyperLinkClicked;
         }
 
         public void HandleAnnotationsUpdated()
@@ -31,6 +33,8 @@ namespace ANVC.Scalar
             annotationsUpdatedExternallyEvent.Invoke();
         }
 
+
+        
         public void GetTransform()
         {
             JSONObject data = new JSONObject();
@@ -70,11 +74,14 @@ namespace ANVC.Scalar
             Vector3 upwards = new Vector3(Mathf.Sin(node["roll"] * Mathf.Deg2Rad), Mathf.Cos(node["roll"] * Mathf.Deg2Rad), 0);
             Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, upwards);
             LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
-            LeanTween.value(transform.gameObject, updateFieldOfView, _camera.fieldOfView, node["fieldOfView"], transitionDuration);
+            //LeanTween.value(transform.gameObject, updateFieldOfView, _camera.fieldOfView, node["fieldOfView"], transitionDuration);
+            
+            /*
             void updateFieldOfView(float val, float ratio)
             {
                 _camera.fieldOfView = val;
             }
+            */
         }
 
         public void HandleMessage(string data)
@@ -82,8 +89,38 @@ namespace ANVC.Scalar
             JSONNode json = JSON.Parse(data);
             messageReceivedEvent.Invoke(json);
         }
+        
+        #region Hyperlink Handling
+        private void OnHyperLinkClicked(string linkID, string linkText, int linkIndex)
+        {
+            if (linkID.Contains("annotation"))
+                StartCoroutine(ScalarAPI.LoadNode(
+                    linkID,
+                    OnPageLoadSuccess,
+                    OnPageLoadFail,
+                    2,
+                    true,
+                    "annotation"
+                ));
+
+        }
+
+        private void OnPageLoadSuccess(JSONNode node)
+        {
+            SetTransformNoEvent(node);
+        }
+
+        private void OnPageLoadFail(string err)
+        {
+            Debug.LogError(err);
+        }
+
+        #endregion
+
     }
 }
+
+
 
 [System.Serializable]
 public class AnnotationSelectedExternallyEvent : UnityEvent<JSONNode> { }

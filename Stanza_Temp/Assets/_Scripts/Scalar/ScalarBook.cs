@@ -25,7 +25,9 @@ public class ScalarBook : MonoBehaviour
     private ScalarNode _currentLeftPage;
     private ScalarNode _currentRightPage;
     public TMP_Text textMeshPro;
-        
+
+    private string _currentPageText;
+    private string _currentAnnotationText;
 
     void Start()
     {
@@ -40,19 +42,25 @@ public class ScalarBook : MonoBehaviour
         StartCoroutine(ScalarAPI.LoadNode(manuscriptRootURLSlug,
             OnLoadRootSuccess,
             OnLoadRootFailure,
-            3,
+            2,
             true,
-            "referee"));
+            "annotation"));
     }
 
     private void OnLoadRootSuccess(JSONNode jsonNode)
     {
         _rootNode = ScalarAPI.GetNode(manuscriptRootURLSlug);
         //subtract by two because we are actually starting on page 0
-        _lastPageindex = _rootNode.outgoingRelations.Count - 2 ;
-        LoadPages(_currentPageindex);
-        
+        //_lastPageindex = _rootNode.outgoingRelations.Count - 2 ;
+       // LoadPages(_currentPageindex);
 
+       textMeshPro.text = ScalarUtilities.ExtractRichTextFromHTMLSource(
+           _rootNode.current.content, this
+       );
+
+       
+       
+       
     }
     private void OnLoadRootFailure(string e)
     {

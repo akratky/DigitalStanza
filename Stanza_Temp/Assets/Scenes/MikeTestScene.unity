@@ -539,6 +539,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1074655805369487904, guid: 60305b09165c8be48b0be46891a96035, type: 3}
+      propertyPath: m_OnLinkSelection.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487905, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: ShowLinks
       value: 0
@@ -651,7 +655,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1074655805369487918, guid: 60305b09165c8be48b0be46891a96035, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 60305b09165c8be48b0be46891a96035, type: 3}
 --- !u!1 &392851339
 GameObject:
@@ -1525,7 +1530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01680bba06515f34a9d0a22e6a569c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manuscriptRootURLSlug: test-scalar-book
+  manuscriptRootURLSlug: test-page
   leftPage: {fileID: 2100000, guid: 6da4b0bdd3d264c05991616503588ddd, type: 2}
   rightPage: {fileID: 2100000, guid: 15a72a8de9e4e4d249bf16d770bbade0, type: 2}
   textMeshPro: {fileID: 705172568}
@@ -1655,7 +1660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7857329111701137187, guid: cf60d2558e93d43a1baf54e9b44a6c46, type: 3}
       propertyPath: bookUrlPrefix
-      value: https://scalar.usc.edu/works/testing-55/
+      value: https://scalar.usc.edu/works/digital-stanza-della-segnatura/
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf60d2558e93d43a1baf54e9b44a6c46, type: 3}
