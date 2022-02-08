@@ -44,7 +44,7 @@ public class ScalarBook : MonoBehaviour
             OnLoadRootFailure,
             2,
             true,
-            "annotation"));
+            "referee"));
     }
 
     private void OnLoadRootSuccess(JSONNode jsonNode)

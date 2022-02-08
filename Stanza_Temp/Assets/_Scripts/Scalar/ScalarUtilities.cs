@@ -8,6 +8,12 @@ public class ScalarUtilities
      *Out: rich text string containing page content and hyperlinks
      */
     
+    //annotations that swing the camera to a new spot in teh room
+    public static string roomSpatialAnnotationTag = "annotation";
+    
+    //annotations that pop up against a fresco wall
+    public static string frescoImageAnnotationTag = "image";
+    
     public static string ExtractRichTextFromHTMLSource(string s, ScalarBook book)
     {
 

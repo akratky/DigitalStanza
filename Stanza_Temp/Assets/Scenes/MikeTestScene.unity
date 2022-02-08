@@ -3137,6 +3137,79 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &1870439975886180821
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1870439977122314928, guid: 40dffebb408cf824088f53313c329470, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870439977122314928, guid: 40dffebb408cf824088f53313c329470, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.034
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870439977122314928, guid: 40dffebb408cf824088f53313c329470, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.037
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870439977122314928, guid: 40dffebb408cf824088f53313c329470, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.757
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870439977122314928, guid: 40dffebb408cf824088f53313c329470, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870439977122314928, guid: 40dffebb408cf824088f53313c329470, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870439977122314928, guid: 40dffebb408cf824088f53313c329470, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870439977122314928, guid: 40dffebb408cf824088f53313c329470, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870439977122314928, guid: 40dffebb408cf824088f53313c329470, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870439977122314928, guid: 40dffebb408cf824088f53313c329470, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870439977122314928, guid: 40dffebb408cf824088f53313c329470, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870439977122314931, guid: 40dffebb408cf824088f53313c329470, type: 3}
+      propertyPath: frescoImageFileName
+      value: the-ten-string---or-nine-string---lyre-image
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870439977122314931, guid: 40dffebb408cf824088f53313c329470, type: 3}
+      propertyPath: spatialAnnotationPrefab
+      value: 
+      objectReference: {fileID: 4034031738392500089, guid: fa684d6c0f2eee44fb377585c6f3af60, type: 3}
+    - target: {fileID: 1870439977122314931, guid: 40dffebb408cf824088f53313c329470, type: 3}
+      propertyPath: spatialAnnotationOffset.x
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870439977122314931, guid: 40dffebb408cf824088f53313c329470, type: 3}
+      propertyPath: spatialAnnotationOffset.y
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870439977122314932, guid: 40dffebb408cf824088f53313c329470, type: 3}
+      propertyPath: m_Name
+      value: WallAnnotationPlane
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 40dffebb408cf824088f53313c329470, type: 3}
 --- !u!4 &2314586944596867325
 Transform:
   m_ObjectHideFlags: 0

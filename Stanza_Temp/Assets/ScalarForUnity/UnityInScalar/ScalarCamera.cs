@@ -17,7 +17,6 @@ namespace ANVC.Scalar
         
         private Camera _camera;
         private Vector3 _targetPosition;
-
         [DllImport("__Internal")]
         private static extern void ReturnPosition3D(string position3D);
 
@@ -93,7 +92,7 @@ namespace ANVC.Scalar
         #region Hyperlink Handling
         private void OnHyperLinkClicked(string linkID, string linkText, int linkIndex)
         {
-            if (linkID.Contains("annotation"))
+            if (linkID.Contains(ScalarUtilities.roomSpatialAnnotationTag))
                 StartCoroutine(ScalarAPI.LoadNode(
                     linkID,
                     OnPageLoadSuccess,
@@ -107,6 +106,7 @@ namespace ANVC.Scalar
 
         private void OnPageLoadSuccess(JSONNode node)
         {
+            
             SetTransformNoEvent(node);
         }
 
