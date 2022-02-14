@@ -10,7 +10,7 @@ using UnityEngine.Networking;
 public class ScalarBook : MonoBehaviour
 {
     //this will be the home page of the manuscript we are streaming in
-    public string manuscriptRootURLSlug;
+    public string manuscriptRootURLSlug = "test-scalar-book";
 
     public Material leftPage;
     public Material rightPage;
@@ -43,8 +43,8 @@ public class ScalarBook : MonoBehaviour
             OnLoadRootSuccess,
             OnLoadRootFailure,
             2,
-            true,
-            "referee"));
+            false,
+            "path"));
     }
 
     private void OnLoadRootSuccess(JSONNode jsonNode)
@@ -52,15 +52,14 @@ public class ScalarBook : MonoBehaviour
         _rootNode = ScalarAPI.GetNode(manuscriptRootURLSlug);
         //subtract by two because we are actually starting on page 0
         //_lastPageindex = _rootNode.outgoingRelations.Count - 2 ;
-       // LoadPages(_currentPageindex);
+        // LoadPages(_currentPageindex);
 
-       textMeshPro.text = ScalarUtilities.ExtractRichTextFromHTMLSource(
+        Debug.Log(" _rootNode.current.content " + _rootNode);
+        Debug.Log(" _last " + _lastPageindex);
+
+        textMeshPro.text = ScalarUtilities.ExtractRichTextFromHTMLSource(
            _rootNode.current.content, this
        );
-
-       
-       
-       
     }
     private void OnLoadRootFailure(string e)
     {
@@ -70,29 +69,30 @@ public class ScalarBook : MonoBehaviour
 
 
     #endregion
-    
+
     #region General Page Functions
 
-    private void Update()
-    {
-        //temporary - TODO - replace this with proper input scripts
-        if (Input.GetKey(KeyCode.LeftArrow))
-            GotoPreviousPage();
-        else if (Input.GetKey(KeyCode.RightArrow))
-            GotoNextPage();
-    }
+    //CY: removing page iterator: page and tranform should iterate on link click
+    //private void Update()
+    //{
+    //    //temporary - TODO - replace this with proper input scripts
+    //    if (Input.GetKey(KeyCode.LeftArrow))
+    //        GotoPreviousPage();
+    //    else if (Input.GetKey(KeyCode.RightArrow))
+    //        GotoNextPage();
+    //}
 
-    public bool GotoNextPage()
+    public void GotoNextPage()
     {
         if (_currentPageindex != _lastPageindex)
         {
             _currentPageindex += 2;
             LoadPages(_currentPageindex);
-            return true;
+           // return true;
 
         }
 
-        return false;
+        //return false;
     }
 
     public bool GotoPreviousPage()
