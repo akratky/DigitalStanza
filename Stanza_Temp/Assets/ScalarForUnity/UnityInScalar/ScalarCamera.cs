@@ -92,7 +92,12 @@ namespace ANVC.Scalar
         #region Hyperlink Handling
         private void OnHyperLinkClicked(string linkID, string linkText, int linkIndex)
         {
+
+            Debug.Log("Hyperlink clicked");
             if (linkID.Contains(ScalarUtilities.roomSpatialAnnotationTag))
+            {
+                
+                Debug.Log("Hyperlink handled by camera");
                 StartCoroutine(ScalarAPI.LoadNode(
                     linkID,
                     OnPageLoadSuccess,
@@ -101,6 +106,8 @@ namespace ANVC.Scalar
                     true,
                     "annotation"
                 ));
+            }
+
 
         }
 
