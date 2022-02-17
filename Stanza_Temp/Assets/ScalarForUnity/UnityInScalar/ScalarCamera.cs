@@ -66,6 +66,7 @@ namespace ANVC.Scalar
 
         public void SetTransformNoEvent(JSONNode node)
         {
+            Debug.Log("node  " + node);
             _targetPosition = new Vector3(node["targetX"], node["targetY"], node["targetZ"]);
             Vector3 cameraPosition = new Vector3(node["cameraX"], node["cameraY"], node["cameraZ"]);
             LeanTween.cancel(transform.gameObject);
@@ -106,7 +107,7 @@ namespace ANVC.Scalar
 
         private void OnPageLoadSuccess(JSONNode node)
         {
-            
+            Debug.Log("is clicked");
             SetTransformNoEvent(node);
         }
 

@@ -45,6 +45,9 @@ public class ScalarBook : MonoBehaviour
             2,
             false,
             "path"));
+
+
+         
     }
 
     private void OnLoadRootSuccess(JSONNode jsonNode)
@@ -55,11 +58,23 @@ public class ScalarBook : MonoBehaviour
         // LoadPages(_currentPageindex);
 
         Debug.Log(" _rootNode.current.content " + _rootNode);
-        Debug.Log(" _last " + _lastPageindex);
+        
+        textMeshPro = new TextMeshPro();
+        textMeshPro.text = "sdfsdf";
+        textMeshPro.text = "something";
 
-        textMeshPro.text = ScalarUtilities.ExtractRichTextFromHTMLSource(
-           _rootNode.current.content, this
-       );
+        if (textMeshPro.text != null)
+        {
+            textMeshPro.text = ScalarUtilities.ExtractRichTextFromHTMLSource(
+               _rootNode.current.content, this
+           );
+        }
+        else {
+            Debug.Log("Unable sdklfjskldj");
+        }
+
+        Debug.Log("waht is tmp "+ textMeshPro.text);
+
     }
     private void OnLoadRootFailure(string e)
     {
