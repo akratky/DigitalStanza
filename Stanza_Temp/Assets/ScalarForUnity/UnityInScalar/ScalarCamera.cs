@@ -92,15 +92,18 @@ namespace ANVC.Scalar
         #region Hyperlink Handling
         private void OnHyperLinkClicked(string linkID, string linkText, int linkIndex)
         {
-            if (linkID.Contains(ScalarUtilities.roomSpatialAnnotationTag))
-                StartCoroutine(ScalarAPI.LoadNode(
-                    linkID,
-                    OnPageLoadSuccess,
-                    OnPageLoadFail,
-                    2,
-                    true,
-                    "annotation"
-                ));
+         //   Debug.Log("asdfasd" + linkID.Contains(ScalarUtilities.roomSpatialAnnotationTag));
+           // if (linkID.Contains(ScalarUtilities.roomSpatialAnnotationTag))
+
+            Debug.Log("loading scalar");
+            StartCoroutine(ScalarAPI.LoadNode(
+                "index",
+                OnPageLoadSuccess,
+                OnPageLoadFail,
+                1,
+                false,
+                "path"
+            ));
 
         }
 

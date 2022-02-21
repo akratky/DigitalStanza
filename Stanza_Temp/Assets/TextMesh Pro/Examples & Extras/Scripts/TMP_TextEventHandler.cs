@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/*
+    Based on code here: https://github.com/linithos/NetworkTutorial
+    Credits:  linithos (Lina Escobar)
+ */
+
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System;
@@ -197,9 +202,10 @@ namespace TMPro
                     TMP_LinkInfo linkInfo = m_TextComponent.textInfo.linkInfo[linkIndex];
 
                     // Send the event to any listeners.
-                    //SendOnLinkSelection(linkInfo.GetLinkID(), linkInfo.GetLinkText(), linkIndex);
+                    SendOnLinkSelection(linkInfo.GetLinkID(), linkInfo.GetLinkText(), linkIndex);
                     Debug.Log("Link clicked");
                     OnLinkSelectedEvent?.Invoke(linkInfo.GetLinkID(),linkInfo.GetLinkText(), linkIndex);
+                    
                 }
                 #endregion
             }

@@ -20,8 +20,12 @@ public class LoadScalarNode : MonoBehaviour
     {
         // Request the home page for the book, plus its path relationships
         // int is num of relationships
-        StartCoroutine(ScalarAPI.LoadNode(nodeIndex, HandleSuccess, HandleError, 1, false, nodePath));
 
+        StartCoroutine(ScalarAPI.LoadNode(nodeIndex, HandleSuccess, HandleError, 1, false, nodePath));
+    }
+
+    public void GetNextTransform() {
+        
     }
 
     //Where JSON data from LoadNode gets passed
