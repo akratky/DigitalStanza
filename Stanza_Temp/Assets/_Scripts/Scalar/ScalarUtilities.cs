@@ -1,4 +1,6 @@
 ﻿using System.Text.RegularExpressions;
+using ANVC.Scalar;
+using SimpleJSON;
 
 public class ScalarUtilities
 {
@@ -29,6 +31,20 @@ public class ScalarUtilities
         
         
         return s;
+    }
+
+    public static string ExtractImgURLFromScalarNode(ScalarNode node)
+    {
+        string bodyText = node.current.content;
+
+        Regex regex = new Regex("href=\"(.*?)\"");
+        Match match = regex.Match(bodyText);
+
+        bodyText = match.Value.Replace("href=\"", "");
+        bodyText = bodyText.Replace("\"", "");
+
+        return bodyText;
+
     }
     
 }

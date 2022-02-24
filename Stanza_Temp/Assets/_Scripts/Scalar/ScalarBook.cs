@@ -19,22 +19,24 @@ public class ScalarBook : MonoBehaviour
 
     //denotes the index of the left page
     private int _currentPageindex = 0;
-
-    //denotes last page of current manuscript
-    private int _lastPageindex;
+    
 
     private ScalarNode _rootNode;
-    private ScalarNode _currentLeftPage;
-    private ScalarNode _currentRightPage;
-    public TMP_Text textMeshPro;
 
-    private string _currentPageText;
-    private string _currentAnnotationText;
+    public TMP_Text textMeshPro;
+    
 
     void Start()
     {
         LoadManuscriptRoot();
-        line.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+            GotoNextPage();
+        else if (Input.GetKeyDown(KeyCode.N))
+            GotoPreviousPage();
     }
 
     #region Root Page
@@ -47,29 +49,20 @@ public class ScalarBook : MonoBehaviour
             2,
             true,
             "referee"));
-
-        //  StartCoroutine(ScalarAPI.LoadNode(
-        //    "index",
-        //    OnLoadRootSuccess,
-        //    OnLoadRootFailure,
-        //    1,
-        //    false,
-        //    "path"
-        //));
+        
     }
 
     private void OnLoadRootSuccess(JSONNode jsonNode)
     {
+        print("debug log");
         _rootNode = ScalarAPI.GetNode(manuscriptRootURLSlug);
-        //subtract by two because we are actually starting on page 0
-        Debug.Log("last " + _rootNode);
-        _lastPageindex = _rootNode.outgoingRelations.Count - 2;
-        Debug.Log("_lastPageindex" + _lastPageindex);
-        // LoadPages(_currentPageindex);
 
+        LoadPages(_currentPageindex);
+/*
         textMeshPro.text = ScalarUtilities.ExtractRichTextFromHTMLSource(
             _rootNode.current.content, this
         );
+        */
     }
 
     private void OnLoadRootFailure(string e)
@@ -91,13 +84,13 @@ public class ScalarBook : MonoBehaviour
 
     public bool GotoNextPage()
     {
-        if (_currentPageindex != _lastPageindex)
+        if (_currentPageindex + 2 <= _rootNode.outgoingRelations.Count - 1)
         {
-            Debug.Log("is here ");
             _currentPageindex += 2;
-            //  LoadPages(_currentPageindex);
-            return true;
+            ClearPages();
+            LoadPages(_currentPageindex);
 
+            return true;
         }
 
         return false;
@@ -105,79 +98,87 @@ public class ScalarBook : MonoBehaviour
 
     public bool GotoPreviousPage()
     {
-        if (_currentPageindex != 0)
+        if (_currentPageindex - 2 >= 0)
         {
             _currentPageindex -= 2;
+            ClearPages();
             LoadPages(_currentPageindex);
+
             return true;
         }
+        
 
-        return true;
+        return false;
     }
 
     private void LoadPages(int pageNum)
     {
-        _currentLeftPage = _rootNode.outgoingRelations[pageNum].target;
 
-        //todo - add error checking for trying to open page that doesn't exist
+        ScalarNode currentPage;
 
-        //iterate through outgoing relations of page to find image
-        foreach (var rel in _currentLeftPage.outgoingRelations)
+        if (pageNum == 0)
+            currentPage = _rootNode;
+        else
+            currentPage = _rootNode.outgoingRelations[pageNum-1].target;
+
+
+        bool isRecto;
+        isRecto = currentPage.slug.EndsWith("r");
+
+        string imgURL = ScalarUtilities.ExtractImgURLFromScalarNode(currentPage);
+        
+        StartCoroutine(DownloadImage(imgURL, !isRecto));
+
+        //determine if current page has a corresponding neighbour page
+        ScalarNode neighborNode = GetNeighborPage(currentPage, isRecto);
+
+        if (neighborNode != null)
         {
-            if (rel.target.slug.Contains("img"))
-            {
-                //create URL to source image
-                string imgURL = ScalarAPI.urlPrefix + rel.target.thumbnail;
-
-                //remove "_thumb" from image url, if needed
-                int thumbStart = -1;
-                thumbStart = imgURL.IndexOf("_thumb");
-
-                if (thumbStart != -1)
-                    imgURL = imgURL.Remove(thumbStart, 6);
-
-                //download manuscript image and set ingame material
-                StartCoroutine(DownloadImage(imgURL, true));
-
-
-                //get annotation for this page
-                textMeshPro.text = ScalarUtilities.ExtractRichTextFromHTMLSource(_currentLeftPage.current.content,
-                    this);
-                Debug.Log("tmp text = " + textMeshPro.text);
-
-            }
-
+            StartCoroutine(DownloadImage(imgURL, isRecto));
         }
-
-        _currentRightPage = _rootNode.outgoingRelations[pageNum + 1].target;
-        foreach (var rel in _currentRightPage.outgoingRelations)
-        {
-            if (rel.target.slug.Contains("img"))
-            {
-                //create URL to source image
-                string imgURL = ScalarAPI.urlPrefix + rel.target.thumbnail;
-
-                //remove "_thumb" from image url, if needed
-                int thumbStart = -1;
-                thumbStart = imgURL.IndexOf("_thumb");
-
-                if (thumbStart != -1)
-                    imgURL = imgURL.Remove(thumbStart, 6);
-
-                StartCoroutine(DownloadImage(imgURL, false));
-
-            }
-        }
-
-        //after we load these pages we 'load' them again to be able to go deeper on the scalar node tree
-        //todo - see above
 
     }
 
-
+    private void ClearPages()
+    {
+        leftPage.mainTexture = null;
+        rightPage.mainTexture = null;
+    }
 
     #endregion
 
+    //a neighbor page is the corresponding left-hand/right-hand side of a page
+    //i.e. 001r and 001v are neighbor pages
+    private ScalarNode GetNeighborPage(ScalarNode currentPage, bool isRecto)
+    {
+        string neighbourURL = currentPage.slug;
+        if (isRecto)
+            neighbourURL = neighbourURL.TrimEnd('r');
+        else
+            neighbourURL = neighbourURL.TrimEnd('v');
+
+        ScalarNode neighborNode = null;
+        
+        if (_currentPageindex - 1 > 0)
+        {
+            neighborNode = _rootNode.outgoingRelations[_currentPageindex - 1].target;
+            if(neighborNode != null)
+                if (neighborNode.slug.Contains(neighbourURL))
+                    return neighborNode;
+        }
+
+        if (_currentPageindex + 1 < _rootNode.outgoingRelations.Count)
+        {
+            
+            neighborNode = _rootNode.outgoingRelations[_currentPageindex + 1].target;
+            if(neighborNode != null)
+                if (neighborNode.slug.Contains(neighbourURL))
+                    return neighborNode;
+        }
+
+        return null;
+    }
+    
     //downloads image from URL
     private IEnumerator DownloadImage(string mediaURL, bool isLeftPage)
     {
@@ -211,10 +212,11 @@ public class ScalarBook : MonoBehaviour
     IEnumerator LineCoroutine()
     {
         yield return new WaitForSeconds(2);
-
+        
         line.SetActive(true);
         LineRenderer renderer = line.GetComponent<LineRenderer>();
         renderer.SetPosition(0, this.transform.position);
         renderer.SetPosition(1, new Vector3(0, 0.5f, 1));
+        
     }
 }

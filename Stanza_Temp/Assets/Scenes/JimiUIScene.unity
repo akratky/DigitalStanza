@@ -738,6 +738,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpdatedPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 8452571777949298032, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: manuscriptRootURLSlug
+      value: decachordum-page-001r
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
 --- !u!1001 &517060331
@@ -1072,7 +1076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7857329111701137187, guid: cf60d2558e93d43a1baf54e9b44a6c46, type: 3}
       propertyPath: bookUrlPrefix
-      value: https://scalar.usc.edu/works/testing-55/
+      value: https://scalar.usc.edu/works/digital-stanza-della-segnatura/
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf60d2558e93d43a1baf54e9b44a6c46, type: 3}
