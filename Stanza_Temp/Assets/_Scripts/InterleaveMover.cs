@@ -17,8 +17,8 @@ public class InterleaveMover : MonoBehaviour
     {
     }
 
-    // Update is called once per frame
-    void Update()
+    //MARK: Call discretely when update is needed
+    void UpdatePositions()
     {
         pos1 = startPositionHolder.transform.position;
         pos2 = endPositionHolder.transform.position;
@@ -35,6 +35,7 @@ public class InterleaveMover : MonoBehaviour
                     startPos = pos2;
                     endPos = pos1;
                 }
+        UpdatePositions();
                 StartCoroutine(SwapSide(startPos, endPos));
     }
 

@@ -24,6 +24,7 @@ public class ScalarBook : MonoBehaviour
     private ScalarNode _rootNode;
     private ScalarNode _currentLeftPage;
     private ScalarNode _currentRightPage;
+    private List<ScalarNode> _allNodes;
     public TMP_Text textMeshPro;
 
     private string _currentPageText;
@@ -39,23 +40,24 @@ public class ScalarBook : MonoBehaviour
 
     private void LoadManuscriptRoot()
     {
-        StartCoroutine(ScalarAPI.LoadNode(manuscriptRootURLSlug,
-            OnLoadRootSuccess,
-            OnLoadRootFailure,
-            2,
-            false,
-            "path"));
-
-
-         
+        StartCoroutine(ScalarAPI.LoadNode(
+          "index",
+          OnLoadRootSuccess,
+          OnLoadRootFailure,
+          1,
+          false,
+          "path"
+      ));
     }
 
     private void OnLoadRootSuccess(JSONNode jsonNode)
     {
-        _rootNode = ScalarAPI.GetNode(manuscriptRootURLSlug);
-        //subtract by two because we are actually starting on page 0
-        //_lastPageindex = _rootNode.outgoingRelations.Count - 2 ;
-        // LoadPages(_currentPageindex);
+        _rootNode = ScalarAPI.GetNode("index");
+        Debug.Log("last " + _rootNode.GetRelatedNodes("annotation", "incoming"));
+        _allNodes  = _rootNode.GetRelatedNodes("annotation", "incoming");
+
+        _lastPageindex = _allNodes.Count - 1 ;
+
 
         Debug.Log(" _rootNode.current.content " + _rootNode);
         
@@ -87,27 +89,17 @@ public class ScalarBook : MonoBehaviour
 
     #region General Page Functions
 
-    //CY: removing page iterator: page and tranform should iterate on link click
-    //private void Update()
-    //{
-    //    //temporary - TODO - replace this with proper input scripts
-    //    if (Input.GetKey(KeyCode.LeftArrow))
-    //        GotoPreviousPage();
-    //    else if (Input.GetKey(KeyCode.RightArrow))
-    //        GotoNextPage();
-    //}
-
     public void GotoNextPage()
     {
         if (_currentPageindex != _lastPageindex)
         {
             _currentPageindex += 2;
             LoadPages(_currentPageindex);
-           // return true;
+            
 
         }
 
-        //return false;
+        
     }
 
     public bool GotoPreviousPage()
@@ -125,9 +117,14 @@ public class ScalarBook : MonoBehaviour
     private void LoadPages(int pageNum)
     {
         _currentLeftPage = _rootNode.outgoingRelations[pageNum].target;
-        
-        //todo - add error checking for trying to open page that doesn't exist
-        
+
+       if (_allNodes[pageNum] != null) { 
+            _currentLeftPage = _allNodes[pageNum]; 
+        } 
+       else {
+            Debug.Log("_currentLeftPage is null");
+        }
+
         //iterate through outgoing relations of page to find image
         foreach (var rel in _currentLeftPage.outgoingRelations)
         {

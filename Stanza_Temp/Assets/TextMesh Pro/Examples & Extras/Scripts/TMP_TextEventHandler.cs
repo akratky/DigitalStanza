@@ -1,4 +1,11 @@
+
 ﻿using UnityEngine;
+
+﻿/*
+    Original code here: https://github.com/linithos/NetworkTutorial
+    Credits:  linithos (Lina Escobar)
+ */
+
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System;
@@ -200,6 +207,7 @@ namespace TMPro
                     //SendOnLinkSelection(linkInfo.GetLinkID(), linkInfo.GetLinkText(), linkIndex);
                     Debug.Log("Link clicked");
                     OnLinkSelectedEvent?.Invoke(linkInfo.GetLinkID(),linkInfo.GetLinkText(), linkIndex);
+
                 }
                 #endregion
             }
