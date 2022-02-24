@@ -5034,7 +5034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01680bba06515f34a9d0a22e6a569c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manuscriptRootURLSlug: test-page
+  manuscriptRootURLSlug: decachordum-page-001r
   leftPage: {fileID: 2100000, guid: 6da4b0bdd3d264c05991616503588ddd, type: 2}
   rightPage: {fileID: 2100000, guid: 15a72a8de9e4e4d249bf16d770bbade0, type: 2}
   line: {fileID: 0}
@@ -5108,14 +5108,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0130fe5c272784731ad72093c09c210f, type: 3}
---- !u!4 &8270623508421380546 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0130fe5c272784731ad72093c09c210f, type: 3}
-  m_PrefabInstance: {fileID: 8452571778044063273}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8758649078440776568 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0130fe5c272784731ad72093c09c210f, type: 3}
+  m_PrefabInstance: {fileID: 8452571778044063273}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8270623508421380546 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0130fe5c272784731ad72093c09c210f, type: 3}
   m_PrefabInstance: {fileID: 8452571778044063273}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8452571778375433318
@@ -5279,11 +5279,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1074655805369487918, guid: 60305b09165c8be48b0be46891a96035, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 60305b09165c8be48b0be46891a96035, type: 3}
---- !u!224 &8909352604439621196 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
-  m_PrefabInstance: {fileID: 8452571778375433318}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8909352604439621193 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
@@ -5295,3 +5290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &8909352604439621196 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
+  m_PrefabInstance: {fileID: 8452571778375433318}
+  m_PrefabAsset: {fileID: 0}
