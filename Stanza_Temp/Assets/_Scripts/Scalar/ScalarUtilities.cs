@@ -6,9 +6,6 @@ public class ScalarUtilities
 {
     
     
-    /*In: Raw HTML from Scalar Page
-     *Out: rich text string containing page content and hyperlinks
-     */
     
     //annotations that swing the camera to a new spot in teh room
     public static string roomSpatialAnnotationTag = "annotation";
@@ -16,9 +13,19 @@ public class ScalarUtilities
     //annotations that pop up against a fresco wall
     public static string frescoImageAnnotationTag = "image";
     
-    public static string ExtractRichTextFromHTMLSource(string s, ScalarBook book)
+    //processes the interleaf text into a string that can be used in game
+    //i.e. replaces html links with unity hypertext links etc.
+    public static string ExtractRichTextFromInterleafBody(string s)
     {
-
+        
+        //remove embedded unity scene
+        Regex regex = new Regex("<(p dir.*)>");
+        Match match = regex.Match(s);
+        s = s.Remove(match.Index, match.Index + match.Length);
+        
+        
+        
+/*
         //removes embedded image from page source
         Regex regex = new Regex("<(a data.*?)/a>");
         Match match = regex.Match(s);
@@ -28,7 +35,7 @@ public class ScalarUtilities
         //find instances of '<a href...' which indicates inline link
         s = s.Replace("<a href", "<color=\"blue\"><link");
         s = s.Replace("</a>", "</link></color>");
-        
+        */
         
         return s;
     }
