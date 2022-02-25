@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using ANVC.Scalar;
 using SimpleJSON;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScalarInterleaf : MonoBehaviour
 {
 
     public string interleafURLSlug;
+    private TMP_Text textMeshText;
+
+    public delegate void OnInterleafTextChange(string s);
+
+    public static event OnInterleafTextChange InterleafTextChangeEvent;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        textMeshText = GetComponentInChildren<TMP_Text>();
     }
 
     #region interleaf loading functions
