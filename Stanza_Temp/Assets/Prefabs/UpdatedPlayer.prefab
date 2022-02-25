@@ -5139,11 +5139,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 37.4
+      value: 8.301
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 38.5
+      value: 13.401
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_LocalScale.x
@@ -5167,7 +5167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.9794234
+      value: 0.347
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5187,11 +5187,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.56
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.15848252
+      value: 0.156
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5210,24 +5210,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -5286730127378199210, guid: ffc931e2ee6f22a4f9b637413f45aca0, type: 2}
     - target: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
+      propertyPath: m_text
+      value: 'See the <link="ID_01"><u><#40A0FF>online documentation</color></u></link>
+        for more information <u><link="ID_02">about this product</link></u> \U0001F60A
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_fontSize
       value: 8.4
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_margin.w
-      value: 14.702657
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_margin.x
-      value: 14.214453
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_margin.y
-      value: 9.196746
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_margin.z
-      value: 15.119634
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_fontAsset
@@ -5250,9 +5257,17 @@ PrefabInstance:
       value: 8.4
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
+      propertyPath: m_overflowMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -5286730127378199210, guid: ffc931e2ee6f22a4f9b637413f45aca0, type: 2}
+    - target: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4281677109
