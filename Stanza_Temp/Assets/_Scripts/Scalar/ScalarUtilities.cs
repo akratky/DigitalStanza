@@ -9,7 +9,7 @@ public class ScalarUtilities
     
     
     //annotations that swing the camera to a new spot in teh room
-    public static string roomSpatialAnnotationTag = "annotation";
+    public static string roomSpatialAnnotationTag = "space";
     
     //annotations that pop up against a fresco wall
     public static string frescoImageAnnotationTag = "image";

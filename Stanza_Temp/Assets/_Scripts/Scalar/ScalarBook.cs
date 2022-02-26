@@ -28,6 +28,9 @@ public class ScalarBook : MonoBehaviour
     void Start()
     {
         LoadManuscriptRoot();
+
+        TMP_TextEventHandler.OnLinkSelectedEvent += OnSpatialLinkClicked;
+
     }
 
     private void Update()
@@ -200,9 +203,13 @@ public class ScalarBook : MonoBehaviour
 
     /* Line Renderer Controller*/
 
-    public void showLine()
+    public void OnSpatialLinkClicked(string linkID, string linkText, int linkIndex)
     {
-        StartCoroutine(LineCoroutine());
+        
+        if(linkID.Contains(ScalarUtilities.roomSpatialAnnotationTag))
+            StartCoroutine(LineCoroutine());
+            
+        
 
     }
 
