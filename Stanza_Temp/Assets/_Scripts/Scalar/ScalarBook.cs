@@ -23,7 +23,6 @@ public class ScalarBook : MonoBehaviour
 
     private ScalarNode _rootNode;
 
-    public TMP_Text textMeshPro;
     
 
     void Start()
@@ -46,7 +45,7 @@ public class ScalarBook : MonoBehaviour
         StartCoroutine(ScalarAPI.LoadNode(manuscriptRootURLSlug,
             OnLoadRootSuccess,
             OnLoadRootFailure,
-            2,
+            0,
             true,
             "referee"));
         
@@ -54,15 +53,10 @@ public class ScalarBook : MonoBehaviour
 
     private void OnLoadRootSuccess(JSONNode jsonNode)
     {
-        print("debug log");
         _rootNode = ScalarAPI.GetNode(manuscriptRootURLSlug);
 
         LoadPages(_currentPageindex);
-/*
-        textMeshPro.text = ScalarUtilities.ExtractRichTextFromHTMLSource(
-            _rootNode.current.content, this
-        );
-        */
+
     }
 
     private void OnLoadRootFailure(string e)
