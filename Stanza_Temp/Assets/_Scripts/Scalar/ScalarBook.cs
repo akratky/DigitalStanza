@@ -45,7 +45,7 @@ public class ScalarBook : MonoBehaviour
         StartCoroutine(ScalarAPI.LoadNode(manuscriptRootURLSlug,
             OnLoadRootSuccess,
             OnLoadRootFailure,
-            0,
+            1,
             true,
             "referee"));
         
@@ -78,6 +78,7 @@ public class ScalarBook : MonoBehaviour
 
     public bool GotoNextPage()
     {
+        print("next page");
         if (_currentPageindex + 2 <= _rootNode.outgoingRelations.Count - 1)
         {
             _currentPageindex += 2;
@@ -92,6 +93,8 @@ public class ScalarBook : MonoBehaviour
 
     public bool GotoPreviousPage()
     {
+        print("prev page");
+
         if (_currentPageindex - 2 >= 0)
         {
             _currentPageindex -= 2;
