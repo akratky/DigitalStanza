@@ -20,8 +20,9 @@ public class ScalarInterleaf : MonoBehaviour
     void Start()
     {
         textMeshText = GetComponent<TMP_Text>();
+        LoadInterleafText();
         UpdatePageUI();
-        //LoadInterleafText();
+
     }
 
     
