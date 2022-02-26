@@ -53,15 +53,10 @@ public class ScalarBook : MonoBehaviour
 
     private void OnLoadRootSuccess(JSONNode jsonNode)
     {
-        print("debug log");
         _rootNode = ScalarAPI.GetNode(manuscriptRootURLSlug);
 
         LoadPages(_currentPageindex);
-/*
-        textMeshPro.text = ScalarUtilities.ExtractRichTextFromHTMLSource(
-            _rootNode.current.content, this
-        );
-        */
+
     }
 
     private void OnLoadRootFailure(string e)

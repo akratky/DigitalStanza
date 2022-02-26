@@ -23,7 +23,9 @@ public class ScalarUtilities
         Match match = regex.Match(s);
         s = s.Remove(match.Index, match.Index + match.Length);
         
-        
+        //find instances of '<a href...' which indicates inline link
+        s = s.Replace("<a href", "<color=\"blue\"><link");
+        s = s.Replace("</a>", "</link></color>");
         
 /*
         //removes embedded image from page source
@@ -32,9 +34,7 @@ public class ScalarUtilities
         s = s.Remove(match.Index, match.Index + match.Length);
         
 
-        //find instances of '<a href...' which indicates inline link
-        s = s.Replace("<a href", "<color=\"blue\"><link");
-        s = s.Replace("</a>", "</link></color>");
+
         */
         
         return s;
