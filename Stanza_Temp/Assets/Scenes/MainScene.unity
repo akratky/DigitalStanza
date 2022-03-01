@@ -994,6 +994,106 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1927854540070479770, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927854540070479770, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927854540070479770, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902873146118330745, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109772832610623370, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109772832610623370, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266894193794471705, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000034826033
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666666253083887189, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666666253971292303, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -449.60696
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666666253971292304, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_text
+      value: "What did Julius II read?\r\n\r\nThe only known witness of the Bibliotheca
+        Iulia\u2019s contents, the inventory documents 220 unique volumes once housed
+        in the Stanza della Segnatura. Prepared in 1513 following the death of Julius
+        II, its author, Romolo Mammacino (d. 1534; custodian of the Vatican Library
+        under Julius II and Leo X), divided the list into two sections. The first
+        records those books that were absorbed into the collections of the larger
+        Biblioteca Apostolica Vaticana, whereas the second documents those consigned
+        to Cardinal Luigi of Aragon (d. 1519). \r\n\r\nThe inventory reveals that
+        the Julian library was generally humanistic in its character and scope. In
+        addition to the ancient Roman canon, including texts by Cicero, Caesar, Ovid,
+        and Pliny, it also housed Latin translations of Aristotle, Homer, Herodotus,
+        and Thucydides. Although few vernacular authors appear on the list, the document
+        demonstrates that Julius II owned copies of Petrarch, Boccaccio, and Leonardo
+        Bruni. The collection also included the essential ecclesiastical and legal
+        titles that were typical among educated members of the clergy.    \r\n\r\nAlthough
+        the Julian collection was smaller than certain of its princely counterparts,
+        it was not unsubstantial. Moreover, the inventory is undoubtedly incomplete
+        and should be regarded as an imperfect document. For instance, the pope\u2019s
+        contemporaries reported that Dante was among the pope\u2019s preferred authors,
+        but the poet is conspicuously missing from the listed volumes. It seems equally
+        likely that some books were loaned, stolen, gifted, or sold, or that certain
+        others were kept elsewhere in the papal palace. \r\n\r\nToday, roughly a
+        third of the original collection has been identified. The recovery of these
+        precious volumes suggests a recursive relationship between the paintings
+        and the papal collection of texts, and that this canonical space can only
+        be understood in consideration of the mutual transactions that took place
+        between these visual and verbal media.\r\n\n\r\n<b>Instructions</b>\r\nWASD
+        keys to move around the Room\r\nRight-hold mouse button to look around\r\nLeft-click
+        mouse button to interact with objects and paratext\r\n\r"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458913365647837413, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458913365647837413, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157715855178534288, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157715855178534288, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157715855178534288, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157715855178534288, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270623508421380546, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452571777656335265, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8452571777659649939, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1042,6 +1142,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpdatedPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 8452571777759862288, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8452571777759862291, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1050,6 +1154,34 @@ PrefabInstance:
       propertyPath: line
       value: 
       objectReference: {fileID: 1496896983}
+    - target: {fileID: 8452571778353426607, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452571779105507188, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550823500526290105, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550823500526290105, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550823500526290105, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572030756163768054, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572030756163768054, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8452571777949297933, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
