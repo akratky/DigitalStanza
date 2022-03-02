@@ -219,6 +219,7 @@ public class ScalarBook : MonoBehaviour
         
         line.SetActive(true);
         LineRenderer renderer = line.GetComponent<LineRenderer>();
+        renderer.enabled = true;
         renderer.SetPosition(0, this.transform.position);
         renderer.SetPosition(1, new Vector3(0, 0.5f, 1));
         

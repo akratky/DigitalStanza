@@ -1059,8 +1059,9 @@ PrefabInstance:
         and the papal collection of texts, and that this canonical space can only
         be understood in consideration of the mutual transactions that took place
         between these visual and verbal media.\r\n\n\r\n<b>Instructions</b>\r\nWASD
-        keys to move around the Room\r\nRight-hold mouse button to look around\r\nLeft-click
-        mouse button to interact with objects and paratext\r\n\r"
+        keys to move around the Room\r\nM,N keys to turn the manuscript pages\nRight-hold
+        mouse button to look around\r\nLeft-click mouse button to interact with objects
+        and paratext\r\n\r"
       objectReference: {fileID: 0}
     - target: {fileID: 7458913365647837413, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_AnchorMax.y
