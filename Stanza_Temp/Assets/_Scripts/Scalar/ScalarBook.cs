@@ -48,7 +48,7 @@ public class ScalarBook : MonoBehaviour
         StartCoroutine(ScalarAPI.LoadNode(manuscriptRootURLSlug,
             OnLoadRootSuccess,
             OnLoadRootFailure,
-            1,
+            4,
             true,
             "referee"));
         

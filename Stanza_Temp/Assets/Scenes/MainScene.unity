@@ -1183,6 +1183,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8909352604439621193, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_fontSize
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909352604439621193, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8452571777949297933, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 98229615916b0474f81bd704220dbd8f, type: 3}

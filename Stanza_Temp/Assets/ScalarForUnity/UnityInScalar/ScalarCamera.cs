@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SimpleJSON;
@@ -17,6 +18,7 @@ namespace ANVC.Scalar
         
         private Camera _camera;
         private Vector3 _targetPosition;
+        private string _currentLinkID;
         [DllImport("__Internal")]
         private static extern void ReturnPosition3D(string position3D);
 
@@ -92,26 +94,51 @@ namespace ANVC.Scalar
         #region Hyperlink Handling
         private void OnHyperLinkClicked(string linkID, string linkText, int linkIndex)
         {
-         //   Debug.Log("asdfasd" + linkID.Contains(ScalarUtilities.roomSpatialAnnotationTag));
             if (linkID.Contains(ScalarUtilities.roomSpatialAnnotationTag))
             {
+                _currentLinkID = linkID;
                 StartCoroutine(ScalarAPI.LoadNode(
-                    "index",
+                    linkID,
                     OnPageLoadSuccess,
                     OnPageLoadFail,
-                    1,
-                    false,
-                    "path"
+                    2,
+                    true,
+                    "annotation"
                 ));
                 
+
             }
 
         }
 
         private void OnPageLoadSuccess(JSONNode node)
         {
+            ScalarNode spatialNode = ScalarAPI.GetNode(_currentLinkID);
+
+            foreach (var rel in spatialNode.outgoingRelations)
+            {
+                if (rel.subType == "spatial")
+                {
+                    //SetTransformNoEvent(rel.body.data);
+                    
+                    
+                    
+                    
+                    _targetPosition = new Vector3(float.Parse(rel.properties.targetX),
+                        float.Parse(rel.properties.targetY), float.Parse(rel.properties.targetZ));
+                    Vector3 cameraPosition = new Vector3(float.Parse(rel.properties.cameraX), 
+                        float.Parse(rel.properties.cameraY),float.Parse(rel.properties.cameraZ));
+                    LeanTween.cancel(transform.gameObject);
+                    LeanTween.move(transform.gameObject, cameraPosition, transitionDuration).setEaseInOutCubic();
+                    Vector3 upwards = new Vector3(Mathf.Sin(float.Parse(rel.properties.roll) * Mathf.Deg2Rad), 
+                        float.Parse(rel.properties.roll) * Mathf.Deg2Rad, 0);
+                    
+                    
+                    Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, upwards);
+                    LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
+                }
+            }
             
-            SetTransformNoEvent(node);
         }
 
         private void OnPageLoadFail(string err)
