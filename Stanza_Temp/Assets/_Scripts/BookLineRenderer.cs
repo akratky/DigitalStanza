@@ -1,29 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using ANVC.Scalar;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BookLineRenderer : MonoBehaviour
 {
-  //  public GameObject book;
-    public GameObject bookLine; 
-    public Button showLine_btn;
 
-    bool isLine = false; 
-    Vector3 origin;
-    Vector3 cam_dir;
-    Vector3 end; 
+    
+    private LineRenderer _lineRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        bookLine.SetActive(false);
+        _lineRenderer = GetComponent<LineRenderer>();
+        _lineRenderer.enabled = false;
+        _lineRenderer.useWorldSpace = true;
+        ScalarCamera.CreateLine += OnRenderNewLine;
     }
 
-    public void RenderBookLine() {
-        isLine = !isLine;
-        bookLine.SetActive(isLine);
 
+    private void OnRenderNewLine(Vector3 pos, Vector3 dir)
+    {
+        _lineRenderer.enabled = true;
+        _lineRenderer.SetPosition(0,pos);
+        _lineRenderer.SetPosition(1,dir);
+        
     }
 
 

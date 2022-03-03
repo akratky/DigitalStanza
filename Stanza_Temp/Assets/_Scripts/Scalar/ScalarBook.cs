@@ -15,7 +15,6 @@ public class ScalarBook : MonoBehaviour
     public Material leftPage;
     public Material rightPage;
 
-    public GameObject line;
 
     //denotes the index of the left page
     private int _currentPageindex = 0;
@@ -29,7 +28,6 @@ public class ScalarBook : MonoBehaviour
     {
         LoadManuscriptRoot();
 
-        TMP_TextEventHandler.OnLinkSelectedEvent += OnSpatialLinkClicked;
 
     }
 
@@ -201,27 +199,5 @@ public class ScalarBook : MonoBehaviour
         }
     }
 
-    /* Line Renderer Controller*/
 
-    public void OnSpatialLinkClicked(string linkID, string linkText, int linkIndex)
-    {
-        
-        if(linkID.Contains(ScalarUtilities.roomSpatialAnnotationTag))
-            StartCoroutine(LineCoroutine());
-            
-        
-
-    }
-
-    IEnumerator LineCoroutine()
-    {
-        yield return new WaitForSeconds(2);
-        
-        line.SetActive(true);
-        LineRenderer renderer = line.GetComponent<LineRenderer>();
-        renderer.enabled = true;
-        renderer.SetPosition(0, this.transform.position);
-        renderer.SetPosition(1, new Vector3(0, 0.5f, 1));
-        
-    }
 }

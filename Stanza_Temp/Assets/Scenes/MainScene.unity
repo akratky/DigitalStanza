@@ -1147,14 +1147,58 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8452571777759862288, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.79
+      objectReference: {fileID: 0}
     - target: {fileID: 8452571777759862291, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452571777759862291, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452571777759862291, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452571777759862291, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Positions.Array.data[0].x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452571777759862291, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Positions.Array.data[1].y
+      value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452571777759862291, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452571777759862291, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.017002106
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452571777759862291, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
+      value: 0.8290258
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452571777759862291, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.011649489
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452571777759862291, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8452571777949298032, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: line
       value: 
       objectReference: {fileID: 1496896983}
+    - target: {fileID: 8452571777949298032, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: manuscriptRootURLSlug
+      value: decachordum-page-001v
+      objectReference: {fileID: 0}
     - target: {fileID: 8452571778353426607, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2613,6 +2657,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8452571777759862289, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
   m_PrefabInstance: {fileID: 516987115}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1496896984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496896983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec8becf35fb84eddba3a215cf563755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1540621631
 GameObject:
   m_ObjectHideFlags: 0

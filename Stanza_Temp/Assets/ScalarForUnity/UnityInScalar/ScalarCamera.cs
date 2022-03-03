@@ -16,6 +16,8 @@ namespace ANVC.Scalar
         public UnityEvent annotationsUpdatedExternallyEvent;
         public MessageReceivedEvent messageReceivedEvent;
         
+        public delegate void RenderLine(Vector3 pos, Vector3 dir);
+        public static event RenderLine CreateLine;
         private Camera _camera;
         private Vector3 _targetPosition;
         private string _currentLinkID;
@@ -136,6 +138,9 @@ namespace ANVC.Scalar
                     
                     Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, upwards);
                     LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
+
+                    StartCoroutine(DelayCreateLine(cameraPosition, _targetPosition));
+
                 }
             }
             
@@ -148,8 +153,21 @@ namespace ANVC.Scalar
 
         #endregion
 
+        private IEnumerator DelayCreateLine(Vector3 camPos, Vector3 targetPos)
+        {
+            yield return new WaitForSeconds(3);
+
+            CreateLine?.Invoke(transform.position,transform.forward*5.0f);
+
+        }
+
+        
     }
+    
+    
 }
+
+
 
 
 
