@@ -129,7 +129,8 @@ public class ScalarBook : MonoBehaviour
 
         //determine if current page has a corresponding neighbour page
         ScalarNode neighborNode = GetNeighborPage(currentPage, isRecto);
-
+        imgURL = ScalarUtilities.ExtractImgURLFromScalarNode(neighborNode);
+        
         if (neighborNode != null)
         {
             StartCoroutine(DownloadImage(imgURL, isRecto));
@@ -151,28 +152,26 @@ public class ScalarBook : MonoBehaviour
     {
         string neighbourURL = currentPage.slug;
         if (isRecto)
+        {
             neighbourURL = neighbourURL.TrimEnd('r');
+            neighbourURL += 'v';
+
+        }
         else
+        {
             neighbourURL = neighbourURL.TrimEnd('v');
+            neighbourURL += 'r';
+        }
 
         ScalarNode neighborNode = null;
-        
-        if (_currentPageindex - 1 > 0)
-        {
-            neighborNode = _rootNode.outgoingRelations[_currentPageindex - 1].target;
-            if(neighborNode != null)
-                if (neighborNode.slug.Contains(neighbourURL))
-                    return neighborNode;
-        }
 
-        if (_currentPageindex + 1 < _rootNode.outgoingRelations.Count)
-        {
-            
-            neighborNode = _rootNode.outgoingRelations[_currentPageindex + 1].target;
-            if(neighborNode != null)
-                if (neighborNode.slug.Contains(neighbourURL))
-                    return neighborNode;
-        }
+
+        int lowerBound = Mathf.Clamp(_currentPageindex - 3, 0, _rootNode.outgoingRelations.Count);
+        int upperBound = Mathf.Clamp(_currentPageindex + 3, 0, _rootNode.outgoingRelations.Count + 1);
+        
+        for(int i = lowerBound; i < upperBound; i++)
+            if (_rootNode.outgoingRelations[i].target.slug.Contains(neighbourURL))
+                return _rootNode.outgoingRelations[i].target;
 
         return null;
     }
