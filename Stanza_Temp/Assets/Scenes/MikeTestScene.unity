@@ -842,17 +842,6 @@ Transform:
   m_Father: {fileID: 392851340}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &858020284 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8452571777949297933, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
-  m_PrefabInstance: {fileID: 8452571778165552305}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ec8becf35fb84eddba3a215cf563755, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1042795976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -998,7 +987,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 858020284}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BookLineRenderer, Assembly-CSharp
         m_MethodName: RenderBookLine
         m_Mode: 1
@@ -1200,11 +1189,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7f2edc36442a64342b2139071fa2e9ab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf43873d84f586d44b9ea237b20b3020, type: 3}
---- !u!4 &1342911045 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6a2d15bad11129d4eabc30fb7add1ad2, type: 3}
-  m_PrefabInstance: {fileID: 1515549942}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1425069272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,6 +1374,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 417f9a53856014a2b93aef8fb8b26a19, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a2d15bad11129d4eabc30fb7add1ad2, type: 3}
+--- !u!4 &1515549943 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1515549942}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1540621631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,10 +1406,10 @@ Transform:
   m_LocalPosition: {x: 1.9360254, y: -6.128695, z: 20.49282}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1342911045}
+  - {fileID: 6523727016850015585}
   - {fileID: 1711340839}
   - {fileID: 2079617745}
-  - {fileID: 6523727016850015585}
+  - {fileID: 1515549943}
   - {fileID: 105143045}
   - {fileID: 580321712}
   - {fileID: 2128469365}
@@ -2444,7 +2433,6 @@ MonoBehaviour:
   manuscriptRootURLSlug: test-scalar-book
   leftPage: {fileID: 2100000, guid: 6da4b0bdd3d264c05991616503588ddd, type: 2}
   rightPage: {fileID: 2100000, guid: 15a72a8de9e4e4d249bf16d770bbade0, type: 2}
-  textMeshPro: {fileID: 0}
 --- !u!114 &3011026462807807853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2457,8 +2445,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec8becf35fb84eddba3a215cf563755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bookLine: {fileID: 3011026463127463025}
-  showLine_btn: {fileID: 0}
 --- !u!95 &3011026462807807854
 Animator:
   serializedVersion: 3
@@ -3137,7 +3123,7 @@ Transform:
   - {fileID: 2314586944596867325}
   - {fileID: 7184633437352871956}
   m_Father: {fileID: 1540621632}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &6767334782042634755
 MeshFilter:
@@ -3296,6 +3282,22 @@ PrefabInstance:
       propertyPath: showLine_btn
       value: 
       objectReference: {fileID: 1224218047}
+    - target: {fileID: 8452571777949298032, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: manuscriptRootURLSlug
+      value: decachordum-page-000v
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550823500526290105, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550823500526290105, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550823500526290105, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
 --- !u!23 &8561150189634890731

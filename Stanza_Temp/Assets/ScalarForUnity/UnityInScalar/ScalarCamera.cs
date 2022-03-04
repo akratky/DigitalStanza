@@ -139,7 +139,7 @@ namespace ANVC.Scalar
                     Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, upwards);
                     LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
 
-                    StartCoroutine(DelayCreateLine(cameraPosition, _targetPosition));
+                    //StartCoroutine(DelayCreateLine(cameraPosition,-(cameraPosition + _targetPosition)));
 
                 }
             }
@@ -157,7 +157,7 @@ namespace ANVC.Scalar
         {
             yield return new WaitForSeconds(3);
 
-            CreateLine?.Invoke(transform.position,transform.forward*5.0f);
+            CreateLine?.Invoke(camPos,targetPos);
 
         }
 
