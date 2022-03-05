@@ -29,9 +29,18 @@ namespace TMPro
 
         [Serializable]
         public class LinkSelectionEvent : UnityEvent<string, string, int> { }
+        
 
-        public delegate void OnLinkSelectedDelegate(string linkID,string linkText, int linkIndex);
-        public static OnLinkSelectedDelegate OnLinkSelectedEvent;
+        public delegate void OnSpatialLinkDelegate(string spatialLinkSlug);
+
+        public static OnSpatialLinkDelegate OnSpatialLinkSelected;
+        public delegate void OnManuscriptLinkDelegate(string manuscriptLinkSlug);
+
+        public static OnManuscriptLinkDelegate OnManuscriptLinkSelected;
+
+        public delegate void OnDetailLinkDelegate(string detailLinkSlug);
+
+        public static OnDetailLinkDelegate OnDetailLinkSelected;
 
         /// <summary>
         /// Event delegate triggered when pointer is over a character.
@@ -202,9 +211,19 @@ namespace TMPro
                     TMP_LinkInfo linkInfo = m_TextComponent.textInfo.linkInfo[linkIndex];
 
                     // Send the event to any listeners.
-                    SendOnLinkSelection(linkInfo.GetLinkID(), linkInfo.GetLinkText(), linkIndex);
+                    //SendOnLinkSelection(linkInfo.GetLinkID(), linkInfo.GetLinkText(), linkIndex);
                     Debug.Log("Link clicked");
-                    OnLinkSelectedEvent?.Invoke(linkInfo.GetLinkID(),linkInfo.GetLinkText(), linkIndex);
+
+                    TripleLinkStruct clickedTripLink = ScalarTripleLink.GetTripleLink(linkInfo.GetLinkID());
+                    
+                    if(clickedTripLink.detailLink != "")
+                        OnDetailLinkSelected?.Invoke(clickedTripLink.detailLink);
+                    if(clickedTripLink.manuscriptLink != "")
+                        OnManuscriptLinkSelected?.Invoke(clickedTripLink.manuscriptLink);
+                    if(clickedTripLink.spatialLink != "")
+                        OnSpatialLinkSelected?.Invoke(clickedTripLink.spatialLink);
+                    
+                    
                     
                 }
                 #endregion

@@ -42,12 +42,19 @@ public class ScalarUtilities
         }
 
         
-        //remove 
-        regex = new Regex("<(a data-align.*?)/a>");
+        //remove embedded spatial links
+        regex = new Regex("<(a data-(size|align).*?)/a>");
         matches = regex.Matches(s);
         while (matches.Count > 0)
         {
-            s = s.Replace(matches[0].Value, "");
+            Regex tagRegex = new Regex("([a-zA-Z]+)(?=</a>)");
+            Match tagMatch = tagRegex.Match(matches[0].Value);
+
+            if (tagMatch.Success)
+                s = s.Replace(matches[0].Value, tagMatch.Value);
+            else
+                s = s.Replace(matches[0].Value, "");
+            
             matches = regex.Matches(s);
         }
         

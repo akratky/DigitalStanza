@@ -25,6 +25,11 @@ public static class ScalarTripleLink
     {
 
         TripleLinkStruct newTripleLink = new TripleLinkStruct();
+        newTripleLink.detailLink = "";
+        newTripleLink.manuscriptLink = "";
+        newTripleLink.spatialLink = "";
+        
+        
         
         Regex regex = new Regex("(?<=a href=\")(.*?)(?=\")");
         MatchCollection matches = regex.Matches(s);
@@ -49,6 +54,14 @@ public static class ScalarTripleLink
         return tagMatch.Value;
 
     }
+    
+    public static TripleLinkStruct GetTripleLink(string tag)
+    {
+        return tripleLinkList[tag];
+    }
+
+
+
 
 
 }

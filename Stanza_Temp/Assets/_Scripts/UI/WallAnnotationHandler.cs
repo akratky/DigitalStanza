@@ -21,17 +21,17 @@ public class WallAnnotationHandler : MonoBehaviour
     {
         _collider = GetComponent<BoxCollider>();
         
-        TMP_TextEventHandler.OnLinkSelectedEvent += OnHyperlinkClicked;
+        TMP_TextEventHandler.OnDetailLinkSelected += OnDetailLinkClicked;
     }
 
-    private void OnHyperlinkClicked(string linkID, string linkText, int linkIndex)
+    private void OnDetailLinkClicked(string linkSlug)
     {
-        if (linkID.Contains(ScalarUtilities.frescoImageAnnotationTag))
+        if (linkSlug.Contains(ScalarUtilities.frescoImageAnnotationTag))
         {
-            _targetPageSlug = linkID;
+            _targetPageSlug = linkSlug;
             
             StartCoroutine(ScalarAPI.LoadNode(
-                linkID,
+                linkSlug,
                 OnPageLoadSuccess,
                 OnPageLoadFail,
                 2,

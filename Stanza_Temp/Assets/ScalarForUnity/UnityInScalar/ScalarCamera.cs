@@ -15,7 +15,8 @@ namespace ANVC.Scalar
         public AnnotationSelectedExternallyEvent annotationSelectedExternallyEvent;
         public UnityEvent annotationsUpdatedExternallyEvent;
         public MessageReceivedEvent messageReceivedEvent;
-        
+        public Vector3 lyrePos;
+        public Vector3 lyreRot;
         public delegate void RenderLine(Vector3 pos, Vector3 dir);
         public static event RenderLine CreateLine;
         private Camera _camera;
@@ -28,7 +29,7 @@ namespace ANVC.Scalar
         void Start()
         {
             _camera = GetComponent<Camera>();
-            TMP_TextEventHandler.OnLinkSelectedEvent += OnHyperLinkClicked;
+            TMP_TextEventHandler.OnSpatialLinkSelected += OnSpatialLinkClicked;
         }
 
         public void HandleAnnotationsUpdated()
@@ -94,13 +95,16 @@ namespace ANVC.Scalar
         }
         
         #region Hyperlink Handling
-        private void OnHyperLinkClicked(string linkID, string linkText, int linkIndex)
+        private void OnSpatialLinkClicked(string spatialLinkSlug)
         {
-            if (linkID.Contains(ScalarUtilities.roomSpatialAnnotationTag))
+            Debug.Log(spatialLinkSlug);
+            
+            
+            if (spatialLinkSlug.Contains(ScalarUtilities.roomSpatialAnnotationTag))
             {
-                _currentLinkID = linkID;
+                _currentLinkID = spatialLinkSlug;
                 StartCoroutine(ScalarAPI.LoadNode(
-                    linkID,
+                    spatialLinkSlug,
                     OnPageLoadSuccess,
                     OnPageLoadFail,
                     2,
