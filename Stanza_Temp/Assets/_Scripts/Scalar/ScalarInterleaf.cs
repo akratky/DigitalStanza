@@ -5,11 +5,10 @@ using SimpleJSON;
 using TMPro;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
-using UnityEngine.UI;
 
 public class ScalarInterleaf : MonoBehaviour
 {
-
+    
     public string interleafURLSlug;
     public TMP_Text currentPageTextObj;
     public TMP_Text totalPageTextObj;

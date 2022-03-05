@@ -21,7 +21,7 @@ namespace ANVC.Scalar
         public static string untitledNodeString = "(No title)";
 
         public string bookUrlPrefix;
-        public WriteToFile writefile;
+       // public WriteToFile writefile;
 
         void Awake()
         {

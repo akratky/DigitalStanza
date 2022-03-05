@@ -13,6 +13,8 @@ public class ScalarUtilities
     
     //annotations that pop up against a fresco wall
     public static string frescoImageAnnotationTag = "image";
+
+    public static string manuscriptAnnotationTag = "manuscript";
     
     //Dictionary of phrases that will be replaced when the page text is being extracted from a scalar page
     private static Dictionary<string, string> wordReplacementDict = new Dictionary<string, string>()
@@ -40,7 +42,7 @@ public class ScalarUtilities
         }
 
         
-
+        //remove 
         regex = new Regex("<(a data-align.*?)/a>");
         matches = regex.Matches(s);
         while (matches.Count > 0)
@@ -58,7 +60,27 @@ public class ScalarUtilities
             matches = regex.Matches(s);
         }
         
-        
+        //handle all the triple links
+        //regex = new Regex("([a-zA-Z]+)/s/(<(a href.*?)/)");
+        regex = new Regex("([a-zA-Z]+) [(](<a href.*?)[)]");
+        matches = regex.Matches(s);
+        while (matches.Count > 0)
+        {
+            string tag = ScalarTripleLink.ParseAndAddTripleLink(matches[0].Value);
+            string replacementString = "<color=\"blue\"><link=\""
+                                       + tag + "\">" + tag
+                                       + "</link></color>";
+            int insertIndex = matches[0].Index;
+
+            s = s.Remove(matches[0].Index, matches[0].Length);
+            s = s.Insert(insertIndex, replacementString);
+            matches = regex.Matches(s);
+
+        }
+            
+            
+            
+        //replace other misc. stuff
         foreach (var pair in wordReplacementDict)
         {
             s = s.Replace(pair.Key, pair.Value);
