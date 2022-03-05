@@ -214,6 +214,14 @@ namespace TMPro
                     //SendOnLinkSelection(linkInfo.GetLinkID(), linkInfo.GetLinkText(), linkIndex);
                     Debug.Log("Link clicked");
 
+                    if (linkInfo.GetLinkID() == "lyre")
+                    {
+                        OnSpatialLinkSelected?.Invoke("lyre");
+                        OnDetailLinkSelected?.Invoke("lyre");
+                        OnManuscriptLinkSelected?.Invoke("lyre");
+                        
+                    }
+
                     TripleLinkStruct clickedTripLink = ScalarTripleLink.GetTripleLink(linkInfo.GetLinkID());
                     
                     if(clickedTripLink.detailLink != "")

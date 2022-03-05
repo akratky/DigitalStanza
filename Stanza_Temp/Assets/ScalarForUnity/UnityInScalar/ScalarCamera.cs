@@ -15,8 +15,8 @@ namespace ANVC.Scalar
         public AnnotationSelectedExternallyEvent annotationSelectedExternallyEvent;
         public UnityEvent annotationsUpdatedExternallyEvent;
         public MessageReceivedEvent messageReceivedEvent;
-        public Vector3 lyrePos;
-        public Vector3 lyreRot;
+        public Transform CameraPos;
+        public Transform TargetPos;
         public delegate void RenderLine(Vector3 pos, Vector3 dir);
         public static event RenderLine CreateLine;
         private Camera _camera;
@@ -98,8 +98,10 @@ namespace ANVC.Scalar
         private void OnSpatialLinkClicked(string spatialLinkSlug)
         {
             Debug.Log(spatialLinkSlug);
-            
-            
+
+            if (spatialLinkSlug == "lyre") 
+                JumpToLyre();
+                /*
             if (spatialLinkSlug.Contains(ScalarUtilities.roomSpatialAnnotationTag))
             {
                 _currentLinkID = spatialLinkSlug;
@@ -114,7 +116,20 @@ namespace ANVC.Scalar
                 
 
             }
+            */
 
+        }
+
+        private void JumpToLyre()
+        {           
+            _targetPosition = TargetPos.position;
+            Vector3 cameraPosition = CameraPos.position;
+            LeanTween.cancel(transform.gameObject);
+            LeanTween.move(transform.gameObject, cameraPosition, transitionDuration).setEaseInOutCubic();
+            //Vector3 upwards = new Vector3(Mathf.Sin(node["roll"] * Mathf.Deg2Rad), Mathf.Cos(node["roll"] * Mathf.Deg2Rad), 0);
+            Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, Vector3.up);
+            LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
+            
         }
 
         private void OnPageLoadSuccess(JSONNode node)
