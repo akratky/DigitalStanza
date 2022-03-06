@@ -10,6 +10,8 @@ public class FakeLyreHighlight : MonoBehaviour
     private MeshRenderer _meshRenderer;
     void Start()
     {
+
+        _meshRenderer = GetComponent<MeshRenderer>();
         _meshRenderer.enabled = false;
 
         TMP_TextEventHandler.OnDetailLinkSelected += HandleClicks;

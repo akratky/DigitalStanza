@@ -129,6 +129,7 @@ namespace ANVC.Scalar
             //Vector3 upwards = new Vector3(Mathf.Sin(node["roll"] * Mathf.Deg2Rad), Mathf.Cos(node["roll"] * Mathf.Deg2Rad), 0);
             Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, Vector3.up);
             LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
+            CreateLine?.Invoke(CameraPos.position,TargetPos.position);
             
         }
 
