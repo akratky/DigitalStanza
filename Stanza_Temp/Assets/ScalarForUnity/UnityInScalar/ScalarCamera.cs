@@ -17,6 +17,8 @@ namespace ANVC.Scalar
         public MessageReceivedEvent messageReceivedEvent;
         public Transform CameraPos;
         public Transform TargetPos;
+        public Transform PlatoCameraPos;
+        public Transform PlatoTargetPos;
         public delegate void RenderLine(Vector3 pos, Vector3 dir);
         public static event RenderLine CreateLine;
         private Camera _camera;
@@ -101,6 +103,9 @@ namespace ANVC.Scalar
 
             if (spatialLinkSlug == "lyre") 
                 JumpToLyre();
+            else if(spatialLinkSlug == "plato_image")
+                JumpToPosition(PlatoCameraPos.position,PlatoTargetPos.position);
+            
                 /*
             if (spatialLinkSlug.Contains(ScalarUtilities.roomSpatialAnnotationTag))
             {
@@ -131,6 +136,18 @@ namespace ANVC.Scalar
             LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
             CreateLine?.Invoke(CameraPos.position,TargetPos.position);
             
+        }
+
+        public void JumpToPosition(Vector3 cameraPos, Vector3 targetPos)
+        {
+            _targetPosition = targetPos;
+            Vector3 cameraPosition = cameraPos;
+            LeanTween.cancel(transform.gameObject);
+            LeanTween.move(transform.gameObject, cameraPos, transitionDuration).setEaseInOutCubic();
+            //Vector3 upwards = new Vector3(Mathf.Sin(node["roll"] * Mathf.Deg2Rad), Mathf.Cos(node["roll"] * Mathf.Deg2Rad), 0);
+            Quaternion rotation = Quaternion.LookRotation(targetPos - cameraPos, Vector3.up);
+            LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
+            CreateLine?.Invoke(cameraPos,targetPos);
         }
 
         private void OnPageLoadSuccess(JSONNode node)

@@ -21,7 +21,7 @@ public class ScalarBook : MonoBehaviour
     
 
     private ScalarNode _rootNode;
-
+    
     
 
     void Start()
