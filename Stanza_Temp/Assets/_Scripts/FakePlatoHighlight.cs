@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using ANVC.Scalar;
 using TMPro;
 using UnityEngine;
 
 public class FakePlatoHighlight : MonoBehaviour
 {
+    public ScalarCamera scalarCam;
+    
     private MeshRenderer _meshRenderer;
     void Start()
     {
@@ -17,10 +20,12 @@ public class FakePlatoHighlight : MonoBehaviour
 
     private void HandleClicks(string tag)
     {
-        print("Tag: " + tag);
+        
         if (tag == "plato_image")
         {
+            print("Tag: " + tag);
             _meshRenderer.enabled = true;
+            scalarCam.JumpToPlato();
         }
         else
             _meshRenderer.enabled = false;

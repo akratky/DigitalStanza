@@ -454,6 +454,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126878950}
   m_CullTransparentMesh: 1
+--- !u!114 &157267689 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8452571777659649967, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+  m_PrefabInstance: {fileID: 516987115}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c3e3d65e7c3486fb10d2a788f0529c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!850595691 &170742327
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -834,6 +845,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fd5ec1b23cb5d404bb40542832af42a6, type: 3}
   m_PrefabInstance: {fileID: 297926909}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &362437552 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6666666252391500844, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+  m_PrefabInstance: {fileID: 516987115}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &392851339
 GameObject:
@@ -1251,6 +1267,34 @@ PrefabInstance:
     - target: {fileID: 6666666252568796313, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666666252568796314, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666666252568796314, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666666252568796314, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 362437552}
+    - target: {fileID: 6666666252568796314, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666666252568796314, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666666252568796314, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666666252568796314, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6666666252623905641, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3043,6 +3087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de807470de5e88048805a864494d77b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scalarCam: {fileID: 157267689}
 --- !u!1 &1224218045
 GameObject:
   m_ObjectHideFlags: 0
@@ -3806,9 +3851,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interleaf: {fileID: 1035442341}
   backButton: {fileID: 1056919458}
-  cam: {fileID: 0}
-  cameraPos: {fileID: 0}
-  targetPos: {fileID: 0}
+  cam: {fileID: 157267689}
+  cameraPos: {fileID: 1926202253}
+  targetPos: {fileID: 905036522}
 --- !u!1 &1682469927 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 78d651063f3b69a4688376a41e22cbe8, type: 3}

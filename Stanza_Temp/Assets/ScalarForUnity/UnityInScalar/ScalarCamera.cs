@@ -103,8 +103,7 @@ namespace ANVC.Scalar
 
             if (spatialLinkSlug == "lyre") 
                 JumpToLyre();
-            else if(spatialLinkSlug == "plato_image")
-                JumpToPosition(PlatoCameraPos.position,PlatoTargetPos.position);
+
             
                 /*
             if (spatialLinkSlug.Contains(ScalarUtilities.roomSpatialAnnotationTag))
@@ -140,6 +139,7 @@ namespace ANVC.Scalar
 
         public void JumpToPosition(Vector3 cameraPos, Vector3 targetPos)
         {
+            print("jump");
             _targetPosition = targetPos;
             Vector3 cameraPosition = cameraPos;
             LeanTween.cancel(transform.gameObject);
@@ -148,6 +148,11 @@ namespace ANVC.Scalar
             Quaternion rotation = Quaternion.LookRotation(targetPos - cameraPos, Vector3.up);
             LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
             CreateLine?.Invoke(cameraPos,targetPos);
+        }
+
+        public void JumpToPlato()
+        {
+            JumpToPosition(PlatoCameraPos.position,PlatoTargetPos.position);
         }
 
         private void OnPageLoadSuccess(JSONNode node)
