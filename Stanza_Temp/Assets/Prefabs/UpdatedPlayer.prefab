@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8550823500526290105}
   m_Direction: 2
   m_Value: 1.000001
-  m_Size: 0.48654354
+  m_Size: 0.48654357
   m_NumberOfSteps: 1
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1316,7 +1316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1. Decretales ex membranis in velluto rubro
+  m_text: 1. Decretales
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: acbf460d93bbfd04b9c144e035a8397e, type: 2}
   m_sharedMaterial: {fileID: -490119769749503658, guid: acbf460d93bbfd04b9c144e035a8397e, type: 2}
@@ -1343,8 +1343,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17
-  m_fontSizeBase: 17
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2542,7 +2542,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 52. Ptolomei Cosmographia ex me[m]branis in rubro
+  m_text: 52. Ptolomei Cosmographia
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: acbf460d93bbfd04b9c144e035a8397e, type: 2}
   m_sharedMaterial: {fileID: -490119769749503658, guid: acbf460d93bbfd04b9c144e035a8397e, type: 2}
@@ -2569,8 +2569,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17
-  m_fontSizeBase: 17
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2931,7 +2931,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '102. Gregorii liber xviiii moralium ex membranis in nigro '
+  m_text: 102. Gregorii liber xviiii moralium
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: acbf460d93bbfd04b9c144e035a8397e, type: 2}
   m_sharedMaterial: {fileID: -490119769749503658, guid: acbf460d93bbfd04b9c144e035a8397e, type: 2}
@@ -2958,8 +2958,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17
-  m_fontSizeBase: 17
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3992,7 +3992,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 24. Vergilius ex me[m]branis in velluto pavonatio
+  m_text: 24. Vergilius
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: acbf460d93bbfd04b9c144e035a8397e, type: 2}
   m_sharedMaterial: {fileID: -490119769749503658, guid: acbf460d93bbfd04b9c144e035a8397e, type: 2}
@@ -4019,8 +4019,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17
-  m_fontSizeBase: 17
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4439,7 +4439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6666666253905548973
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4941,7 +4941,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 56. Aristoteles de moribus ab Argyropolo traductus ex membranis in nigro
+  m_text: 56. Aristoteles de moribus ab Argyropolo traductus
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: acbf460d93bbfd04b9c144e035a8397e, type: 2}
   m_sharedMaterial: {fileID: -490119769749503658, guid: acbf460d93bbfd04b9c144e035a8397e, type: 2}
@@ -4968,8 +4968,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17
-  m_fontSizeBase: 17
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5415,8 +5415,8 @@ RectTransform:
   m_Father: {fileID: 9020001215546305978}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.51345646}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
