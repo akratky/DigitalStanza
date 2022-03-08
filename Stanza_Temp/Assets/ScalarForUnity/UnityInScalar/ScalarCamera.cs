@@ -19,6 +19,7 @@ namespace ANVC.Scalar
         public Transform TargetPos;
         public Transform PlatoCameraPos;
         public Transform PlatoTargetPos;
+        private Rigidbody _rb;
         public delegate void RenderLine(Vector3 pos, Vector3 dir);
         public static event RenderLine CreateLine;
         private Camera _camera;
@@ -30,6 +31,7 @@ namespace ANVC.Scalar
         // Use this for initialization
         void Start()
         {
+            _rb = GetComponent<Rigidbody>();
             _camera = GetComponent<Camera>();
             TMP_TextEventHandler.OnSpatialLinkSelected += OnSpatialLinkClicked;
         }
@@ -125,7 +127,8 @@ namespace ANVC.Scalar
         }
 
         private void JumpToLyre()
-        {           
+        {
+            _rb.useGravity = false;
             _targetPosition = TargetPos.position;
             Vector3 cameraPosition = CameraPos.position;
             LeanTween.cancel(transform.gameObject);
@@ -139,7 +142,7 @@ namespace ANVC.Scalar
 
         public void JumpToPosition(Vector3 cameraPos, Vector3 targetPos)
         {
-            print("jump");
+            _rb.useGravity = false;
             _targetPosition = targetPos;
             Vector3 cameraPosition = cameraPos;
             LeanTween.cancel(transform.gameObject);
