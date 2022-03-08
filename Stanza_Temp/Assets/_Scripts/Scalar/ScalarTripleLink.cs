@@ -42,8 +42,6 @@ public static class ScalarTripleLink
                 newTripleLink.spatialLink = match.Value;
             else if (match.Value.Contains(ScalarUtilities.frescoImageAnnotationTag))
                 newTripleLink.detailLink = match.Value;
-            else
-                Debug.LogError("Unknown triple link tag spotted: " + match.Value);
         }
 
         regex = new Regex("([a-zA-z]+)(?= .<a href)");
