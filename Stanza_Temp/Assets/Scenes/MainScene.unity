@@ -3834,7 +3834,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7d253253befdb4e8110b382c6e76ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manuscriptPages: []
+  manuscriptPages:
+  - {fileID: 2800000, guid: 44c981b98b8553d4bb79dac1280f6127, type: 3}
+  - {fileID: 2800000, guid: 8136ddc7f8a426a43ae52e946b0efd73, type: 3}
+  - {fileID: 2800000, guid: 03199f133b5b2a64d85baeba35e048c7, type: 3}
+  - {fileID: 2800000, guid: cd4a3bf924606a948881dcd4c5c2d1b4, type: 3}
+  - {fileID: 2800000, guid: 82c74e78c6203774bac39dc6c60a87d6, type: 3}
+  - {fileID: 2800000, guid: 597ab9898a74a854fb7d656078b41a2f, type: 3}
+  - {fileID: 2800000, guid: af1277fd3bbfae6419a279bd9c40b111, type: 3}
+  - {fileID: 2800000, guid: 9727eb7c4f6f10c4080042e9d15e628b, type: 3}
+  - {fileID: 2800000, guid: 860f42d46bc556f41a3480fdff99c086, type: 3}
+  - {fileID: 2800000, guid: ff7c3abce869ed844b73a6ff78a824d0, type: 3}
+  - {fileID: 2800000, guid: 6114ff9f6b909dc48bd4e594a4e76129, type: 3}
+  - {fileID: 2800000, guid: 431a8d1be0d7a9e448c1604acb85ecd5, type: 3}
+  - {fileID: 2800000, guid: fab6aaf65e6d06e4c9ca6473f2dbe732, type: 3}
   leftPage: {fileID: 2100000, guid: 6da4b0bdd3d264c05991616503588ddd, type: 2}
   rightPage: {fileID: 2100000, guid: 15a72a8de9e4e4d249bf16d770bbade0, type: 2}
 --- !u!114 &1656932462

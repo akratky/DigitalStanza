@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,14 @@ public class FakeManuscript : MonoBehaviour
     void Start()
     {
         LoadPages(_pageIndex);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.M))
+            NextPage();
+        else if(Input.GetKeyDown(KeyCode.N))
+            PrevPage();
     }
 
     public void NextPage()
