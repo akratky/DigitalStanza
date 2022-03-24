@@ -21,13 +21,13 @@ public class ScalarBook : MonoBehaviour
     
 
     private ScalarNode _rootNode;
-
+    
     
 
     void Start()
     {
         LoadManuscriptRoot();
-
+        TMP_TextEventHandler.OnManuscriptLinkSelected += JumpToLyrePage;
 
     }
 
@@ -111,8 +111,8 @@ public class ScalarBook : MonoBehaviour
 
     private void LoadPages(int pageNum)
     {
-
-        ScalarNode currentPage;
+        //todo - has issues - fix later
+        ScalarNode currentPage = _rootNode.outgoingRelations[pageNum].target;
 
         if (pageNum == 0)
             currentPage = _rootNode;
@@ -196,6 +196,12 @@ public class ScalarBook : MonoBehaviour
             else
                 rightPage.mainTexture = ((DownloadHandlerTexture)request.downloadHandler).texture;
         }
+    }
+
+    private void JumpToLyrePage(string tag)
+    {
+        //if(tag == "lyre")
+            //LoadPages();
     }
 
 

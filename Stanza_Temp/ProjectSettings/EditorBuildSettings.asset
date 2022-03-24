@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Stanza.unity
-    guid: 1281f34ad54a84df4b07be0000086c45
+    path: Assets/Scenes/MainScene.unity
+    guid: 78d9494e9a73ed34fb20c1ffbc7032dc
   m_configObjects: {}

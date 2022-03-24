@@ -15,8 +15,11 @@ namespace ANVC.Scalar
         public AnnotationSelectedExternallyEvent annotationSelectedExternallyEvent;
         public UnityEvent annotationsUpdatedExternallyEvent;
         public MessageReceivedEvent messageReceivedEvent;
-        public Vector3 lyrePos;
-        public Vector3 lyreRot;
+        public Transform CameraPos;
+        public Transform TargetPos;
+        public Transform PlatoCameraPos;
+        public Transform PlatoTargetPos;
+        private Rigidbody _rb;
         public delegate void RenderLine(Vector3 pos, Vector3 dir);
         public static event RenderLine CreateLine;
         private Camera _camera;
@@ -28,6 +31,7 @@ namespace ANVC.Scalar
         // Use this for initialization
         void Start()
         {
+            _rb = GetComponent<Rigidbody>();
             _camera = GetComponent<Camera>();
             TMP_TextEventHandler.OnSpatialLinkSelected += OnSpatialLinkClicked;
         }
@@ -98,8 +102,12 @@ namespace ANVC.Scalar
         private void OnSpatialLinkClicked(string spatialLinkSlug)
         {
             Debug.Log(spatialLinkSlug);
+
+            if (spatialLinkSlug == "lyre") 
+                JumpToLyre();
+
             
-            
+                /*
             if (spatialLinkSlug.Contains(ScalarUtilities.roomSpatialAnnotationTag))
             {
                 _currentLinkID = spatialLinkSlug;
@@ -114,7 +122,40 @@ namespace ANVC.Scalar
                 
 
             }
+            */
 
+        }
+
+        private void JumpToLyre()
+        {
+            _rb.useGravity = false;
+            _targetPosition = TargetPos.position;
+            Vector3 cameraPosition = CameraPos.position;
+            LeanTween.cancel(transform.gameObject);
+            LeanTween.move(transform.gameObject, cameraPosition, transitionDuration).setEaseInOutCubic();
+            //Vector3 upwards = new Vector3(Mathf.Sin(node["roll"] * Mathf.Deg2Rad), Mathf.Cos(node["roll"] * Mathf.Deg2Rad), 0);
+            Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, Vector3.up);
+            LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
+            CreateLine?.Invoke(CameraPos.position,TargetPos.position);
+            
+        }
+
+        public void JumpToPosition(Vector3 cameraPos, Vector3 targetPos)
+        {
+            _rb.useGravity = false;
+            _targetPosition = targetPos;
+            Vector3 cameraPosition = cameraPos;
+            LeanTween.cancel(transform.gameObject);
+            LeanTween.move(transform.gameObject, cameraPos, transitionDuration).setEaseInOutCubic();
+            //Vector3 upwards = new Vector3(Mathf.Sin(node["roll"] * Mathf.Deg2Rad), Mathf.Cos(node["roll"] * Mathf.Deg2Rad), 0);
+            Quaternion rotation = Quaternion.LookRotation(targetPos - cameraPos, Vector3.up);
+            LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
+            CreateLine?.Invoke(cameraPos,targetPos);
+        }
+
+        public void JumpToPlato()
+        {
+            JumpToPosition(PlatoCameraPos.position,PlatoTargetPos.position);
         }
 
         private void OnPageLoadSuccess(JSONNode node)

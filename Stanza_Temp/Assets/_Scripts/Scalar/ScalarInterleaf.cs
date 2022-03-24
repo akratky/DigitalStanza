@@ -14,6 +14,7 @@ public class ScalarInterleaf : MonoBehaviour
     public TMP_Text totalPageTextObj;
     private TMP_Text textMeshText;
 
+    private string fullParatext;
     
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,7 @@ public class ScalarInterleaf : MonoBehaviour
         
         string interleafText = ScalarUtilities.ExtractRichTextFromInterleafBody(interleafNode.current.content);
 
+        fullParatext = interleafText;
         textMeshText.text = interleafText;
     }
 
@@ -65,6 +67,11 @@ public class ScalarInterleaf : MonoBehaviour
     {
         currentPageTextObj.text = textMeshText.pageToDisplay.ToString();
         totalPageTextObj.text = textMeshText.textInfo.pageCount.ToString();
+    }
+
+    public void GoBackToParatext()
+    {
+        textMeshText.text = fullParatext;
     }
 
     #endregion

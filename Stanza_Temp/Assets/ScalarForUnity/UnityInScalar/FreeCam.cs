@@ -49,6 +49,13 @@ public class FreeCam : MonoBehaviour
     /// </summary>
     private bool looking = false;
 
+    private Rigidbody _rb;
+
+    private void Start()
+    {
+        _rb = GetComponent<Rigidbody>();
+    }
+
     void Update()
     {
         var fastMode = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
@@ -76,22 +83,31 @@ public class FreeCam : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Q))
         {
-            transform.position = transform.position + (transform.up * movementSpeed * Time.deltaTime);
+            if(!_rb.useGravity)
+                transform.position = transform.position + (transform.up * movementSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.E))
         {
-            transform.position = transform.position + (-transform.up * movementSpeed * Time.deltaTime);
+            if(!_rb.useGravity)
+                transform.position = transform.position + (-transform.up * movementSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.R) || Input.GetKey(KeyCode.PageUp))
         {
-            transform.position = transform.position + (Vector3.up * movementSpeed * Time.deltaTime);
+            if(!_rb.useGravity)
+                transform.position = transform.position + (Vector3.up * movementSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.PageDown))
         {
-            transform.position = transform.position + (-Vector3.up * movementSpeed * Time.deltaTime);
+            if(_rb!.useGravity)
+                transform.position = transform.position + (-Vector3.up * movementSpeed * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            _rb.useGravity = !_rb.useGravity;
         }
 
         if (looking)
@@ -101,12 +117,14 @@ public class FreeCam : MonoBehaviour
             transform.localEulerAngles = new Vector3(newRotationY, newRotationX, 0f);
         }
 
+        /*
         float axis = Input.GetAxis("Mouse ScrollWheel");
         if (axis != 0)
         {
             var zoomSensitivity = fastMode ? this.fastZoomSensitivity : this.zoomSensitivity;
             transform.position = transform.position + transform.forward * axis * zoomSensitivity;
         }
+        */
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
