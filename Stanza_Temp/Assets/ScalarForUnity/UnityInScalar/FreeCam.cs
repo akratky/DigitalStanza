@@ -51,8 +51,11 @@ public class FreeCam : MonoBehaviour
 
     private Rigidbody _rb;
 
+    private Vector3 _initPos;
+
     private void Start()
     {
+        _initPos = transform.position;
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -159,5 +162,10 @@ public class FreeCam : MonoBehaviour
         looking = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void ResetTransform()
+    {
+        transform.SetPositionAndRotation(_initPos,Quaternion.identity);
     }
 }

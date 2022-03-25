@@ -61,6 +61,7 @@ public class ScalarInterleaf : MonoBehaviour
 
         fullParatext = interleafText;
         textMeshText.text = interleafText;
+        UpdatePageUI();
     }
 
     private void UpdatePageUI()
