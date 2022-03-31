@@ -37,7 +37,7 @@ public class FreeCam : MonoBehaviour
     /// <summary>
     /// Amount to zoom the camera when using the mouse wheel.
     /// </summary>
-    public float zoomSensitivity = 10f;
+    public float zoomSensitivity = 5f;
 
     /// <summary>
     /// Amount to zoom the camera when using the mouse wheel (fast mode).
