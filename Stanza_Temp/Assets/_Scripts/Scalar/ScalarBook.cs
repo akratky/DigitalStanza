@@ -27,7 +27,6 @@ public class ScalarBook : MonoBehaviour
     void Start()
     {
         LoadManuscriptRoot();
-        TMP_TextEventHandler.OnManuscriptLinkSelected += JumpToLyrePage;
 
     }
 
@@ -198,11 +197,9 @@ public class ScalarBook : MonoBehaviour
         }
     }
 
-    private void JumpToLyrePage(string tag)
-    {
-        //if(tag == "lyre")
-            //LoadPages();
-    }
+
+    
+  
 
 
 }

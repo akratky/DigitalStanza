@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class FakeManuscript : MonoBehaviour
@@ -17,6 +18,8 @@ public class FakeManuscript : MonoBehaviour
     void Start()
     {
         LoadPages(_pageIndex);
+        TMP_TextEventHandler.OnDetailLinkSelected += HandleClicks;
+
     }
 
     private void Update()
@@ -33,6 +36,7 @@ public class FakeManuscript : MonoBehaviour
         {
             _pageIndex += 2;
             LoadPages(_pageIndex);
+            FakeManuscriptHighlight.disableManuscriptEvent?.Invoke();
         }
         
             
@@ -44,6 +48,7 @@ public class FakeManuscript : MonoBehaviour
         {
             _pageIndex -= 2;
             LoadPages(_pageIndex);
+            FakeManuscriptHighlight.disableManuscriptEvent?.Invoke();
         }
     }
 
@@ -52,5 +57,25 @@ public class FakeManuscript : MonoBehaviour
         leftPage.mainTexture = manuscriptPages[i];
         rightPage.mainTexture = manuscriptPages[i + 1];
     }
+    
+    #region fakery
+
+    public void HandleClicks(string tag)
+    {
+
+        if (tag == "plato_image")
+        {
+            LoadPages(0);
+        }
+
+        if (tag == "lyre")
+        {
+            
+        }
+        
+    }
+    
+    
+    #endregion
 
 }
