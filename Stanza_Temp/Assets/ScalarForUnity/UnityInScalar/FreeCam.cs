@@ -49,14 +49,24 @@ public class FreeCam : MonoBehaviour
     /// </summary>
     private bool looking = false;
 
+    public GameObject zoomedCameraObj;
+    private Camera zoomedCam;
+    
+    private Camera _regCamera;
+    
     private Rigidbody _rb;
 
     private Vector3 _initPos;
 
+    private bool _isZoomed;
+    
     private void Start()
     {
         _initPos = transform.position;
         _rb = GetComponent<Rigidbody>();
+        _regCamera = GetComponent<Camera>();
+        zoomedCameraObj.SetActive(false);
+        zoomedCam = zoomedCameraObj.GetComponent<Camera>();
     }
 
     void Update()
@@ -114,10 +124,22 @@ public class FreeCam : MonoBehaviour
         }
 
         if (looking)
-        {
+        {               
             float newRotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * freeLookSensitivity;
             float newRotationY = transform.localEulerAngles.x - Input.GetAxis("Mouse Y") * freeLookSensitivity;
-            transform.localEulerAngles = new Vector3(newRotationY, newRotationX, 0f);
+            if (!zoomedCameraObj.activeSelf)
+            {
+
+                transform.localEulerAngles = new Vector3(newRotationY, newRotationX, 0f);    
+            }
+
+            else
+            {
+                zoomedCameraObj.transform.Rotate(0,Input.GetAxis("Mouse X")*freeLookSensitivity,0);
+                zoomedCameraObj.transform.Rotate(-Input.GetAxis("Mouse Y") * freeLookSensitivity, 0, 0);
+                
+            }
+
         }
 
         /*
@@ -168,4 +190,13 @@ public class FreeCam : MonoBehaviour
     {
         transform.SetPositionAndRotation(_initPos,Quaternion.identity);
     }
+
+    public void ToggleZoom()
+    {
+        zoomedCameraObj.SetActive(!zoomedCameraObj.activeSelf);
+        _regCamera.enabled = !zoomedCameraObj.activeSelf;
+    }
+    
+    
+    
 }
