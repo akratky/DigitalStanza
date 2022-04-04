@@ -8,31 +8,52 @@ using UnityEngine.UI;
 public class BookLineRenderer : MonoBehaviour
 {
 
-    
-    private LineRenderer _lineRenderer;
+    public delegate void DestroyLineDelegate();
 
+    public static DestroyLineDelegate DestroyLineEvent;
+        
+
+    private LineRenderer _lineRenderer;
+    
+    [SerializeField]
+    private GameObject _trackingOriginObj;
+    [SerializeField]
+    private GameObject _trackingDirObj;
+    
     // Start is called before the first frame update
     void Start()
     {
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.enabled = false;
         _lineRenderer.useWorldSpace = true;
-        ScalarCamera.CreateLine += OnRenderNewLine;
+        DestroyLineEvent += DestroyLine;
     }
 
 
-    private void OnRenderNewLine(Vector3 pos, Vector3 dir)
+
+    public void TrackingLine(GameObject trackingOrigin, GameObject trackingDir)
     {
         _lineRenderer.enabled = true;
-        _lineRenderer.SetPosition(0,pos);
-        _lineRenderer.SetPosition(1,dir);
-        
+        _trackingDirObj = trackingDir;
+        _trackingOriginObj = trackingOrigin;
     }
 
+    public void DestroyLine()
+    {
+        _trackingDirObj = null;
+        _trackingDirObj = null;
+        _lineRenderer.enabled = false;
+    }
 
     // Update is called once per frame
     void Update()
     {
+        if (_trackingDirObj && _trackingDirObj)
+        {
+            _lineRenderer.SetPosition(0,_trackingOriginObj.transform.position);
+            _lineRenderer.SetPosition(1,_trackingDirObj.transform.position);
+        }
+        
         
     }
 }

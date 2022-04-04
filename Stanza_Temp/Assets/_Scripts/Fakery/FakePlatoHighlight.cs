@@ -20,10 +20,8 @@ public class FakePlatoHighlight : MonoBehaviour
 
     private void HandleClicks(string tag)
     {
-        
-        if (tag == "plato_image")
+        if (tag == "Plato")
         {
-            print("Tag: " + tag);
             _meshRenderer.enabled = true;
             scalarCam.JumpToPlato();
         }

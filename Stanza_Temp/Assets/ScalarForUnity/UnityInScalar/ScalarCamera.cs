@@ -19,9 +19,10 @@ namespace ANVC.Scalar
         public Transform TargetPos;
         public Transform PlatoCameraPos;
         public Transform PlatoTargetPos;
+        public GameObject PlatoManuscriptAnnotation;
+        public BookLineRenderer lineRenderer;
         private Rigidbody _rb;
-        public delegate void RenderLine(Vector3 pos, Vector3 dir);
-        public static event RenderLine CreateLine;
+
         private Camera _camera;
         private Vector3 _targetPosition;
         private string _currentLinkID;
@@ -136,8 +137,7 @@ namespace ANVC.Scalar
             //Vector3 upwards = new Vector3(Mathf.Sin(node["roll"] * Mathf.Deg2Rad), Mathf.Cos(node["roll"] * Mathf.Deg2Rad), 0);
             Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, Vector3.up);
             LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
-            CreateLine?.Invoke(CameraPos.position,TargetPos.position);
-            
+            lineRenderer.TrackingLine(PlatoManuscriptAnnotation,TargetPos.gameObject);
         }
 
         public void JumpToPosition(Vector3 cameraPos, Vector3 targetPos)
@@ -150,12 +150,23 @@ namespace ANVC.Scalar
             //Vector3 upwards = new Vector3(Mathf.Sin(node["roll"] * Mathf.Deg2Rad), Mathf.Cos(node["roll"] * Mathf.Deg2Rad), 0);
             Quaternion rotation = Quaternion.LookRotation(targetPos - cameraPos, Vector3.up);
             LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
-            CreateLine?.Invoke(cameraPos,targetPos);
+            lineRenderer.TrackingLine(PlatoManuscriptAnnotation,TargetPos.gameObject);
+
         }
 
         public void JumpToPlato()
         {
             JumpToPosition(PlatoCameraPos.position,PlatoTargetPos.position);
+            
+            _rb.useGravity = false;
+            _targetPosition = PlatoTargetPos.position;
+            Vector3 cameraPosition = PlatoCameraPos.position;
+            LeanTween.cancel(transform.gameObject);
+            LeanTween.move(transform.gameObject, PlatoCameraPos.position, transitionDuration).setEaseInOutCubic();
+            //Vector3 upwards = new Vector3(Mathf.Sin(node["roll"] * Mathf.Deg2Rad), Mathf.Cos(node["roll"] * Mathf.Deg2Rad), 0);
+            Quaternion rotation = Quaternion.LookRotation(PlatoTargetPos.position - PlatoCameraPos.position, Vector3.up);
+            LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
+            lineRenderer.TrackingLine(PlatoManuscriptAnnotation,PlatoTargetPos.gameObject);
         }
 
         private void OnPageLoadSuccess(JSONNode node)
@@ -198,13 +209,7 @@ namespace ANVC.Scalar
 
         #endregion
 
-        private IEnumerator DelayCreateLine(Vector3 camPos, Vector3 targetPos)
-        {
-            yield return new WaitForSeconds(3);
 
-            CreateLine?.Invoke(camPos,targetPos);
-
-        }
 
         
     }

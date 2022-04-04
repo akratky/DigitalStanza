@@ -21,9 +21,11 @@ public class FakeSecondaryParatext : MonoBehaviour
     "\n\nRaphael’s musical catalog extends to Theology. In the Disputa, King David sits in the upper tier of holy personages, turning his head towards the Parnassus, and holding a nine-stringed zither or psaltery with which, according to the Biblical text, he soothed Saul. The soundbox of David's instrument has a shape similar to the illustrations in the Decachordum (fols. 7r and 8r), although the latter examples have ten strings. By the end of the fifteenth century, David was more often represented with the lira da braccio, and so in both the manuscript and the painting, the inclusion of the psaltery – whose performance was associated with singing the psalms, and which saw a steep decline in production after 1500 – suggests a shared reference. "
     +
     "\n\nAncient definitions of harmony relating to music similarly inform Raphael’s representation of Philosophy. Pythagoras appears in the foreground of the School of Athens, where he studies a tablet illustrating the harmonic scale he is credited with discovering. The intervals imagined on the philosopher’s slate include the octave (“diapason”), the fifth (“diapente”), the fourth (diatessaron), and the whole tone. Summarized by the triangular figure at the bottom of Raphael’s diagram, the numbers comprising these ratios (I, II, III, and IV) together made ten and were called the tetraktys by Pythagoreans. Considering ten a perfect number, the Pythagoreans associated the principle of its harmony with the movements of the cosmos. Plato maintained a similar position in the Timaeus, the same book he carries in Raphael’s fresco. In the Timaeus, as in the Republic, he suggested that the harmonic nature of music resonates in the universe and the soul. This relationship is evoked on the Segnatura ceiling, where Astronomy (Urania) spins the celestial spheres as they hum in perfect concert. In Plato’s vision of the universe, described in the Republic, eight heavenly spheres rotate on eight whorls around the spindle of Necessity; as they turn at equal intervals, eight sirens sing a single scale in harmony. ";
+
+    private string mainText;
     
     public TMP_Text interleaf;
-
+    public TMP_Text interleafHeader;
     public GameObject backButton;
 
     public ScalarCamera cam;
@@ -40,14 +42,19 @@ public class FakeSecondaryParatext : MonoBehaviour
 
     private void HandleClicks(string tag)
     {
-        if (tag == "plato_image")
+        Debug.Log("Tag: " + tag);
+        if (tag == "Plato")
         {
+            mainText = interleaf.text;
+            interleafHeader.text = "Plato";
             interleaf.text = paratext;
             backButton.SetActive(true);
         }
 
         if (tag == "lyre")
         {
+            mainText = interleaf.text;
+            interleafHeader.text = "Lyre";
             interleaf.text = lyreParatex;
             backButton.SetActive(true);
         }
@@ -55,8 +62,9 @@ public class FakeSecondaryParatext : MonoBehaviour
 
     public void OnBackButtonClicked()
     {
-        
+        BookLineRenderer.DestroyLineEvent.Invoke();
         backButton.SetActive(false);
+        interleaf.text = mainText;
     }
 
 }

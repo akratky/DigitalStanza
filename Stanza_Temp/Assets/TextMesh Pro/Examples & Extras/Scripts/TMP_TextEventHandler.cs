@@ -210,17 +210,10 @@ namespace TMPro
                     // Get information about the link.
                     TMP_LinkInfo linkInfo = m_TextComponent.textInfo.linkInfo[linkIndex];
 
-                    // Send the event to any listeners.
-                    //SendOnLinkSelection(linkInfo.GetLinkID(), linkInfo.GetLinkText(), linkIndex);
-                    Debug.Log("Link clicked");
 
-                    if (linkInfo.GetLinkID() == "lyre")
-                    {
-                        OnSpatialLinkSelected?.Invoke("lyre");
-                        OnDetailLinkSelected?.Invoke("lyre");
-                        OnManuscriptLinkSelected?.Invoke("lyre");
-                        
-                    }
+                    OnSpatialLinkSelected?.Invoke(linkInfo.GetLinkID());
+                    OnDetailLinkSelected?.Invoke(linkInfo.GetLinkID());
+                    OnManuscriptLinkSelected?.Invoke(linkInfo.GetLinkID());
 
                     TripleLinkStruct clickedTripLink = ScalarTripleLink.GetTripleLink(linkInfo.GetLinkID());
                     

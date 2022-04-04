@@ -24,10 +24,15 @@ public class FakeManuscript : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M))
+        {
             NextPage();
-        else if(Input.GetKeyDown(KeyCode.N))
+        }
+        else if (Input.GetKeyDown(KeyCode.N))
+        {
             PrevPage();
+        }
+        
     }
 
     public void NextPage()
