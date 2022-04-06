@@ -125,19 +125,29 @@ public class FreeCam : MonoBehaviour
 
         if (looking)
         {               
-            float newRotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * freeLookSensitivity;
-            float newRotationY = transform.localEulerAngles.x - Input.GetAxis("Mouse Y") * freeLookSensitivity;
+
             if (!zoomedCameraObj.activeSelf)
             {
-
+                float newRotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * freeLookSensitivity;
+                float newRotationY = transform.localEulerAngles.x - Input.GetAxis("Mouse Y") * freeLookSensitivity;
                 transform.localEulerAngles = new Vector3(newRotationY, newRotationX, 0f);    
             }
 
             else
             {
+                float newRotationX = zoomedCameraObj.transform.localEulerAngles.y +
+                                     Input.GetAxis("Mouse X") * freeLookSensitivity;
+
+                float newRotationY = zoomedCameraObj.transform.localEulerAngles.x -
+                                     Input.GetAxis("Mouse Y") * freeLookSensitivity;
+
+                zoomedCameraObj.transform.localEulerAngles = new Vector3(newRotationY, newRotationX, 0f);
+
+                /*
                 zoomedCameraObj.transform.Rotate(0,Input.GetAxis("Mouse X")*freeLookSensitivity,0);
                 zoomedCameraObj.transform.Rotate(-Input.GetAxis("Mouse Y") * freeLookSensitivity, 0, 0);
-                
+                */
+
             }
 
         }
@@ -193,7 +203,14 @@ public class FreeCam : MonoBehaviour
 
     public void ToggleZoom()
     {
-        zoomedCameraObj.SetActive(!zoomedCameraObj.activeSelf);
+        if (zoomedCameraObj.activeSelf)
+        {
+            zoomedCameraObj.SetActive(false);
+            zoomedCameraObj.transform.rotation = Quaternion.Euler(0,0,0);
+        }
+        else 
+            zoomedCameraObj.SetActive(true);
+        
         _regCamera.enabled = !zoomedCameraObj.activeSelf;
     }
     

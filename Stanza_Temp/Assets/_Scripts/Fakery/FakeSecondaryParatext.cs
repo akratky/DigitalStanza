@@ -54,7 +54,7 @@ public class FakeSecondaryParatext : MonoBehaviour
         if (tag == "lyre")
         {
             mainText = interleaf.text;
-            interleafHeader.text = "Lyre";
+            interleafHeader.text = "The Lyre in Word and Image";
             interleaf.text = lyreParatex;
             backButton.SetActive(true);
         }

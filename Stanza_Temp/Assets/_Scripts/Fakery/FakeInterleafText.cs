@@ -6,13 +6,13 @@ using UnityEngine;
 
 public class FakeInterleafText : MonoBehaviour
 {
-    private Tuple<string, string> fakeDecachordumPage = new Tuple<string, string>("Decachordum (Vat.lat.1125)",
+    private Tuple<string, string> fakeDecachordumPage = new Tuple<string, string>("Vigerio’s Decachordum: Julius II’s Manuscript and Its Text",
         "Published in 1507 by Marco Vigerio della Rovere, a cousin of the pope and a Franciscan, whom<br>Julius II elevated to the station of cardinal. This didactic text extends the metaphor of a <color=\"blue\"><link=\"lyre\">lyre</link></color>, " +
         "the instrument of the Psalms, to the structure and organization of its arguments; its topics<br>range from the life, Passion, and Mysteries of <color=\"blue\"><link=\"Christ\">Christ</link></color> and the Holy Family, to the nature of <color=\"blue\"><link=\"angels\">angels</link></color><br>and other theological themes. The ten chords that characterize Vigerios thesis are conceived as<br>the strings of Christian harmony. Vigerio is sometimes thought to have served as one of the<br>Stanzas key intellectual advisors " +
         "(Hartt suggested that <color=\"blue\"><link=\"Bonaventure\">Bonaventure</link></color> in the <color=\"blue\"><link=\"Disputa\">Disputa</link></color> is modeled<br>after his likeness), but the influence of his text is scarcely considered in the context of Raphaels<br>frescoes. Indeed, the manuscript, which is mostly unstudied, is often described as a work of art in<br>its own right. It is splendidly illuminated, with rich miniatures opening each of its ten books.");
 
 
-    private Tuple<string, string> folOne = new Tuple<string, string>("Fol. Ir",
+    private Tuple<string, string> folOne = new Tuple<string, string>("Vigerio’s Decachordum: Julius II’s Manuscript and Its Text",
         "The text of the First Book begins by citing Socrates, <color=\"blue\"><link=\"Plato\">Plato</link></color>, and <color=\"blue\"><link=\"Aristotle\">Aristotle</link></color>. " +
         "As he introduces the<br>mysteries of the faith (particularly relating to the Annunciation), Vigerio explains that even the<br>ancient philosophers, who grasped what is possible to know, could not have comprehended " +
         "these<br>sublime and ineffable examples. Vigerio continues to describe how all ranks of creation,<br>including every immutable variety of being, are connected and revolve mutually in turn,<br>attributing the number, " +
@@ -26,14 +26,14 @@ public class FakeInterleafText : MonoBehaviour
         "globe and wears a geometers cap. Below him, the mandorla<br>of the sun encircles the figures of Christ, as a circular burst encompasses the dove of the Holy<br>Spirit, mediating between natural and divine. And, finally, on the altar in our " +
         "earthly plane, the<br>wafer of the Eucharist is girded by the glittering gold of the circular monstrance. (See pp. 80-<br>81, Raphaels Art of Commentary and the Library of Julius II on this example).");
 
-    private Tuple<string, string> folTwo = new Tuple<string, string>("Fol. IIr - IIIv",
+    private Tuple<string, string> folTwo = new Tuple<string, string>("Vigerio’s Decachordum: Julius II’s Manuscript and Its Text",
         "><b>On the ranks of angels (</b><b> (<color=\"blue\"><link=\"angels_image\">detail</link></color>, <color=\"blue\"><link=\"angels_manuscript\">manuscript</link></color>))</b><br><br>This important section in the First Book " +
         "follows the basic structure described by Pseudo-<br>Dionysius, but attending in particular to the distinction of ranks and titles (although Vigerio is<br>not so specific in naming, for example, their individual classes). " +
         "This general celestial hierarchy,<br>which describes ascending ranks of intellect and desire, is organized according to each ranks<br>physical and finite form, suggesting perfection in immateriality. These distinctions run parallel " +
         "to<br>the sensitive materialities that characterize the angels in the Disputa: at the highest level, for<br>example, (<color=\"blue\"><link=\"seraphic-bodies-dissolving-into-golden-planes-of-light\">detail</link></color>)into golden planes of light, " +
         "whereas on the cloudbank below<br>(where the Judeo-Christian Fathers are seated), the <color=\"blue\"><link=\"putti\">putti</link></color> emerge from the misty vapor as<br>fleshy forms. (On the cloud putto in general, see Kleinbub)");
 
-    private Tuple<string, string> folThree = new Tuple<string, string>("Folio CXXr-CXXIr",
+    private Tuple<string, string> folThree = new Tuple<string, string>("Vigerio’s Decachordum: Julius II’s Manuscript and Its Text",
         "On the power of the body of Christ in the sacrament of the altar (De p[ote]ntia corporis<br>Chr[ist]I in sacram[en]to altaris)</b><br><br>At the start of the chapter, " +
         "Vigerio compares the body of Christ to the light of a single star that<br>shines in many places  a characterization that is underscored throughout the passage. Stressing<br>the circumstance of the bread, " +
         "as it becomes the flesh and blood of Christ, Vigerio describes the<br>Mystery of the Transubstantiation using metaphors of light. Christ and his sacrifice are compared<br>a lantern, which illuminates the whole of the earth throughout the universe. " +
