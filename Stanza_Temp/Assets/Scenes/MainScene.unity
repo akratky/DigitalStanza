@@ -1505,17 +1505,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1334256722, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
-      propertyPath: m_text
-      value: "Vigerio\u2019s Decachordum: Julius II\u2019s Manuscript and Its Text"
-      objectReference: {fileID: 0}
-    - target: {fileID: 1334256722, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
-      propertyPath: m_margin.x
-      value: -142.17033
-      objectReference: {fileID: 0}
-    - target: {fileID: 1334256722, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
-      propertyPath: m_margin.z
-      value: -118.121605
+    - target: {fileID: 1359929533, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1656932462, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: cameraPos
@@ -1608,6 +1600,10 @@ PrefabInstance:
     - target: {fileID: 6666666253478439372, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666666253971292303, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.298431
       objectReference: {fileID: 0}
     - target: {fileID: 6666666254013106960, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -1704,10 +1700,6 @@ PrefabInstance:
     - target: {fileID: 8550823500526290105, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8909352604439621193, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
-      propertyPath: m_margin.y
-      value: 2.3420577
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98229615916b0474f81bd704220dbd8f, type: 3}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// A simple free camera to be added to a Unity game object.
@@ -198,7 +199,7 @@ public class FreeCam : MonoBehaviour
 
     public void ResetTransform()
     {
-        transform.SetPositionAndRotation(_initPos,Quaternion.identity);
+        SceneManager.LoadScene(0);
     }
 
     public void ToggleZoom()
@@ -208,8 +209,12 @@ public class FreeCam : MonoBehaviour
             zoomedCameraObj.SetActive(false);
             zoomedCameraObj.transform.rotation = Quaternion.Euler(0,0,0);
         }
-        else 
+        else
+        {
             zoomedCameraObj.SetActive(true);
+                        
+        }
+        
         
         _regCamera.enabled = !zoomedCameraObj.activeSelf;
     }

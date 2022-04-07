@@ -68,7 +68,7 @@ public class FakeManuscript : MonoBehaviour
     public void HandleClicks(string tag)
     {
 
-        if (tag == "plato_image")
+        if (tag == "Plato")
         {
             LoadPages(0);
         }
