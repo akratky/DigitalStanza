@@ -207,10 +207,11 @@ public class FreeCam : MonoBehaviour
         if (zoomedCameraObj.activeSelf)
         {
             zoomedCameraObj.SetActive(false);
-            zoomedCameraObj.transform.rotation = Quaternion.Euler(0,0,0);
         }
         else
         {
+            transform.rotation = Quaternion.Euler(0,transform.rotation.eulerAngles.y,transform.rotation.eulerAngles.z);
+            
             zoomedCameraObj.SetActive(true);
                         
         }
