@@ -19,6 +19,7 @@ namespace ANVC.Scalar
         public Transform TargetPos;
         public Transform PlatoCameraPos;
         public Transform PlatoTargetPos;
+        public Transform ManuscriptPos;
         public GameObject PlatoManuscriptAnnotation;
         public BookLineRenderer lineRenderer;
         private Rigidbody _rb;
@@ -167,6 +168,15 @@ namespace ANVC.Scalar
             Quaternion rotation = Quaternion.LookRotation(PlatoTargetPos.position - PlatoCameraPos.position, Vector3.up);
             LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
             lineRenderer.TrackingLine(PlatoManuscriptAnnotation,PlatoTargetPos.gameObject);
+        }
+
+        public void TurnToManuscript()
+        {
+            _targetPosition = ManuscriptPos.position;
+            Vector3 cameraPosition = transform.position;
+            LeanTween.cancel(transform.gameObject);
+            Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, Vector3.up);
+            LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
         }
 
         private void OnPageLoadSuccess(JSONNode node)

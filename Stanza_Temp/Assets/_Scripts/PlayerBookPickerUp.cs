@@ -8,7 +8,7 @@ public class PlayerBookPickerUp : MonoBehaviour
 {
     public TMP_Text bookPickUpUI;
     public GameObject playerBook;
-    
+    public bool canPlaceBook = false;
     private GameObject _bookPickupObj;
     private KeyCode _pickupKey = KeyCode.F;
     // Start is called before the first frame update
@@ -23,17 +23,20 @@ public class PlayerBookPickerUp : MonoBehaviour
     {
         if (_bookPickupObj != null && Input.GetKeyDown(_pickupKey))
         {
-            if (playerBook.activeSelf)
+            if (playerBook.activeSelf && canPlaceBook)
             {
                 
                 playerBook.SetActive(false);
                 _bookPickupObj.GetComponent<MeshRenderer>().enabled = true;
+                bookPickUpUI.enabled = false;
 
             }
             else
             {
                 playerBook.SetActive(true);
                 _bookPickupObj.GetComponent<MeshRenderer>().enabled = false;
+                bookPickUpUI.enabled = false;
+
             }
             
         }
@@ -41,16 +44,10 @@ public class PlayerBookPickerUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("BookPickup"))
+        if (other.gameObject.CompareTag("BookPickup")
+        && !playerBook.activeSelf)
         {
-
-            if (!playerBook.activeSelf)
-            {
-                bookPickUpUI.text =  "Press 'f' to pick up " + other.gameObject.GetComponent<BookPickup>().bookName;
-            }
-            else 
-                bookPickUpUI.text =  "Press 'f' to put down " + other.gameObject.GetComponent<BookPickup>().bookName;
-
+            bookPickUpUI.text =  "Press 'f' to pick up " + other.gameObject.GetComponent<BookPickup>().bookName;
             
             bookPickUpUI.enabled = true;
             _bookPickupObj = other.gameObject;
@@ -59,10 +56,13 @@ public class PlayerBookPickerUp : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("BookPickup"))
+        if (other.gameObject.CompareTag("BookPickup")
+        && !playerBook.activeSelf)
         {
             bookPickUpUI.enabled = false;
             _bookPickupObj = null;
         }
     }
+    
+    
 }
