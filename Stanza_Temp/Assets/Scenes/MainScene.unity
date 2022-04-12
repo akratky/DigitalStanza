@@ -368,6 +368,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cf43873d84f586d44b9ea237b20b3020, type: 3}
   m_PrefabInstance: {fileID: 58561981}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &76062820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 76062821}
+  - component: {fileID: 76062822}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &76062821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76062820}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.99861413, y: 6.3990316, z: -20.597174}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1540621632}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &76062822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76062820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 1f0f521c80080904190b6c7726ff9ac2, type: 2}
 --- !u!4 &90642499 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 29b33cd360a0b2c43b7258019643045f, type: 3}
@@ -1555,6 +1603,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1359929535, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1656932462, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: cameraPos
       value: 
@@ -1563,6 +1615,18 @@ PrefabInstance:
       propertyPath: targetPos
       value: 
       objectReference: {fileID: 905036522}
+    - target: {fileID: 1752193496, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 1752193496, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Color.g
+      value: 0.95686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 1752193496, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1815579793, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_Constraints
       value: 112
@@ -1575,9 +1639,73 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 59255423118192081, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: ffc931e2ee6f22a4f9b637413f45aca0, type: 2}
+    - target: {fileID: 59255423118192081, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5286730127378199210, guid: ffc931e2ee6f22a4f9b637413f45aca0, type: 2}
+    - target: {fileID: 237488316899263655, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1068.3733
+      objectReference: {fileID: 0}
+    - target: {fileID: 237488316899263655, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -261.1626
+      objectReference: {fileID: 0}
+    - target: {fileID: 294990965750799696, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_ShowMaskGraphic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 548242780285410862, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 684532751023531722, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268699585652999996, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393499670847524945, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: ffc931e2ee6f22a4f9b637413f45aca0, type: 2}
+    - target: {fileID: 4393499670847524945, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5286730127378199210, guid: ffc931e2ee6f22a4f9b637413f45aca0, type: 2}
+    - target: {fileID: 4892484975312792321, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 973.0066
+      objectReference: {fileID: 0}
+    - target: {fileID: 4892484975312792321, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 846.6931
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749694061758316289, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.49972028
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749694061758316289, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.6041965
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749694061758316289, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.6415094
+      objectReference: {fileID: 0}
+    - target: {fileID: 6029341560443449013, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -23
+      objectReference: {fileID: 0}
+    - target: {fileID: 6029341560443449013, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -11.5
       objectReference: {fileID: 0}
     - target: {fileID: 6147330395280248898, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1594,6 +1722,14 @@ PrefabInstance:
     - target: {fileID: 6147330395280248898, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6275739493192785987, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 29.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666666252391500844, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6666666252568796313, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1731,9 +1867,48 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6666666253905548972, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6666666253971292303, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -26.298431
+      value: -26.298584
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666666253971292304, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_text
+      value: "<b>What did Julius II read?\r</b>\n\r\nThe only known witness of the
+        Bibliotheca Iulia\u2019s contents, the inventory documents 220 unique volumes
+        once housed in the Stanza della Segnatura. Prepared in 1513 following the
+        death of Julius II, its author, Romolo Mammacino (d. 1534; custodian of the
+        Vatican Library under Julius II and Leo X), divided the list into two sections.
+        The first records those books that were absorbed into the collections of
+        the larger Biblioteca Apostolica Vaticana, whereas the second documents those
+        consigned to Cardinal Luigi of Aragon (d. 1519). \r\n\r\nThe inventory reveals
+        that the Julian library was generally humanistic in its character and scope.
+        In addition to the ancient Roman canon, including texts by Cicero, Caesar,
+        Ovid, and Pliny, it also housed Latin translations of Aristotle, Homer, Herodotus,
+        and Thucydides. Although few vernacular authors appear on the list, the document
+        demonstrates that Julius II owned copies of Petrarch, Boccaccio, and Leonardo
+        Bruni. The collection also included the essential ecclesiastical and legal
+        titles that were typical among educated members of the clergy.    \r\n\r\nAlthough
+        the Julian collection was smaller than certain of its princely counterparts,
+        it was not unsubstantial. Moreover, the inventory is undoubtedly incomplete
+        and should be regarded as an imperfect document. For instance, the pope\u2019s
+        contemporaries reported that Dante was among the pope\u2019s preferred authors,
+        but the poet is conspicuously missing from the listed volumes. It seems equally
+        likely that some books were loaned, stolen, gifted, or sold, or that certain
+        others were kept elsewhere in the papal palace. \r\n\r\nToday, roughly a
+        third of the original collection has been identified. The recovery of these
+        precious volumes suggests a recursive relationship between the paintings
+        and the papal collection of texts, and that this canonical space can only
+        be understood in consideration of the mutual transactions that took place
+        between these visual and verbal media.\r\n\n\r\n<b>Instructions</b>\r\n<color=orange>WASD</color>
+        keys to move around the Room\r\n<color=orange>Spacebar</color> to toggle
+        gravity\n<color=orange>Q,E</color> to fly up and down\n<color=orange>M,N</color>
+        keys to turn the manuscript pages\n<color=orange>Right click+hold</color>
+        to look around\r\n<color=orange>Left click</color> to interact with objects
+        and paratext\r\n\r"
       objectReference: {fileID: 0}
     - target: {fileID: 6666666254013106960, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -1754,6 +1929,26 @@ PrefabInstance:
     - target: {fileID: 6666666254043709129, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666666254070907999, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846807218393369357, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 18.505
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846807218393369357, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 28.042
+      objectReference: {fileID: 0}
+    - target: {fileID: 6925054331875451123, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 46.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6925054331875451123, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -53
       objectReference: {fileID: 0}
     - target: {fileID: 8452571777659649939, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_RootOrder
@@ -1802,6 +1997,10 @@ PrefabInstance:
     - target: {fileID: 8452571777659649965, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_Name
       value: UpdatedPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452571777659649966, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8452571777659649967, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: CameraPos
@@ -4274,7 +4473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78d651063f3b69a4688376a41e22cbe8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.344
+      value: -0.3444
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78d651063f3b69a4688376a41e22cbe8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4282,11 +4481,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78d651063f3b69a4688376a41e22cbe8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.189
+      value: 0.1825
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78d651063f3b69a4688376a41e22cbe8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99987644
+      value: 0.99929667
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78d651063f3b69a4688376a41e22cbe8, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4294,7 +4493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78d651063f3b69a4688376a41e22cbe8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.015719878
+      value: 0.037501577
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78d651063f3b69a4688376a41e22cbe8, type: 3}
       propertyPath: m_LocalRotation.z
@@ -4306,7 +4505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78d651063f3b69a4688376a41e22cbe8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 1.801
+      value: 4.298
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78d651063f3b69a4688376a41e22cbe8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -4319,7 +4518,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 78d651063f3b69a4688376a41e22cbe8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 18ee323a2cc150b43a0b24baca7c34a0, type: 2}
+      objectReference: {fileID: 2100000, guid: 661eb9befe1918844b837c6e7af6236a, type: 2}
     - target: {fileID: 919132149155446097, guid: 78d651063f3b69a4688376a41e22cbe8, type: 3}
       propertyPath: m_Name
       value: Frame (1)
@@ -4357,6 +4556,7 @@ Transform:
   - {fileID: 90642499}
   - {fileID: 668168340}
   - {fileID: 498538576}
+  - {fileID: 76062821}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5935,7 +6135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78d651063f3b69a4688376a41e22cbe8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.821
+      value: 0.8565
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78d651063f3b69a4688376a41e22cbe8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5980,7 +6180,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 78d651063f3b69a4688376a41e22cbe8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 18ee323a2cc150b43a0b24baca7c34a0, type: 2}
+      objectReference: {fileID: 2100000, guid: 661eb9befe1918844b837c6e7af6236a, type: 2}
     - target: {fileID: 919132149155446097, guid: 78d651063f3b69a4688376a41e22cbe8, type: 3}
       propertyPath: m_Name
       value: Frame (2)
