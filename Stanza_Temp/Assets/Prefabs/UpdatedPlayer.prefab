@@ -2459,7 +2459,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 273560690880822236}
   m_HandleRect: {fileID: 8550823500526290105}
   m_Direction: 2
-  m_Value: 0.99999964
+  m_Value: 0.9999995
   m_Size: 0.48654357
   m_NumberOfSteps: 1
   m_OnValueChanged:
@@ -9577,8 +9577,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.9242692, y: 0.7899093, z: 1}
+  m_Center: {x: -0.03786542, y: 0.03419247, z: 0.000000016408215}
 --- !u!1 &8452571778434817830
 GameObject:
   m_ObjectHideFlags: 0
@@ -9861,8 +9861,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.8445875, y: 0.76848525, z: 1}
+  m_Center: {x: 0.07770635, y: 0.0035285205, z: 0.0000000014118577}
 --- !u!1 &8452571779524895736
 GameObject:
   m_ObjectHideFlags: 0
@@ -10466,6 +10466,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0130fe5c272784731ad72093c09c210f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 177d648bea315a448bf0fe0e6856c239, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 0130fe5c272784731ad72093c09c210f, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: b77ba6c254c62c74089262f3095029a1, type: 2}
     - target: {fileID: -7511558181221131132, guid: 0130fe5c272784731ad72093c09c210f, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
