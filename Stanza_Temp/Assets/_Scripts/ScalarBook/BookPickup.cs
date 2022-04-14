@@ -29,7 +29,7 @@ public class BookPickup : MonoBehaviour
             !_renderer.enabled)
         {
             bookPickupUI.enabled = true;
-            bookPickupUI.text = "Press 'f' to put down Vigerio";
+            bookPickupUI.text = "Press 'F' to put down Vigerio";
             bookPickerUp.canPlaceBook = true;
         }
     }
