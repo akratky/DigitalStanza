@@ -50,6 +50,7 @@ public class FreeCam : MonoBehaviour
     /// </summary>
     private bool looking = false;
 
+
     public GameObject zoomedCameraObj;
     private Camera zoomedCam;
     
@@ -60,6 +61,13 @@ public class FreeCam : MonoBehaviour
     private Vector3 _initPos;
 
     private bool _isZoomed;
+    
+    private bool moveForwardButtonPressed;
+    private bool moveBackwardButtonPressed;
+    private bool moveLeftButtonPressed;
+    private bool moveRightButtonPressed;
+    private bool moveUpButtonPressed;
+    private bool moveDownButtonPressed;
     
     private void Start()
     {
@@ -75,33 +83,33 @@ public class FreeCam : MonoBehaviour
         var fastMode = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         var movementSpeed = fastMode ? this.fastMovementSpeed : this.movementSpeed;
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || moveLeftButtonPressed)
         {
             transform.position = transform.position + (-transform.right * movementSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || moveRightButtonPressed)
         {
             transform.position = transform.position + (transform.right * movementSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || moveForwardButtonPressed)
         {
             transform.position = transform.position + (transform.forward * movementSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) || moveBackwardButtonPressed)
         {
             transform.position = transform.position + (-transform.forward * movementSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q) || moveUpButtonPressed)
         {
             if(!_rb.useGravity)
                 transform.position = transform.position + (transform.up * movementSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) || moveDownButtonPressed)
         {
             if(!_rb.useGravity)
                 transform.position = transform.position + (-transform.up * movementSpeed * Time.deltaTime);
@@ -218,6 +226,44 @@ public class FreeCam : MonoBehaviour
         
         
         _regCamera.enabled = !zoomedCameraObj.activeSelf;
+    }
+
+// Movement button functions
+    public void  MoveForward(){
+        moveForwardButtonPressed = true;
+    }
+    public void  StopMoveForward(){
+        moveForwardButtonPressed = false;
+    }
+    public void  MoveBackward(){
+        moveBackwardButtonPressed = true;
+    }
+    public void  StopMoveBackward(){
+        moveBackwardButtonPressed = false;
+    }
+    public void  MoveLeft(){
+        moveLeftButtonPressed = true;
+    }
+    public void  StopMoveLeft(){
+        moveLeftButtonPressed = false;
+    }
+    public void  MoveRight(){
+        moveRightButtonPressed = true;
+    }
+    public void  StopMoveRight(){
+        moveRightButtonPressed = false;
+    }
+    public void  MoveUp(){
+        moveUpButtonPressed = true;
+    }
+    public void  StopMoveUp(){
+        moveUpButtonPressed = false;
+    }
+    public void  MoveDown(){
+        moveDownButtonPressed = true;
+    }
+    public void  StopMoveDown(){
+        moveDownButtonPressed = false;
     }
     
     
