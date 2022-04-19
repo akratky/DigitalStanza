@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using ANVC.Scalar;
 using TMPro;
 using UnityEngine;
-using VLB;
 
 public class FakeSecondaryParatext : MonoBehaviour
 {
@@ -45,16 +44,17 @@ public class FakeSecondaryParatext : MonoBehaviour
         TMP_TextEventHandler.OnDetailLinkSelected += HandleClicks;
         backButton.SetActive(false);
         interleafObj.SetActive(false);
+        UpdateUI();
     }
 
     private void HandleClicks(string tag)
     {
-        Debug.Log("Tag: " + tag);
         if (tag == "Plato")
         {
             mainText = interleaf.text;
             interleafHeader.text = "Plato";
             interleaf.text = paratext;
+            interleaf.pageToDisplay = 1;
             backButton.SetActive(true);
             interleafObj.SetActive(true);
             
@@ -66,6 +66,7 @@ public class FakeSecondaryParatext : MonoBehaviour
             mainText = interleaf.text;
             interleafHeader.text = "The Lyre in Word and Image";
             interleaf.text = lyreParatex;
+            interleaf.pageToDisplay = 1;
             backButton.SetActive(true);
             interleafObj.SetActive(true);
 
@@ -76,6 +77,7 @@ public class FakeSecondaryParatext : MonoBehaviour
 
     public void OnNextSecondInterleafPage()
     {
+
         if (interleaf.pageToDisplay != interleaf.textInfo.pageCount)
         {
             interleaf.pageToDisplay++;
@@ -86,7 +88,7 @@ public class FakeSecondaryParatext : MonoBehaviour
 
     public void OnPrevInterleafPage()
     {
-        if (interleaf.pageToDisplay > 0)
+        if (interleaf.pageToDisplay > 1)
         {
             interleaf.pageToDisplay--;
         }
@@ -96,8 +98,8 @@ public class FakeSecondaryParatext : MonoBehaviour
 
     private void UpdateUI()
     {
-        currentPageText.text = (interleaf.pageToDisplay + 1).ToString();
-        totalPageText.text = (interleaf.textInfo.pageCount + 1).ToString();
+        currentPageText.text = (interleaf.pageToDisplay).ToString();
+        totalPageText.text = (interleaf.textInfo.pageCount).ToString();
     }
     
     

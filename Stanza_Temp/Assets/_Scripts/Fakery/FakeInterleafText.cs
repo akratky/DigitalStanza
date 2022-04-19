@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class FakeInterleafText : MonoBehaviour
 {
