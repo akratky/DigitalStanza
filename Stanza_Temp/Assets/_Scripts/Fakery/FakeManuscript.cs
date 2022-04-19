@@ -7,6 +7,7 @@ using UnityEngine;
 public class FakeManuscript : MonoBehaviour
 {
     public Texture2D[] manuscriptPages;
+    public FakeInterleafText interleafObj;
     private int _pageIndex = 0;
     
     
@@ -42,6 +43,7 @@ public class FakeManuscript : MonoBehaviour
             _pageIndex += 2;
             LoadPages(_pageIndex);
             FakeManuscriptHighlight.disableManuscriptEvent?.Invoke();
+            interleafObj.ChangeInterleafPageFromManuscript(_pageIndex);
         }
         
             
@@ -54,6 +56,8 @@ public class FakeManuscript : MonoBehaviour
             _pageIndex -= 2;
             LoadPages(_pageIndex);
             FakeManuscriptHighlight.disableManuscriptEvent?.Invoke();
+            interleafObj.ChangeInterleafPageFromManuscript(_pageIndex);
+
         }
     }
 

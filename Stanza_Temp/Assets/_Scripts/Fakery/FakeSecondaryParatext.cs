@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ANVC.Scalar;
 using TMPro;
 using UnityEngine;
+using VLB;
 
 public class FakeSecondaryParatext : MonoBehaviour
 {
@@ -23,9 +24,14 @@ public class FakeSecondaryParatext : MonoBehaviour
     "\n\nAncient definitions of harmony relating to music similarly inform Raphael’s representation of Philosophy. Pythagoras appears in the foreground of the School of Athens, where he studies a tablet illustrating the harmonic scale he is credited with discovering. The intervals imagined on the philosopher’s slate include the octave (“diapason”), the fifth (“diapente”), the fourth (diatessaron), and the whole tone. Summarized by the triangular figure at the bottom of Raphael’s diagram, the numbers comprising these ratios (I, II, III, and IV) together made ten and were called the tetraktys by Pythagoreans. Considering ten a perfect number, the Pythagoreans associated the principle of its harmony with the movements of the cosmos. Plato maintained a similar position in the Timaeus, the same book he carries in Raphael’s fresco. In the Timaeus, as in the Republic, he suggested that the harmonic nature of music resonates in the universe and the soul. This relationship is evoked on the Segnatura ceiling, where Astronomy (Urania) spins the celestial spheres as they hum in perfect concert. In Plato’s vision of the universe, described in the Republic, eight heavenly spheres rotate on eight whorls around the spindle of Necessity; as they turn at equal intervals, eight sirens sing a single scale in harmony. ";
 
     private string mainText;
-    
+
+    public GameObject interleafObj;
     public TMP_Text interleaf;
     public TMP_Text interleafHeader;
+
+    public TMP_Text currentPageText;
+    public TMP_Text totalPageText;
+    
     public GameObject backButton;
 
     public ScalarCamera cam;
@@ -38,6 +44,7 @@ public class FakeSecondaryParatext : MonoBehaviour
     {
         TMP_TextEventHandler.OnDetailLinkSelected += HandleClicks;
         backButton.SetActive(false);
+        interleafObj.SetActive(false);
     }
 
     private void HandleClicks(string tag)
@@ -49,6 +56,9 @@ public class FakeSecondaryParatext : MonoBehaviour
             interleafHeader.text = "Plato";
             interleaf.text = paratext;
             backButton.SetActive(true);
+            interleafObj.SetActive(true);
+            
+
         }
 
         if (tag == "lyre")
@@ -57,14 +67,46 @@ public class FakeSecondaryParatext : MonoBehaviour
             interleafHeader.text = "The Lyre in Word and Image";
             interleaf.text = lyreParatex;
             backButton.SetActive(true);
+            interleafObj.SetActive(true);
+
         }
+        
+        UpdateUI();
     }
 
+    public void OnNextSecondInterleafPage()
+    {
+        if (interleaf.pageToDisplay != interleaf.textInfo.pageCount)
+        {
+            interleaf.pageToDisplay++;
+        }
+        
+        UpdateUI();
+    }
+
+    public void OnPrevInterleafPage()
+    {
+        if (interleaf.pageToDisplay > 0)
+        {
+            interleaf.pageToDisplay--;
+        }
+        
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
+        currentPageText.text = (interleaf.pageToDisplay + 1).ToString();
+        totalPageText.text = (interleaf.textInfo.pageCount + 1).ToString();
+    }
+    
+    
+    
     public void OnBackButtonClicked()
     {
         BookLineRenderer.DestroyLineEvent.Invoke();
-        backButton.SetActive(false);
-        interleaf.text = mainText;
+        interleafObj.SetActive(!interleafObj.activeSelf);
+
     }
 
 }

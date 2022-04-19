@@ -58,8 +58,9 @@ public class FreeCam : MonoBehaviour
     
     private Rigidbody _rb;
 
-    private Vector3 _initPos;
 
+    private Transform _initTransform;
+    
     private bool _isZoomed;
     
     private bool moveForwardButtonPressed;
@@ -71,7 +72,7 @@ public class FreeCam : MonoBehaviour
     
     private void Start()
     {
-        _initPos = transform.position;
+        _initTransform = transform;
         _rb = GetComponent<Rigidbody>();
         _regCamera = GetComponent<Camera>();
         zoomedCameraObj.SetActive(false);
@@ -127,11 +128,12 @@ public class FreeCam : MonoBehaviour
                 transform.position = transform.position + (-Vector3.up * movementSpeed * Time.deltaTime);
         }
 
+        /*
         if (Input.GetKey(KeyCode.Space))
         {
             _rb.useGravity = !_rb.useGravity;
         }
-
+*/
         if (looking)
         {               
 
@@ -207,7 +209,8 @@ public class FreeCam : MonoBehaviour
 
     public void ResetTransform()
     {
-        SceneManager.LoadScene(0);
+        transform.position =_initTransform.position;
+        transform.rotation = _initTransform.rotation;
     }
 
     public void ToggleZoom()

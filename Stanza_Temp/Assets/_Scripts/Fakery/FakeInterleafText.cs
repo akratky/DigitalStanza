@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class FakeInterleafText : MonoBehaviour
 {
@@ -50,10 +51,22 @@ public class FakeInterleafText : MonoBehaviour
     
     private Tuple<string, string>[] fakePages = new Tuple<string, string>[5];
 
-    
+    private Dictionary<int, int[]> _manuscriptPageToInterleafMap = new Dictionary<int, int[]>()
+    {
+        {0, new int[2] {0, 1}},
+        {2,new int[1]{2}},
+        {4,new int[]{}}
+
+    };
+
     private int _pageIndex = 0;
+    private int _pageCounter = 1;
     public TMP_Text headerText;
     private TMP_Text textMeshText;
+    [Header("Page Counters")] 
+    public TMP_Text currentPage;
+
+    public TMP_Text totalPages;
     
 // Start is called before the first frame update
     void Start()
@@ -64,17 +77,52 @@ public class FakeInterleafText : MonoBehaviour
         fakePages[3] = folThree;
         fakePages[4] = furtherReading;
         
-        
+        //this is stupid but yolo
         textMeshText = GetComponent<TMP_Text>();
+
+        textMeshText.text = fakeDecachordumPage.Item2 + folOne.Item2 + folTwo.Item2 + folThree.Item2 +
+                            furtherReading.Item2;
+
+        totalPages.text = "6";
+        
         headerText.text = fakePages[_pageIndex].Item1;
         textMeshText.text = fakePages[_pageIndex].Item2;
+
+        currentPage.text = _pageCounter.ToString();
     }
 
+    public void ChangeInterleafPageFromManuscript(int i)
+    {
+        
+        
+        if (i == 0)
+        {
+            _pageIndex = 0;
+            _pageCounter = 1;
+        }
+        else if (i == 2)
+        {
+            _pageIndex = 2;
+            _pageCounter = 3;
+        }
+        else
+            return;
+        
+        //_pageIndex++;
+        headerText.text = fakePages[_pageIndex].Item1;
+        textMeshText.text = fakePages[_pageIndex].Item2;
+        textMeshText.pageToDisplay = 1;
+        currentPage.text = _pageCounter.ToString();
+
+    }
+    
     public void NextInterleafPage()
     {
         if (textMeshText.pageToDisplay != textMeshText.textInfo.pageCount)
         {
             textMeshText.pageToDisplay++;
+            _pageCounter++;
+
         }
         else if (_pageIndex + 1 != fakePages.Length)
         {
@@ -82,7 +130,11 @@ public class FakeInterleafText : MonoBehaviour
             headerText.text = fakePages[_pageIndex].Item1;
             textMeshText.text = fakePages[_pageIndex].Item2;
             textMeshText.pageToDisplay = 1;
+            _pageCounter++;
+
         }
+        UpdateUI();
+
     }
 
     public void PrevInterleafPage()
@@ -90,6 +142,8 @@ public class FakeInterleafText : MonoBehaviour
         if (textMeshText.pageToDisplay - 1  > 0)
         {
             textMeshText.pageToDisplay--;
+            
+
         }
         else if (_pageIndex - 1 >= 0)
         {
@@ -97,7 +151,19 @@ public class FakeInterleafText : MonoBehaviour
             headerText.text = fakePages[_pageIndex].Item1;
             textMeshText.text = fakePages[_pageIndex].Item2;
             textMeshText.pageToDisplay = 1;
+            
         }
+
+        if (_pageCounter > 1)
+            _pageCounter--;
+
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
+        currentPage.text = (_pageCounter).ToString();
+        //totalPages.text = textMeshText.textInfo.pageCount.ToString();
     }
 
 

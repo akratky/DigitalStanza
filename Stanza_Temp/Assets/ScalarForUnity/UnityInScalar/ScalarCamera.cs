@@ -22,6 +22,7 @@ namespace ANVC.Scalar
         public Transform ManuscriptPos;
         public GameObject PlatoManuscriptAnnotation;
         public BookLineRenderer lineRenderer;
+        [SerializeField]
         private Rigidbody _rb;
 
         private Camera _camera;
@@ -31,8 +32,11 @@ namespace ANVC.Scalar
         private static extern void ReturnPosition3D(string position3D);
 
         // Use this for initialization
-        void Start()
+
+
+        private void Awake()
         {
+            print("awake");
             _rb = GetComponent<Rigidbody>();
             _camera = GetComponent<Camera>();
             TMP_TextEventHandler.OnSpatialLinkSelected += OnSpatialLinkClicked;
