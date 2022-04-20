@@ -57,7 +57,9 @@ public class FakeSecondaryParatext : MonoBehaviour
             interleaf.pageToDisplay = 1;
             backButton.SetActive(true);
             interleafObj.SetActive(true);
-            
+            currentPageText.text = (interleaf.pageToDisplay).ToString();
+            totalPageText.text = "9";
+
 
         }
 
@@ -69,10 +71,12 @@ public class FakeSecondaryParatext : MonoBehaviour
             interleaf.pageToDisplay = 1;
             backButton.SetActive(true);
             interleafObj.SetActive(true);
+            currentPageText.text = (interleaf.pageToDisplay).ToString();
+            totalPageText.text = "8";
 
         }
         
-        UpdateUI();
+        //UpdateUI();
     }
 
     public void OnNextSecondInterleafPage()
