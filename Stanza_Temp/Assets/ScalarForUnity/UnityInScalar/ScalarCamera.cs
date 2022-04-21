@@ -19,6 +19,8 @@ namespace ANVC.Scalar
         public Transform TargetPos;
         public Transform PlatoCameraPos;
         public Transform PlatoTargetPos;
+        public GameObject PlatoLineTarget;
+        public GameObject LyreLineTarget;
         public Transform ManuscriptPos;
         public GameObject PlatoManuscriptAnnotation;
         public BookLineRenderer lineRenderer;
@@ -142,7 +144,7 @@ namespace ANVC.Scalar
             //Vector3 upwards = new Vector3(Mathf.Sin(node["roll"] * Mathf.Deg2Rad), Mathf.Cos(node["roll"] * Mathf.Deg2Rad), 0);
             Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, Vector3.up);
             LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
-            lineRenderer.TrackingLine(PlatoManuscriptAnnotation,TargetPos.gameObject);
+            lineRenderer.TrackingLine(PlatoManuscriptAnnotation,LyreLineTarget);
         }
 
         public void JumpToPosition(Vector3 cameraPos, Vector3 targetPos)
@@ -155,7 +157,7 @@ namespace ANVC.Scalar
             //Vector3 upwards = new Vector3(Mathf.Sin(node["roll"] * Mathf.Deg2Rad), Mathf.Cos(node["roll"] * Mathf.Deg2Rad), 0);
             Quaternion rotation = Quaternion.LookRotation(targetPos - cameraPos, Vector3.up);
             LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
-            lineRenderer.TrackingLine(PlatoManuscriptAnnotation,TargetPos.gameObject);
+            //lineRenderer.TrackingLine(PlatoManuscriptAnnotation,TargetPos.gameObject);
 
         }
 
@@ -171,7 +173,7 @@ namespace ANVC.Scalar
             //Vector3 upwards = new Vector3(Mathf.Sin(node["roll"] * Mathf.Deg2Rad), Mathf.Cos(node["roll"] * Mathf.Deg2Rad), 0);
             Quaternion rotation = Quaternion.LookRotation(PlatoTargetPos.position - PlatoCameraPos.position, Vector3.up);
             LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
-            lineRenderer.TrackingLine(PlatoManuscriptAnnotation,PlatoTargetPos.gameObject);
+            lineRenderer.TrackingLine(PlatoManuscriptAnnotation,PlatoLineTarget);
         }
 
         public void TurnToManuscript()

@@ -110,7 +110,7 @@ public class FakeSecondaryParatext : MonoBehaviour
     
     public void OnBackButtonClicked()
     {
-        BookLineRenderer.DestroyLineEvent.Invoke();
+        //BookLineRenderer.DestroyLineEvent.Invoke();
         interleafObj.SetActive(!interleafObj.activeSelf);
 
     }

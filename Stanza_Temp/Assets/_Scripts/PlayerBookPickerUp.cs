@@ -11,6 +11,7 @@ public class PlayerBookPickerUp : MonoBehaviour
     public bool canPlaceBook = false;
     private GameObject _bookPickupObj;
     private KeyCode _pickupKey = KeyCode.F;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,10 @@ public class PlayerBookPickerUp : MonoBehaviour
                 playerBook.SetActive(false);
                 _bookPickupObj.GetComponent<MeshRenderer>().enabled = true;
                 bookPickUpUI.enabled = false;
+                BookLineRenderer.DestroyLineEvent?.Invoke();
+                TMP_TextEventHandler.OnDetailLinkSelected?.Invoke("null");
+                TMP_TextEventHandler.OnManuscriptLinkSelected?.Invoke("null");
+                
 
             }
             else
@@ -36,6 +41,7 @@ public class PlayerBookPickerUp : MonoBehaviour
                 playerBook.SetActive(true);
                 _bookPickupObj.GetComponent<MeshRenderer>().enabled = false;
                 bookPickUpUI.enabled = false;
+
 
             }
             
