@@ -1591,6 +1591,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 799047355, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1056919458, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_Name
       value: InterleafToggleButton
