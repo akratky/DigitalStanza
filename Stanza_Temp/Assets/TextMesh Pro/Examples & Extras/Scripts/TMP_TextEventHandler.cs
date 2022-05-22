@@ -15,19 +15,20 @@ namespace TMPro
     //TODO - slim this down
     public class TMP_TextEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        [Serializable]
+        
+        
         public class CharacterSelectionEvent : UnityEvent<char, int> { }
 
-        [Serializable]
+        
         public class SpriteSelectionEvent : UnityEvent<char, int> { }
 
-        [Serializable]
+        
         public class WordSelectionEvent : UnityEvent<string, int, int> { }
 
-        [Serializable]
+        
         public class LineSelectionEvent : UnityEvent<string, int, int> { }
 
-        [Serializable]
+        
         public class LinkSelectionEvent : UnityEvent<string, string, int> { }
         
 

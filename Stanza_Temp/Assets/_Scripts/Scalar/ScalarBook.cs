@@ -24,7 +24,9 @@ public class ScalarBook : MonoBehaviour
     private ScalarNode _rootNode;
     private Dictionary<ScalarNode, ScalarNode> _neighborPageDict = new Dictionary<ScalarNode, ScalarNode>();
 
+    public delegate void OnStartBookLoad();
 
+    public static event OnStartBookLoad OnStartBookLoadEvent;
 
 
     void Start()
@@ -45,6 +47,7 @@ public class ScalarBook : MonoBehaviour
 
     private void LoadManuscriptRoot()
     {
+        OnStartBookLoadEvent?.Invoke();
         StartCoroutine(ScalarAPI.LoadNode(manuscriptRootURLSlug,
             OnLoadRootSuccess,
             OnLoadRootFailure,
@@ -136,7 +139,6 @@ public class ScalarBook : MonoBehaviour
         else
             neighborNode = GetNeighborPage(currentPage, isRecto);
         
-        Debug.Log("Neighbour: " + neighborNode.slug);
         
         imgURL = ScalarUtilities.ExtractImgURLFromScalarNode(neighborNode);
         
@@ -160,7 +162,6 @@ public class ScalarBook : MonoBehaviour
     //Constraint: Assumes there are less than 1000 pages in manuscript
     private ScalarNode GetNeighborPage(ScalarNode currentPage, bool isRecto)
     {
-        Debug.Log("Fetching Neighbour of " + currentPage.slug);
         string neighbourURL = currentPage.slug;
         if (isRecto)
         {
