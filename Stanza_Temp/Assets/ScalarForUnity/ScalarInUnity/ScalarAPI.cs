@@ -77,7 +77,7 @@ namespace ANVC.Scalar
                // Debug.Log(request.downloadHandler.text);
                 
                 
-                WriteToFile.WriteString(request.downloadHandler.text);
+                //WriteToFile.WriteString(request.downloadHandler.text);
                 JSONNode data = JSON.Parse(request.downloadHandler.text);
                 ParseNodes(data);
                 ParseRelations(data);
