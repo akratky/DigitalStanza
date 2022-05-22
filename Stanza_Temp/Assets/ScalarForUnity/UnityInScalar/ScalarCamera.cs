@@ -38,7 +38,6 @@ namespace ANVC.Scalar
 
         private void Awake()
         {
-            print("awake");
             _rb = GetComponent<Rigidbody>();
             _camera = GetComponent<Camera>();
             TMP_TextEventHandler.OnSpatialLinkSelected += OnSpatialLinkClicked;
