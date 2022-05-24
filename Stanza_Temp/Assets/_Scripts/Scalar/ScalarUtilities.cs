@@ -42,7 +42,7 @@ public class ScalarUtilities
         }
 
         
-        //remove embedded spatial links
+        //remove embedded spatial links -  TODO: remove this when links are standardized
         regex = new Regex("<(a data-(size|align).*?)/a>");
         matches = regex.Matches(s);
         while (matches.Count > 0)
