@@ -45,7 +45,7 @@ namespace ANVC.Scalar
                 
             if (spatialLink.Contains(ScalarUtilities.roomSpatialAnnotationTag))
             {
-                _currentLinkID = spatialLinkSlug;
+                _currentLinkID = spatialLink;
                 StartCoroutine(ScalarAPI.LoadNode(
                     spatialLink,
                     OnPageLoadSuccess,
