@@ -96,7 +96,7 @@ namespace ANVC.Scalar
                 {
                     //SetTransformNoEvent(rel.body.data);
 
-                    
+                    //TODO - FIX MATH
                     _targetPosition = new Vector3(float.Parse(rel.properties.targetX),
                         float.Parse(rel.properties.targetY), float.Parse(rel.properties.targetZ));
                     Vector3 cameraPosition = new Vector3(float.Parse(rel.properties.cameraX), 
