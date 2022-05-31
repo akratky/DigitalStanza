@@ -1,5 +1,6 @@
 ﻿
 
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -55,7 +56,18 @@ public static class ScalarTripleLink
     
     public static TripleLinkStruct GetTripleLink(string tag)
     {
-        return tripleLinkList[tag];
+        TripleLinkStruct linkStruct = new TripleLinkStruct();
+        
+        try
+        {
+            linkStruct = tripleLinkList[tag];
+            return linkStruct;
+        }
+        catch (KeyNotFoundException e)
+        {
+            return linkStruct;
+        }
+        
     }
 
 

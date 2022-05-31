@@ -10,17 +10,26 @@ using UnityEngine;
 public class WallAnnotationHandler : MonoBehaviour
 {
     //the filename of the image this plane imposes on
-    public string frescoImageFileName;
+    public string frescoImageSlug;
+    //object prefab of the physical annotation object
     public GameObject spatialAnnotationPrefab;
     [Header("Tuning Parameters")] 
     public Vector2 spatialAnnotationOffset;
+    
     private string _targetPageSlug;
     private BoxCollider _collider;
+    private GameObject _currentAnnotationInstance;
+
+    public delegate void OnDestroyDetailAnnotation();
+
+    public static event OnDestroyDetailAnnotation DestroyDetailAnnotationEvent;
+    
     // Start is called before the first frame update
     void Start()
     {
         _collider = GetComponent<BoxCollider>();
         
+        DestroyDetailAnnotationEvent += DestroyAnnotationInstance;
         TMP_TextEventHandler.OnDetailLinkSelected += OnDetailLinkClicked;
     }
 
@@ -30,6 +39,9 @@ public class WallAnnotationHandler : MonoBehaviour
         {
             _targetPageSlug = linkSlug;
             
+            if(_currentAnnotationInstance)
+                DestroyAnnotationInstance();
+
             StartCoroutine(ScalarAPI.LoadNode(
                 linkSlug,
                 OnPageLoadSuccess,
@@ -40,6 +52,10 @@ public class WallAnnotationHandler : MonoBehaviour
             ));
         }
         
+        else if(_currentAnnotationInstance)
+            DestroyAnnotationInstance();
+
+
     }
 
     private void OnPageLoadSuccess(JSONNode node)
@@ -50,7 +66,7 @@ public class WallAnnotationHandler : MonoBehaviour
 
         foreach (var rel in imageNode.outgoingRelations)
         {
-            if (rel.subType == "spatial" && rel.id.Contains(ScalarUtilities.frescoImageAnnotationTag))
+            if (rel.subType == "spatial" && rel.id.Contains(frescoImageSlug))
             {
                 
                 string xCoord = rel.startString[2].ToString();
@@ -75,12 +91,17 @@ public class WallAnnotationHandler : MonoBehaviour
                 worldCoord.x += spatialAnnotationOffset.x;
                 worldCoord.y += spatialAnnotationOffset.y;
 
-                Instantiate<GameObject>(spatialAnnotationPrefab, worldCoord, Quaternion.identity);
+                _currentAnnotationInstance = Instantiate<GameObject>(spatialAnnotationPrefab, worldCoord, Quaternion.identity);
             }
         }
         
         
-        Debug.Log("");
+    }
+
+    private void DestroyAnnotationInstance()
+    {
+        Destroy(_currentAnnotationInstance);
+        _currentAnnotationInstance = null;
     }
 
     private void OnPageLoadFail(string err)
@@ -88,9 +109,4 @@ public class WallAnnotationHandler : MonoBehaviour
         Debug.LogError(err);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

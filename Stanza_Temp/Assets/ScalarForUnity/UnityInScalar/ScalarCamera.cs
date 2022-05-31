@@ -37,11 +37,9 @@ namespace ANVC.Scalar
         #region Hyperlink Handling
         private void OnSpatialLinkClicked(string spatialLinkSlug)
         {
-            Debug.Log( "spatial tag: " + spatialLinkSlug);
 
             String spatialLink = ScalarTripleLink.GetTripleLink(spatialLinkSlug).spatialLink;
     
-            Debug.Log("Spatial Link: " + spatialLink);
                 
             if (spatialLink.Contains(ScalarUtilities.roomSpatialAnnotationTag))
             {
