@@ -23,7 +23,6 @@ public class FakePlatoHighlight : MonoBehaviour
         if (tag == "Plato")
         {
             _meshRenderer.enabled = true;
-            scalarCam.JumpToPlato();
         }
         else
             _meshRenderer.enabled = false;
