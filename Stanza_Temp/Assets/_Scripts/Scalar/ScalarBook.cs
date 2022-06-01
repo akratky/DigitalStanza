@@ -9,12 +9,16 @@ using UnityEngine.Networking;
 
 public class ScalarBook : MonoBehaviour
 {
+    [Header("Book Params")]
     //this will be the home page of the manuscript we are streaming in
     public string manuscriptRootURLSlug;
     //how many digits are in the page number for this manuscript
     public int numDigitsInPageNumber;
-    public Material leftPage;
-    public Material rightPage;
+    [Header("References")]
+    public Material leftPageMaterial;
+    public Material rightPageMaterial;
+    public BookAnnotationHandler leftPageAnnotationHandler;
+    public BookAnnotationHandler rightPageAnnotationHandler;
 
 
     //denotes the index of the left page
@@ -22,15 +26,25 @@ public class ScalarBook : MonoBehaviour
     
 
     private ScalarNode _rootNode;
+    //do this for quick look up for manuscript annotations
+    private Dictionary<string, int> _pageSlugToIndexDict;
     private Dictionary<ScalarNode, ScalarNode> _neighborPageDict = new Dictionary<ScalarNode, ScalarNode>();
-
+    
     public delegate void OnStartBookLoad();
-
     public static event OnStartBookLoad OnStartBookLoadEvent;
+
+    public delegate void BookAnnotationDelegate(string pageSlug,bool isRecto);
+    public static event BookAnnotationDelegate BookAnnotationEvent;
+    
+    //annotation/link handling
+    private string _targetSlug;
+   
 
 
     void Start()
     {
+        TMP_TextEventHandler.OnManuscriptLinkSelected += HandleTripleLink;
+        
         LoadManuscriptRoot();
 
     }
@@ -60,9 +74,13 @@ public class ScalarBook : MonoBehaviour
     private void OnLoadRootSuccess(JSONNode jsonNode)
     {
         _rootNode = ScalarAPI.GetNode(manuscriptRootURLSlug);
-
+        
+        
         LoadPages(_currentPageindex);
-
+        
+        
+        //build library of manuscript pages to make manu annotations easier later
+        StartCoroutine(BuildPageLibrary(_rootNode));
     }
 
     private void OnLoadRootFailure(string e)
@@ -119,6 +137,7 @@ public class ScalarBook : MonoBehaviour
         //todo - has issues - fix later
         ScalarNode currentPage = _rootNode.outgoingRelations[pageNum].target;
 
+        //edge cases
         if (pageNum == 0)
             currentPage = _rootNode;
         else
@@ -151,11 +170,65 @@ public class ScalarBook : MonoBehaviour
 
     private void ClearPages()
     {
-        leftPage.mainTexture = null;
-        rightPage.mainTexture = null;
+        leftPageMaterial.mainTexture = null;
+        rightPageMaterial.mainTexture = null;
     }
 
     #endregion
+    
+    //all this does is turn to the appropriate page and trigger the book annotation handler
+    #region Link Handling
+
+    private void HandleTripleLink(string linkSlug)
+    {
+        if (linkSlug.Contains(ScalarUtilities.manuscriptAnnotationTag))
+        {
+            _targetSlug = linkSlug;
+
+            StartCoroutine(ScalarAPI.LoadNode(
+                linkSlug,
+                OnManuscriptAnnoLoadSuccess,
+                OnManuscriptAnnoLoadFail,
+                2,
+                true,
+                "referee"
+            ));
+
+        }
+    }
+
+    private void OnManuscriptAnnoLoadSuccess(JSONNode node)
+    {
+        ScalarNode manuNode = ScalarAPI.GetNode(_targetSlug);
+        string pageSlug = null; 
+            
+        //flip to page containing clicked on annotation
+        foreach (var rel in manuNode.outgoingRelations)
+        {
+            if (_pageSlugToIndexDict.ContainsKey(rel.target.slug))
+            {
+                pageSlug = rel.target.slug;
+                int pageNum = _pageSlugToIndexDict[rel.target.slug];
+                LoadPages(pageNum);
+                break;
+            }
+        }
+
+        bool isRecto = pageSlug.EndsWith("r");
+        BookAnnotationEvent?.Invoke(_targetSlug,isRecto);
+        
+    }
+
+    private void OnManuscriptAnnoLoadFail(string err)
+    {
+        Debug.LogError("Unable to load manuscript annotation");
+        Debug.LogError(err);
+    }
+    
+    
+    #endregion
+    
+    #region Utility
 
     //a neighbor page is the corresponding left-hand/right-hand side of a page
     //i.e. 001r and 001v are neighbor pages
@@ -270,12 +343,33 @@ public class ScalarBook : MonoBehaviour
         else
         {
             if (isLeftPage)
-                leftPage.mainTexture = ((DownloadHandlerTexture)request.downloadHandler).texture;
+                leftPageMaterial.mainTexture = ((DownloadHandlerTexture)request.downloadHandler).texture;
             else
-                rightPage.mainTexture = ((DownloadHandlerTexture)request.downloadHandler).texture;
+                rightPageMaterial.mainTexture = ((DownloadHandlerTexture)request.downloadHandler).texture;
         }
     }
 
+    private IEnumerator BuildPageLibrary(ScalarNode rootNode)
+    {
+        _pageSlugToIndexDict = new Dictionary<string, int>(rootNode.outgoingRelations.Count);
+        _pageSlugToIndexDict[rootNode.slug] = 0;
+        
+        int i = 1;
+        foreach (var rel in rootNode.outgoingRelations)
+        {
+            if (rel.type.id == "path")
+            {
+                _pageSlugToIndexDict[rel.target.slug] = i;        
+                i++;    
+            }
+            
+        }
+        
+        
+        yield return null;
+    }
+
+    #endregion
 
     
   

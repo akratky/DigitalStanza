@@ -31,7 +31,6 @@ public class ScalarInterleaf : MonoBehaviour
     
     private void LoadInterleafText()
     {
-        Debug.Log("Load interleaf");
         StartCoroutine(ScalarAPI.LoadNode(
             interleafURLSlug,
             OnLoadInterleafSuccess,
@@ -56,7 +55,6 @@ public class ScalarInterleaf : MonoBehaviour
 
     private void LoadInterleafPage(string slug)
     {
-        Debug.Log("load interleaf page function");
         ScalarNode interleafNode = ScalarAPI.GetNode(slug);
         
         string interleafText = ScalarUtilities.ExtractRichTextFromInterleafBody(interleafNode.current.content);
