@@ -6,36 +6,39 @@ using SimpleJSON;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider))]
-public class WallAnnotationHandler : MonoBehaviour
+public class BookAnnotationHandler : MonoBehaviour
 {
-    //the filename of the image this plane imposes on
-    public string frescoImageSlug;
-    //object prefab of the physical annotation object
-    public GameObject spatialAnnotationPrefab;
-    [Header("Tuning Parameters")] 
+
+    public GameObject manuscriptAnnotationPrefab;
+    //used for parenting annotaiton transfomr
+    public GameObject ScalarBookObj;
+    public bool isRecto;
+    [Header("Tuning Params")] 
     public Vector3 spatialAnnotationOffset;
-    
+
     private string _targetPageSlug;
+    private string _targetAnnotationTag;
+    
     private BoxCollider _collider;
     private GameObject _currentAnnotationInstance;
 
-    public delegate void OnDestroyDetailAnnotation();
+    public delegate void OnDestroyManuAnnotation();
+    public static event OnDestroyManuAnnotation DestroyManuAnnotationEvent;
 
-    public static event OnDestroyDetailAnnotation DestroyDetailAnnotationEvent;
-    
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _collider = GetComponent<BoxCollider>();
-        
-        DestroyDetailAnnotationEvent += DestroyAnnotationInstance;
-        TMP_TextEventHandler.OnDetailLinkSelected += OnDetailLinkClicked;
+        DestroyManuAnnotationEvent += DestroyAnnotationInstance;
+        ScalarBook.BookAnnotationEvent += OnManuLinkClicked;
     }
 
-    private void OnDetailLinkClicked(string linkSlug)
+    private void OnManuLinkClicked(string linkSlug,bool rectPage)
     {
-        if (linkSlug.Contains(ScalarUtilities.frescoImageAnnotationTag))
+        if (rectPage != isRecto)
+            return;
+        
+        
+        if (linkSlug.Contains(ScalarUtilities.manuscriptAnnotationTag))
         {
             _targetPageSlug = linkSlug;
             
@@ -54,19 +57,18 @@ public class WallAnnotationHandler : MonoBehaviour
         
         else if(_currentAnnotationInstance)
             DestroyAnnotationInstance();
-
-
+        
     }
 
     private void OnPageLoadSuccess(JSONNode node)
     {
-        ScalarNode imageNode = ScalarAPI.GetNode(_targetPageSlug);
+        ScalarNode manuNode = ScalarAPI.GetNode(_targetPageSlug);
         Bounds colliderBounds = _collider.bounds;
         
 
-        foreach (var rel in imageNode.outgoingRelations)
+        foreach (var rel in manuNode.outgoingRelations)
         {
-            if (rel.subType == "spatial" && rel.id.Contains(frescoImageSlug))
+            if (rel.subType == "spatial" && rel.id.Contains(_targetPageSlug))
             {
                 
                 string xCoord = rel.startString[2].ToString();
@@ -88,29 +90,35 @@ public class WallAnnotationHandler : MonoBehaviour
                 worldCoord.y = colliderBounds.max.y - (yCoordf / 100) * colliderBounds.size.y;
                 worldCoord.z = colliderBounds.center.z;
 
+                /*
                 worldCoord.x += spatialAnnotationOffset.x;
                 worldCoord.y += spatialAnnotationOffset.y;
                 worldCoord.z += spatialAnnotationOffset.z;
-
-                _currentAnnotationInstance = Instantiate(spatialAnnotationPrefab, 
-                    worldCoord, gameObject.transform.rotation);
-                //_currentAnnotationInstance.transform.SetParent(gameObject.transform);
+                */
                 
+                _currentAnnotationInstance = Instantiate(manuscriptAnnotationPrefab, worldCoord, 
+                    Quaternion.identity);
+                _currentAnnotationInstance.transform.SetParent(ScalarBookObj.transform);
+                
+                _currentAnnotationInstance.transform.Translate(spatialAnnotationOffset,Space.World);
             }
         }
-        
-        
-    }
 
-    private void DestroyAnnotationInstance()
-    {
-        Destroy(_currentAnnotationInstance);
-        _currentAnnotationInstance = null;
     }
 
     private void OnPageLoadFail(string err)
     {
         Debug.LogError(err);
     }
+    
 
+    private void DestroyAnnotationInstance()
+    {
+        Destroy(_currentAnnotationInstance);
+        _currentAnnotationInstance = null;   
+    }
 }
+
+
+
+
