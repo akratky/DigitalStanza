@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Numerics;
 using UnityEngine;
 using SimpleJSON;
 using UnityEngine.Events;
 using System.Runtime.InteropServices;
 using TMPro;
+using Debug = UnityEngine.Debug;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 namespace ANVC.Scalar
 {
@@ -64,7 +69,6 @@ namespace ANVC.Scalar
         {
             _rb.useGravity = false;
             _targetPosition = targetPos;
-            Vector3 cameraPosition = cameraPos;
             LeanTween.cancel(transform.gameObject);
             LeanTween.move(transform.gameObject, cameraPos, transitionDuration).setEaseInOutCubic();
             //Vector3 upwards = new Vector3(Mathf.Sin(node["roll"] * Mathf.Deg2Rad), Mathf.Cos(node["roll"] * Mathf.Deg2Rad), 0);
@@ -94,18 +98,21 @@ namespace ANVC.Scalar
                 {
                     //SetTransformNoEvent(rel.body.data);
 
+                    float roll = float.Parse(rel.properties.roll);
+                    
                     //TODO - FIX MATH
                     _targetPosition = new Vector3(float.Parse(rel.properties.targetX),
                         float.Parse(rel.properties.targetY), float.Parse(rel.properties.targetZ));
+
+                    _targetPosition.y += .05f;
+                    
                     Vector3 cameraPosition = new Vector3(float.Parse(rel.properties.cameraX), 
                         float.Parse(rel.properties.cameraY),float.Parse(rel.properties.cameraZ));
+                    
                     LeanTween.cancel(transform.gameObject);
                     LeanTween.move(transform.gameObject, cameraPosition, transitionDuration).setEaseInOutCubic();
-                    Vector3 upwards = new Vector3(Mathf.Sin(float.Parse(rel.properties.roll) * Mathf.Deg2Rad), 
-                        float.Parse(rel.properties.roll) * Mathf.Deg2Rad, 0);
-                    
-                    
-                    Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, upwards);
+                    //Vector3 upwards = new Vector3(UnityEngine.Mathf.Sin(roll * UnityEngine.Mathf.Deg2Rad), Mathf.Cos(roll)*Mathf.Deg2Rad, 0);
+                    Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, Vector3.up);
                     LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
 
                     //StartCoroutine(DelayCreateLine(cameraPosition,-(cameraPosition + _targetPosition)));
