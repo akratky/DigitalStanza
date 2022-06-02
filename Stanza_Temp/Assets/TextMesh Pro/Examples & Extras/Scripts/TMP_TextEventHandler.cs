@@ -218,11 +218,11 @@ namespace TMPro
 
                     TripleLinkStruct clickedTripLink = ScalarTripleLink.GetTripleLink(linkInfo.GetLinkID());
                     
-                    if(clickedTripLink.detailLink != "")
+                    if(clickedTripLink.detailLink.Length > 0)
                         OnDetailLinkSelected?.Invoke(clickedTripLink.detailLink);
-                    if(clickedTripLink.manuscriptLink != "")
+                    if(clickedTripLink.manuscriptLink.Length > 0)
                         OnManuscriptLinkSelected?.Invoke(clickedTripLink.manuscriptLink);
-                    if(clickedTripLink.spatialLink != "")
+                    if(clickedTripLink.spatialLink.Length > 0)
                         OnSpatialLinkSelected?.Invoke(clickedTripLink.spatialLink);
                     
                     

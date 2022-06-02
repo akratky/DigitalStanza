@@ -11,7 +11,7 @@ public class BookAnnotationHandler : MonoBehaviour
 
     public GameObject manuscriptAnnotationPrefab;
     //used for parenting annotaiton transfomr
-    public GameObject ScalarBookObj;
+    public GameObject annotationParentObj;
     public bool isRecto;
     [Header("Tuning Params")] 
     public Vector3 spatialAnnotationOffset;
@@ -98,7 +98,7 @@ public class BookAnnotationHandler : MonoBehaviour
                 
                 _currentAnnotationInstance = Instantiate(manuscriptAnnotationPrefab, worldCoord, 
                     Quaternion.identity);
-                _currentAnnotationInstance.transform.SetParent(ScalarBookObj.transform);
+                _currentAnnotationInstance.transform.SetParent(annotationParentObj.transform);
                 
                 _currentAnnotationInstance.transform.Translate(spatialAnnotationOffset,Space.World);
             }

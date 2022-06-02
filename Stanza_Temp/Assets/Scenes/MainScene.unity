@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manuscriptAnnotationPrefab: {fileID: 2017979779278571897, guid: 8d75b4b7d56972542b362973d6f851ca, type: 3}
-  ScalarBookObj: {fileID: 470109618}
+  annotationParentObj: {fileID: 806280969}
   isRecto: 1
   spatialAnnotationOffset: {x: 0, y: 0, z: 0}
 --- !u!65 &334165059
@@ -1407,11 +1407,6 @@ Transform:
 --- !u!95 &463922124 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 590656976414441706, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
-  m_PrefabInstance: {fileID: 516987115}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &470109618 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8452571777659649965, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
   m_PrefabInstance: {fileID: 516987115}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &470703389 stripped
@@ -2076,7 +2071,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654168429}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0075}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1497213955}
@@ -4844,7 +4839,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422986734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.749, y: -0.29199982, z: -0.537}
+  m_LocalPosition: {x: -0.749, y: -0.29199982, z: -0.611}
   m_LocalScale: {x: 1.8065, y: 1.5719973, z: 0.082476}
   m_Children: []
   m_Father: {fileID: 1343606466}
@@ -4985,7 +4980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manuscriptAnnotationPrefab: {fileID: 2017979779278571897, guid: 8d75b4b7d56972542b362973d6f851ca, type: 3}
-  ScalarBookObj: {fileID: 470109618}
+  annotationParentObj: {fileID: 806280969}
   isRecto: 0
   spatialAnnotationOffset: {x: 0, y: 0, z: 0}
 --- !u!65 &1497213957

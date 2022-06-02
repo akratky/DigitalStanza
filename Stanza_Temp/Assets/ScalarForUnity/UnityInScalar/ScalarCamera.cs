@@ -43,7 +43,14 @@ namespace ANVC.Scalar
         private void OnSpatialLinkClicked(string spatialLinkSlug)
         {
 
-            String spatialLink = ScalarTripleLink.GetTripleLink(spatialLinkSlug).spatialLink;
+            TripleLinkStruct tripleLink = ScalarTripleLink.GetTripleLink(spatialLinkSlug);
+
+            if (tripleLink.spatialLink.Length <= 0)
+            {
+                return;
+            }
+            
+            String spatialLink = tripleLink.spatialLink;
     
                 
             if (spatialLink.Contains(ScalarUtilities.roomSpatialAnnotationTag))
