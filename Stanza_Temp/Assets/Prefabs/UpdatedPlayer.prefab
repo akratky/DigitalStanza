@@ -375,7 +375,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637571778}
   m_LocalRotation: {x: 0.25964278, y: -0, z: -0, w: 0.9657048}
-  m_LocalPosition: {x: 0, y: 0, z: -69.6733}
+  m_LocalPosition: {x: 0, y: 0, z: -69.6744}
   m_LocalScale: {x: 0.00022511047, y: 0.00022511047, z: 0.00022511047}
   m_Children:
   - {fileID: 1334256721}
@@ -384,7 +384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 30.098, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -565.4343, y: -328.8235}
+  m_AnchoredPosition: {x: -565.4343, y: -328.8244}
   m_SizeDelta: {x: 126.59198, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &637571781
@@ -959,8 +959,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Vigerio\u2019s Decachordum: Julius II\u2019s Manuscript and Its Text"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c3e56873046226447beaac698bde58de, type: 2}
-  m_sharedMaterial: {fileID: 4920809339289196917, guid: c3e56873046226447beaac698bde58de, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 23f7b3f050a5be141b7137b35876a8be, type: 2}
+  m_sharedMaterial: {fileID: -354152744712008330, guid: 23f7b3f050a5be141b7137b35876a8be, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -991,7 +991,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 5
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -13594,7 +13594,7 @@ PrefabInstance:
       value: 'Characters: 3067   Words: 457   Spaces: 460   Sprites: 0   Links: 0
 
         Lines:
-        65   Pages: 3'
+        70   Pages: 3'
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487905, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: ShowCharacters
@@ -13642,11 +13642,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 8.301
+      value: 8.236
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 13.401
+      value: 13.254
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_LocalScale.x
@@ -13670,7 +13670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.35
+      value: 0.399
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13690,11 +13690,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.017
+      value: -0.019
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.026
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -13711,7 +13711,7 @@ PrefabInstance:
     - target: {fileID: 1074655805369487915, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -5286730127378199210, guid: ffc931e2ee6f22a4f9b637413f45aca0, type: 2}
+      objectReference: {fileID: -354152744712008330, guid: 23f7b3f050a5be141b7137b35876a8be, type: 2}
     - target: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_text
       value: "\r<b>Lorem</b> ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
@@ -13779,7 +13779,7 @@ PrefabInstance:
     - target: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: ffc931e2ee6f22a4f9b637413f45aca0, type: 2}
+      objectReference: {fileID: 11400000, guid: 23f7b3f050a5be141b7137b35876a8be, type: 2}
     - target: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_fontColor.b
       value: 0.084905684
@@ -13807,7 +13807,7 @@ PrefabInstance:
     - target: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -5286730127378199210, guid: ffc931e2ee6f22a4f9b637413f45aca0, type: 2}
+      objectReference: {fileID: -354152744712008330, guid: 23f7b3f050a5be141b7137b35876a8be, type: 2}
     - target: {fileID: 1074655805369487919, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_enableAutoSizing
       value: 0
