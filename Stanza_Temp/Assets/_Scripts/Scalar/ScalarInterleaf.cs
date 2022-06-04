@@ -61,11 +61,18 @@ public class ScalarInterleaf : MonoBehaviour
 
         fullParatext = interleafText;
         textMeshText.text = interleafText;
-        UpdatePageUI();
+        StartCoroutine(UpdatePageUIDelay());
     }
 
     private void UpdatePageUI()
     {
+        currentPageTextObj.text = textMeshText.pageToDisplay.ToString();
+        totalPageTextObj.text = textMeshText.textInfo.pageCount.ToString();
+    }
+
+    private IEnumerator UpdatePageUIDelay()
+    {
+        yield return new WaitForSeconds(0.25f);
         currentPageTextObj.text = textMeshText.pageToDisplay.ToString();
         totalPageTextObj.text = textMeshText.textInfo.pageCount.ToString();
     }

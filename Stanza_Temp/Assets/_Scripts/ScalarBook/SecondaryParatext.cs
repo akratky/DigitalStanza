@@ -106,7 +106,7 @@ public class SecondaryParatext : MonoBehaviour
 
     private IEnumerator UpdatePageUIDelay()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.25f);
 
         currentPageCounterTMP.text = secondaryInterleafBody.pageToDisplay.ToString();
         totalPageCounterTMP.text = secondaryInterleafBody.textInfo.pageCount.ToString();
