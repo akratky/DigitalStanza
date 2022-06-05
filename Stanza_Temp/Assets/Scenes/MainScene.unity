@@ -1625,6 +1625,38 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1550929124, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550929124, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550929124, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2095056449}
+    - target: {fileID: 1550929124, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550929124, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PrevPage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550929124, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PageTurnButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550929124, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550929124, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1814969224, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_text
       value: Toggle Interleaf
@@ -1640,6 +1672,38 @@ PrefabInstance:
     - target: {fileID: 1815579793, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_UseGravity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984690639, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984690639, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984690639, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1372761286}
+    - target: {fileID: 1984690639, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984690639, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextPage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984690639, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PageTurnButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984690639, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984690639, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 461097872451026390, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4831,6 +4895,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349249780}
   m_CullTransparentMesh: 1
+--- !u!1 &1372761281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7429176035524002305, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+  m_PrefabInstance: {fileID: 516987115}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1372761286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372761281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee8aac107b2201447ac373eb41cc7724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bookObj: {fileID: 806280970}
 --- !u!1001 &1375213274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7768,6 +7850,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991991667}
   m_CullTransparentMesh: 1
+--- !u!1 &2095056444 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4968126561316130196, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+  m_PrefabInstance: {fileID: 516987115}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2095056449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095056444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee8aac107b2201447ac373eb41cc7724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bookObj: {fileID: 806280970}
 --- !u!1 &2101034662
 GameObject:
   m_ObjectHideFlags: 0

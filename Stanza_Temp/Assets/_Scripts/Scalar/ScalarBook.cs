@@ -92,7 +92,7 @@ public class ScalarBook : MonoBehaviour
 
     #endregion
 
-    #region General Page Functions
+   // #region General Page Functions
 
 
     public void GetNext()
@@ -174,7 +174,7 @@ public class ScalarBook : MonoBehaviour
         rightPageMaterial.mainTexture = null;
     }
 
-    #endregion
+    //#endregion
     
     //all this does is turn to the appropriate page and trigger the book annotation handler
     #region Link Handling
