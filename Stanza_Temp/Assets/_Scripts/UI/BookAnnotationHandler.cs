@@ -99,7 +99,6 @@ public class BookAnnotationHandler : MonoBehaviour
                 _currentAnnotationInstance = Instantiate(manuscriptAnnotationPrefab, worldCoord, 
                     Quaternion.identity);
                 _currentAnnotationInstance.transform.SetParent(annotationParentObj.transform);
-                
                 _currentAnnotationInstance.transform.Translate(spatialAnnotationOffset,Space.World);
             }
         }

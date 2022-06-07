@@ -133,6 +133,7 @@ public class SecondaryParatext : MonoBehaviour
     public void BackButton()
     {
         interleafObj.SetActive(!interleafObj.activeSelf);
+        BookLineRenderer.ToggleLineEvent?.Invoke();
     }
     
 

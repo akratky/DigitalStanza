@@ -1091,6 +1091,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 668168340}
     m_Modifications:
+    - target: {fileID: 1117802880801674011, guid: 1fbfdc3955e905843ab1f6e57cac3b34, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4719218744698635377, guid: 1fbfdc3955e905843ab1f6e57cac3b34, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -1138,6 +1142,14 @@ PrefabInstance:
     - target: {fileID: 5347418577438826187, guid: 1fbfdc3955e905843ab1f6e57cac3b34, type: 3}
       propertyPath: m_Name
       value: Furniture_Table (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776723435198845677, guid: 1fbfdc3955e905843ab1f6e57cac3b34, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6039197448394839330, guid: 1fbfdc3955e905843ab1f6e57cac3b34, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fbfdc3955e905843ab1f6e57cac3b34, type: 3}
@@ -1187,7 +1199,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334165056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ece83e93fd37974cb6e0e9490f7d904, type: 3}
   m_Name: 
@@ -1535,6 +1547,11 @@ Transform:
   m_Father: {fileID: 392851340}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &496484911 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8452571777659649939, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+  m_PrefabInstance: {fileID: 516987115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &498538575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,6 +1642,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1496896984, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: lineOrigin
+      value: 
+      objectReference: {fileID: 622773397}
+    - target: {fileID: 1496896984, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: trackingOriginObj
+      value: 
+      objectReference: {fileID: 622773396}
     - target: {fileID: 1550929124, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -2149,6 +2174,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 577088370}
   m_CullTransparentMesh: 1
+--- !u!1 &622773396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 622773397}
+  m_Layer: 0
+  m_Name: LineOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &622773397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622773396}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.07, z: 0.236}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 496484911}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &640217020
 GameObject:
   m_ObjectHideFlags: 0
@@ -4609,11 +4664,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.017
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.026
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1074655805369487914, guid: 60305b09165c8be48b0be46891a96035, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4920,6 +4975,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 668168340}
     m_Modifications:
+    - target: {fileID: 19018519494314961, guid: fe90fa604d2d16b48b7d0629b0d906e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 731718256531788530, guid: fe90fa604d2d16b48b7d0629b0d906e4, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -4988,9 +5047,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2758942434426635389, guid: fe90fa604d2d16b48b7d0629b0d906e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3056745677519650809, guid: fe90fa604d2d16b48b7d0629b0d906e4, type: 3}
       propertyPath: m_Name
       value: Furniture_Canbinate1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987786209888158521, guid: fe90fa604d2d16b48b7d0629b0d906e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe90fa604d2d16b48b7d0629b0d906e4, type: 3}
@@ -5167,7 +5234,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1497213954}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ece83e93fd37974cb6e0e9490f7d904, type: 3}
   m_Name: 
@@ -8108,6 +8175,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1059528488081670445, guid: 6d5c781892e107b4da82f8ee7ec3f2d2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d5c781892e107b4da82f8ee7ec3f2d2, type: 3}
 --- !u!1 &919132149508383044
@@ -8229,6 +8300,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Furniture_Canbinate_intarsia01
       objectReference: {fileID: 0}
+    - target: {fileID: 6255438250830321201, guid: 6aa05f1e0a636764b9280d9599e0d41d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293393148116468846, guid: 6aa05f1e0a636764b9280d9599e0d41d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7481968044966096316, guid: 6aa05f1e0a636764b9280d9599e0d41d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6aa05f1e0a636764b9280d9599e0d41d, type: 3}
 --- !u!1 &2712283666093125190
@@ -8271,6 +8354,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 668168340}
     m_Modifications:
+    - target: {fileID: 19018519494314961, guid: fe90fa604d2d16b48b7d0629b0d906e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1915127247143873312, guid: fe90fa604d2d16b48b7d0629b0d906e4, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9063079
@@ -8343,9 +8430,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2758942434426635389, guid: fe90fa604d2d16b48b7d0629b0d906e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3056745677519650809, guid: fe90fa604d2d16b48b7d0629b0d906e4, type: 3}
       propertyPath: m_Name
       value: Furniture_Canbinate1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987786209888158521, guid: fe90fa604d2d16b48b7d0629b0d906e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe90fa604d2d16b48b7d0629b0d906e4, type: 3}
@@ -8419,6 +8514,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 668168340}
     m_Modifications:
+    - target: {fileID: 1117802880801674011, guid: 1fbfdc3955e905843ab1f6e57cac3b34, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4719218744698635377, guid: 1fbfdc3955e905843ab1f6e57cac3b34, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -8467,6 +8566,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Furniture_Table
       objectReference: {fileID: 0}
+    - target: {fileID: 5776723435198845677, guid: 1fbfdc3955e905843ab1f6e57cac3b34, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6039197448394839330, guid: 1fbfdc3955e905843ab1f6e57cac3b34, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fbfdc3955e905843ab1f6e57cac3b34, type: 3}
 --- !u!1001 &6242271355139593773
@@ -8476,6 +8583,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 668168340}
     m_Modifications:
+    - target: {fileID: 1903792053107404830, guid: 26325908aa8eaea488fea59b8dbb95ca, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6242271354804980528, guid: 26325908aa8eaea488fea59b8dbb95ca, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -8524,6 +8635,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Furniture_ReadingTable
       objectReference: {fileID: 0}
+    - target: {fileID: 6384829226725086677, guid: 26325908aa8eaea488fea59b8dbb95ca, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26325908aa8eaea488fea59b8dbb95ca, type: 3}
 --- !u!4 &7118261873543093895
@@ -8547,6 +8662,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 668168340}
     m_Modifications:
+    - target: {fileID: 1280706772231792144, guid: 95030278e2e4ca847bba43ab54e2771c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7125535590914763140, guid: 95030278e2e4ca847bba43ab54e2771c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7125535591583756590, guid: 95030278e2e4ca847bba43ab54e2771c, type: 3}
       propertyPath: m_Name
       value: Furniture_Canbinate_intarsia02
