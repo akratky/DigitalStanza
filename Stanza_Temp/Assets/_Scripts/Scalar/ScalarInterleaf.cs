@@ -21,7 +21,6 @@ public class ScalarInterleaf : MonoBehaviour
     {
         textMeshText = GetComponent<TMP_Text>();
         //LoadInterleafText();
-        ScalarBook.OnStartBookLoadEvent += LoadInterleafText;
 
     }
 
@@ -29,7 +28,7 @@ public class ScalarInterleaf : MonoBehaviour
     #region interleaf loading functions
 
     
-    private void LoadInterleafText()
+    public void LoadInterleafText()
     {
         StartCoroutine(ScalarAPI.LoadNode(
             interleafURLSlug,

@@ -45,7 +45,7 @@ public class ScalarBook : MonoBehaviour
     {
         TMP_TextEventHandler.OnManuscriptLinkSelected += HandleTripleLink;
         
-        LoadManuscriptRoot();
+        //LoadManuscriptRoot();
 
     }
 

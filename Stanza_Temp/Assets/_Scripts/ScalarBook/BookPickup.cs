@@ -7,7 +7,8 @@ using UnityEngine;
 public class BookPickup : MonoBehaviour
 {
     public string bookName;
-    public string scalarPageURLSlug;
+    public string interleafScalarPageURLSlug;
+    public string manuscriptScalarPageURLSlug;
     public int numDigitsInPageNumber;
     public TMP_Text bookPickupUI;
     public PlayerBookPickerUp bookPickerUp;
@@ -31,7 +32,7 @@ public class BookPickup : MonoBehaviour
             !_renderer.enabled)
         {
             bookPickupUI.enabled = true;
-            bookPickupUI.text = "Press 'F' to put down Vigerio";
+            bookPickupUI.text = "Press 'F' to put down " + bookName;
             bookPickerUp.canPlaceBook = true;
         }
     }

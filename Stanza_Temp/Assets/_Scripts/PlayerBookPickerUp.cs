@@ -8,6 +8,7 @@ public class PlayerBookPickerUp : MonoBehaviour
 {
     public TMP_Text bookPickUpUI;
     public GameObject playerBook;
+    public ScalarInterleaf playerScalarInterleaf;
     public bool canPlaceBook = false;
     private GameObject _bookPickupObj;
     private KeyCode _pickupKey = KeyCode.F;
@@ -44,12 +45,15 @@ public class PlayerBookPickerUp : MonoBehaviour
                 _bookPickupObj.GetComponent<MeshRenderer>().enabled = false;
                 bookPickUpUI.enabled = false;
 
-                /*
+                
                 BookPickup pickedUpBook = _bookPickupObj.GetComponent<BookPickup>();
                 mPlayerScalarBook.numDigitsInPageNumber = pickedUpBook.numDigitsInPageNumber;
-                mPlayerScalarBook.manuscriptRootURLSlug = pickedUpBook.scalarPageURLSlug;
+                mPlayerScalarBook.manuscriptRootURLSlug = pickedUpBook.manuscriptScalarPageURLSlug;
+                playerScalarInterleaf.interleafURLSlug = pickedUpBook.interleafScalarPageURLSlug;
+                
+                playerScalarInterleaf.LoadInterleafText();
                 mPlayerScalarBook.LoadManuscriptRoot();
-*/
+
             }
             
         }
