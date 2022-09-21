@@ -1642,6 +1642,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1420198079, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: interleafURLSlug
+      value: aristoteles-index
+      objectReference: {fileID: 0}
     - target: {fileID: 1496896984, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: lineOrigin
       value: 
@@ -5500,8 +5504,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.006517691, y: 0.01413734, z: 0.008242102}
-  m_Center: {x: -0.0016880714, y: 0.002911203, z: 0.0009877146}
+  m_Size: {x: 0.0037291767, y: 0.0048658787, z: 0.0030512735}
+  m_Center: {x: -0.00029381027, y: 0.000019051684, z: 0.0006247221}
 --- !u!114 &1512987597
 MonoBehaviour:
   m_ObjectHideFlags: 0

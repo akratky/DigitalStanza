@@ -12,9 +12,11 @@ public class PlayerBookPickerUp : MonoBehaviour
     private GameObject _bookPickupObj;
     private KeyCode _pickupKey = KeyCode.F;
 
+    private ScalarBook mPlayerScalarBook;
     // Start is called before the first frame update
     void Start()
     {
+        mPlayerScalarBook = playerBook.GetComponent<ScalarBook>();
         playerBook.SetActive(false);
         bookPickUpUI.enabled = false;
     }
@@ -22,7 +24,7 @@ public class PlayerBookPickerUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_bookPickupObj != null && Input.GetKeyDown(_pickupKey))
+        if (_bookPickupObj && Input.GetKeyDown(_pickupKey))
         {
             if (playerBook.activeSelf && canPlaceBook)
             {
@@ -42,7 +44,12 @@ public class PlayerBookPickerUp : MonoBehaviour
                 _bookPickupObj.GetComponent<MeshRenderer>().enabled = false;
                 bookPickUpUI.enabled = false;
 
-
+                /*
+                BookPickup pickedUpBook = _bookPickupObj.GetComponent<BookPickup>();
+                mPlayerScalarBook.numDigitsInPageNumber = pickedUpBook.numDigitsInPageNumber;
+                mPlayerScalarBook.manuscriptRootURLSlug = pickedUpBook.scalarPageURLSlug;
+                mPlayerScalarBook.LoadManuscriptRoot();
+*/
             }
             
         }

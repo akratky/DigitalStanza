@@ -7,6 +7,8 @@ using UnityEngine;
 public class BookPickup : MonoBehaviour
 {
     public string bookName;
+    public string scalarPageURLSlug;
+    public int numDigitsInPageNumber;
     public TMP_Text bookPickupUI;
     public PlayerBookPickerUp bookPickerUp;
     

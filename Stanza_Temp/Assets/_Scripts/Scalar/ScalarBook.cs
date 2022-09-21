@@ -59,7 +59,7 @@ public class ScalarBook : MonoBehaviour
 
     #region Root Page
 
-    private void LoadManuscriptRoot()
+    public void LoadManuscriptRoot()
     {
         OnStartBookLoadEvent?.Invoke();
         StartCoroutine(ScalarAPI.LoadNode(manuscriptRootURLSlug,

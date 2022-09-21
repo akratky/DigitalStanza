@@ -21,11 +21,21 @@ public class ScalarUtilities
     {
         {"<a href", "<color=\"blue\"><link"},
         {"<br />","<br>"},
+        {"</p>","<br>"},
         {"</a>","</link></color>"},
+        {"<strong>","<b>"},
+        {"</strong>","</b>"},
         {"<em>","<b>"},
-        {"</em>","</b>"}
+        {"</em>","</b>"},
     };
-    
+
+    private static Dictionary<string, string> HTMLArtifactReplacementDict = new Dictionary<string, string>()
+    {
+        { "&rsquo;", "'" },
+        { "&nbsp;", " " },
+        {"&#39;","'"}
+    };
+
     //processes the interleaf text into a string that can be used in game
     //i.e. replaces html links with unity hypertext links etc.
     public static string ExtractRichTextFromInterleafBody(string s)
@@ -58,18 +68,17 @@ public class ScalarUtilities
             matches = regex.Matches(s);
         }
         
+
+        
         //get rid of HTML artifacts
-        regex = new Regex("&(.*?);");
-        matches = regex.Matches(s);
-        while (matches.Count > 0)
+        foreach (var pair in HTMLArtifactReplacementDict)
         {
-            s = s.Replace(matches[0].Value, "");
-            matches = regex.Matches(s);
+            s = s.Replace(pair.Key, pair.Value);
         }
         
         //handle all the triple links
         //regex = new Regex("([a-zA-Z]+)/s/(<(a href.*?)/)");
-        regex = new Regex("([a-zA-Z]+) [(](<a href.*?)[)]");
+        regex = new Regex("([a-zA-Z;!@#$%^&*']+) [(](<a href.*?)[)]");
         matches = regex.Matches(s);
         while (matches.Count > 0)
         {
@@ -86,12 +95,13 @@ public class ScalarUtilities
         }
             
             
-            
         //replace other misc. stuff
         foreach (var pair in wordReplacementDict)
         {
             s = s.Replace(pair.Key, pair.Value);
         }
+
+
         
         
         return s;
