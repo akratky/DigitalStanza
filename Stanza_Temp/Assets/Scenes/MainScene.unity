@@ -1602,6 +1602,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -328.8244
       objectReference: {fileID: 0}
+    - target: {fileID: 783147055, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.089
+      objectReference: {fileID: 0}
+    - target: {fileID: 783147055, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 783147055, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.336
+      objectReference: {fileID: 0}
+    - target: {fileID: 783147056, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Size.x
+      value: 0.09166845
+      objectReference: {fileID: 0}
+    - target: {fileID: 783147056, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Size.y
+      value: 0.12819481
+      objectReference: {fileID: 0}
+    - target: {fileID: 783147056, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Center.x
+      value: -0.16276005
+      objectReference: {fileID: 0}
+    - target: {fileID: 783147056, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_Center.y
+      value: -0.4359025
+      objectReference: {fileID: 0}
     - target: {fileID: 783147057, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: playerScalarInterleaf
       value: 
