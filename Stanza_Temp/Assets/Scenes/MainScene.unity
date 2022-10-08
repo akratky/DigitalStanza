@@ -1603,6 +1603,10 @@ PrefabInstance:
       value: -328.8244
       objectReference: {fileID: 0}
     - target: {fileID: 783147057, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: bookHeaderUI
+      value: 
+      objectReference: {fileID: 1625597050}
+    - target: {fileID: 783147057, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: playerScalarInterleaf
       value: 
       objectReference: {fileID: 997273421}
@@ -2776,6 +2780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd86eca431727c4b8468c9f46324e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bookHeading: Aristoteles, De moribus (Vat. lat. 2098)
   bookName: Aristotle
   interleafScalarPageURLSlug: aristoteles-index
   manuscriptScalarPageURLSlug: decachordum-page-000v
@@ -5704,6 +5709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd86eca431727c4b8468c9f46324e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bookHeading: "Vigerio\u2019s Decachordum: Julius II\u2019s Manuscript and Its Text"
   bookName: Vigerio
   interleafScalarPageURLSlug: index
   manuscriptScalarPageURLSlug: decachordum-page-000v
@@ -6162,6 +6168,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 100.76099, y: -90, z: -167.497}
+--- !u!114 &1625597050 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1334256722, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+  m_PrefabInstance: {fileID: 516987115}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1636484878
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class BookPickup : MonoBehaviour
 {
+    //this is the text that pops up inside in the in-game book.
+    public string bookHeading;
+    
+    //this is the name that pops up on hte in-game UI
     public string bookName;
     public string interleafScalarPageURLSlug;
     public string manuscriptScalarPageURLSlug;

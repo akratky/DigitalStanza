@@ -72,7 +72,7 @@ public class SecondaryParatext : MonoBehaviour
         ScalarNode paratextNode = ScalarAPI.GetNode(_currentLinkID);
         
         //determine whether there is actually text on this page in an arbitrary way...
-        if (paratextNode.current.content.Length > 100)
+        if (paratextNode.current.content.Length > 50)
         {
             string parsedInterleafText = ScalarUtilities.ExtractRichTextFromInterleafBody(paratextNode.current.content);
             secondaryInterleafBody.text = parsedInterleafText;

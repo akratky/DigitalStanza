@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerBookPickerUp : MonoBehaviour
 {
     public TMP_Text bookPickUpUI;
+    public TMP_Text bookHeaderUI;
     public GameObject playerBook;
     public ScalarInterleaf playerScalarInterleaf;
     public bool canPlaceBook = false;
@@ -50,7 +51,7 @@ public class PlayerBookPickerUp : MonoBehaviour
                 mPlayerScalarBook.numDigitsInPageNumber = pickedUpBook.numDigitsInPageNumber;
                 mPlayerScalarBook.manuscriptRootURLSlug = pickedUpBook.manuscriptScalarPageURLSlug;
                 playerScalarInterleaf.interleafURLSlug = pickedUpBook.interleafScalarPageURLSlug;
-                
+                bookHeaderUI.text = pickedUpBook.bookHeading;
                 playerScalarInterleaf.LoadInterleafText();
                 mPlayerScalarBook.LoadManuscriptRoot();
 
