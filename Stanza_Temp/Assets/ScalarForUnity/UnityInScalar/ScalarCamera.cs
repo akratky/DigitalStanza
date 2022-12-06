@@ -45,28 +45,36 @@ namespace ANVC.Scalar
 
             TripleLinkStruct tripleLink = ScalarTripleLink.GetTripleLink(spatialLinkSlug);
 
-            if (tripleLink.spatialLink.Length <= 0)
+            try
             {
-                return;
-            }
-            
-            String spatialLink = tripleLink.spatialLink;
-    
-                
-            if (spatialLink.Contains(ScalarUtilities.roomSpatialAnnotationTag))
-            {
-                _currentLinkID = spatialLink;
-                StartCoroutine(ScalarAPI.LoadNode(
-                    spatialLink,
-                    OnPageLoadSuccess,
-                    OnPageLoadFail,
-                    2,
-                    true,
-                    "annotation"
-                ));
-                
+                if (tripleLink.spatialLink.Length <= 0)
+                {
+                    return;
+                }
 
+                String spatialLink = tripleLink.spatialLink;
+
+
+                if (spatialLink.Contains(ScalarUtilities.roomSpatialAnnotationTag))
+                {
+                    _currentLinkID = spatialLink;
+                    StartCoroutine(ScalarAPI.LoadNode(
+                        spatialLink,
+                        OnPageLoadSuccess,
+                        OnPageLoadFail,
+                        2,
+                        true,
+                        "annotation"
+                    ));
+
+
+                }
             }
+            catch (NullReferenceException e)
+            {
+                Debug.LogError("Tried to access null spatial link: " + e.Message);
+            }
+
             
 
         }

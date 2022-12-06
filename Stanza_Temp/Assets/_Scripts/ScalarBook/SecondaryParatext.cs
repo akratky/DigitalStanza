@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using ANVC.Scalar;
@@ -43,25 +44,34 @@ public class SecondaryParatext : MonoBehaviour
     {
         //have to retrieve scalar page and check for text
         TripleLinkStruct tripleLink = ScalarTripleLink.GetTripleLink(tag);
-        if (tripleLink.spatialLink.Length <= 0)
+        try
         {
-            return;
+            if (tripleLink.spatialLink.Length <= 0)
+            {
+                return;
+            }
+
+            string spatialLink = tripleLink.spatialLink;
+
+            if (spatialLink.Contains(ScalarUtilities.roomSpatialAnnotationTag))
+            {
+                _currentLinkID = spatialLink;
+                StartCoroutine(ScalarAPI.LoadNode(
+                    spatialLink,
+                    OnPageLoadSuccess,
+                    OnPageLoadFail,
+                    2,
+                    true,
+                    "annotation"
+                ));
+            }
         }
 
-        string spatialLink = tripleLink.spatialLink;
-
-        if (spatialLink.Contains(ScalarUtilities.roomSpatialAnnotationTag))
+        catch (NullReferenceException e)
         {
-            _currentLinkID = spatialLink;
-            StartCoroutine(ScalarAPI.LoadNode(
-                spatialLink,
-                OnPageLoadSuccess,
-                OnPageLoadFail,
-                2,
-                true,
-                "annotation"
-            ));
+            Debug.LogError("Tried to access null spatial link: " + e.Message);
         }
+
 
 
 

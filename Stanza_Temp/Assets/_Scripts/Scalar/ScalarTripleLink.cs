@@ -45,7 +45,7 @@ public static class ScalarTripleLink
                 newTripleLink.detailLink = match.Value;
         }
 
-        regex = new Regex("([a-zA-z]+)(?= .<a href)");
+        regex = new Regex("([a-zA-Z;!@#$%^&*']+)(?= .<a href)");
         Match tagMatch = regex.Match(s);
 
         tripleLinkList[tagMatch.Value] = newTripleLink;
