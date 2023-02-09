@@ -9,6 +9,7 @@ public class PlayerBookPickerUp : MonoBehaviour
     public TMP_Text bookPickUpUI;
     public TMP_Text bookHeaderUI;
     public GameObject playerBook;
+    public GameObject playerPoetryBook;
     public ScalarInterleaf playerScalarInterleaf;
     public bool canPlaceBook = false;
     private GameObject _bookPickupObj;
@@ -28,17 +29,43 @@ public class PlayerBookPickerUp : MonoBehaviour
     {
         if (_bookPickupObj && Input.GetKeyDown(_pickupKey))
         {
-            if (playerBook.activeSelf && canPlaceBook)
+            if ((playerBook.activeSelf|| playerPoetryBook.activeSelf) && canPlaceBook)
             {
                 
                 playerBook.SetActive(false);
-                _bookPickupObj.GetComponent<MeshRenderer>().enabled = true;
+                playerPoetryBook.SetActive(false);
+                
+                if(!_bookPickupObj.GetComponent<PoetryBookPickup>())
+                    _bookPickupObj.GetComponent<MeshRenderer>().enabled = true;
+                else
+                {
+                    _bookPickupObj.GetComponent<PoetryBookPickup>().isVisible = true;
+                    MeshRenderer[] renderers = _bookPickupObj.GetComponentsInChildren<MeshRenderer>();
+                    foreach (var r in renderers)
+                    {
+                        r.enabled = true;
+                    }
+                }
+
                 bookPickUpUI.enabled = false;
+
                 BookLineRenderer.DestroyLineEvent?.Invoke();
                 TMP_TextEventHandler.OnDetailLinkSelected?.Invoke("null");
                 TMP_TextEventHandler.OnManuscriptLinkSelected?.Invoke("null");
                 
 
+            }
+            else if (_bookPickupObj.GetComponent<BookPickup>().bookName.Contains("Poetry"))
+            {
+                playerPoetryBook.SetActive(true);
+
+                MeshRenderer[] renderers = _bookPickupObj.GetComponentsInChildren<MeshRenderer>();
+                foreach (var r in renderers)
+                {
+                    r.enabled = false;
+                }
+                bookPickUpUI.enabled = false;
+                _bookPickupObj.GetComponent<PoetryBookPickup>().isVisible = false;
             }
             else
             {
@@ -63,7 +90,7 @@ public class PlayerBookPickerUp : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("BookPickup")
-        && !playerBook.activeSelf)
+        && (!playerBook.activeSelf || !playerPoetryBook.activeSelf))
         {
             bookPickUpUI.text =  "Press 'f' to pick up " + other.gameObject.GetComponent<BookPickup>().bookName;
             
@@ -75,7 +102,7 @@ public class PlayerBookPickerUp : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("BookPickup")
-        && !playerBook.activeSelf)
+        && (!playerBook.activeSelf || !playerPoetryBook.activeSelf))
         {
             bookPickUpUI.enabled = false;
             _bookPickupObj = null;
