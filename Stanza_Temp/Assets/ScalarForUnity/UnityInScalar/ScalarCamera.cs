@@ -38,7 +38,7 @@ namespace ANVC.Scalar
         }
 
 
-        
+
         #region Hyperlink Handling
         private void OnSpatialLinkClicked(string spatialLinkSlug)
         {

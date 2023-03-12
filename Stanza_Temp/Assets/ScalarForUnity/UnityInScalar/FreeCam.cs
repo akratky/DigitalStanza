@@ -104,13 +104,13 @@ public class FreeCam : MonoBehaviour
             transform.position = transform.position + (-transform.forward * movementSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.Q) || moveUpButtonPressed)
+        if (Input.GetKey(KeyCode.E) || moveUpButtonPressed)
         {
             if(!_rb.useGravity)
                 transform.position = transform.position + (transform.up * movementSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.E) || moveDownButtonPressed)
+        if (Input.GetKey(KeyCode.Q) || moveDownButtonPressed)
         {
             if(!_rb.useGravity)
                 transform.position = transform.position + (-transform.up * movementSpeed * Time.deltaTime);
