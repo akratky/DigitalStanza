@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Web;
 using ANVC.Scalar;
 using SimpleJSON;
 
@@ -27,13 +28,6 @@ public class ScalarUtilities
         {"</strong>","</b>"},
         {"<em>","<b>"},
         {"</em>","</b>"},
-    };
-
-    private static Dictionary<string, string> HTMLArtifactReplacementDict = new Dictionary<string, string>()
-    {
-        { "&rsquo;", "'" },
-        { "&nbsp;", " " },
-        {"&#39;","'"}
     };
 
     //processes the interleaf text into a string that can be used in game
@@ -68,13 +62,6 @@ public class ScalarUtilities
             matches = regex.Matches(s);
         }
         
-
-        
-        //get rid of HTML artifacts
-        foreach (var pair in HTMLArtifactReplacementDict)
-        {
-            s = s.Replace(pair.Key, pair.Value);
-        }
         
         //handle all the triple links
         //regex = new Regex("([a-zA-Z]+)/s/(<(a href.*?)/)");
@@ -102,9 +89,8 @@ public class ScalarUtilities
         }
 
 
+        return HttpUtility.HtmlDecode(s);
         
-        
-        return s;
     }
 
     public static string ExtractImgURLFromScalarNode(ScalarNode node)
