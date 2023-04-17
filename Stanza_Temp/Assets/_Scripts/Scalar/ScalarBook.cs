@@ -20,7 +20,6 @@ public class ScalarBook : MonoBehaviour
     public BookAnnotationHandler leftPageAnnotationHandler;
     public BookAnnotationHandler rightPageAnnotationHandler;
 
-
     //denotes the index of the left page
     private int _currentPageindex = 0;
     
@@ -38,7 +37,6 @@ public class ScalarBook : MonoBehaviour
     
     //annotation/link handling
     private string _targetSlug;
-   
 
 
     void Start()

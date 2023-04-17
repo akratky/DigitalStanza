@@ -8,6 +8,7 @@ public class PlayerBookPickerUp : MonoBehaviour
 {
     public TMP_Text bookPickUpUI;
     public TMP_Text bookHeaderUI;
+    public string currentlyHeldBookName;
     public GameObject playerBook;
     public GameObject playerPoetryBook;
     public ScalarInterleaf playerScalarInterleaf;
@@ -101,6 +102,7 @@ public class PlayerBookPickerUp : MonoBehaviour
                 mPlayerScalarBook.manuscriptRootURLSlug = pickedUpBook.manuscriptScalarPageURLSlug;
                 playerScalarInterleaf.interleafURLSlug = pickedUpBook.interleafScalarPageURLSlug;
                 bookHeaderUI.text = pickedUpBook.bookHeading;
+                currentlyHeldBookName = pickedUpBook.bookName;
                 playerScalarInterleaf.LoadInterleafText();
                 mPlayerScalarBook.LoadManuscriptRoot();
 

@@ -16,12 +16,13 @@ public class SecondaryParatext : MonoBehaviour
     public GameObject interleafObj; //what is toggled off/on
     public TMP_Text secondaryInterleafBody; //object containing TMP body text
     public TMP_Text secondaryInterleafHeader; //obj containing TMP header text
-    
+    public PlayerBookPickerUp pickerUpper;
     [Header("UI Refs")]
     public GameObject UIBackButton; //secondary interleaf back button
 
     public TMP_Text currentPageCounterTMP;
     public TMP_Text totalPageCounterTMP;
+    public TMP_Text breadcrumbTMP;
 
     private string _currentLinkID;
     
@@ -94,6 +95,7 @@ public class SecondaryParatext : MonoBehaviour
 
 
             StartCoroutine(UpdatePageUIDelay());
+            UpdateBreadcrumbDisplay();
         }
     }
 
@@ -121,7 +123,15 @@ public class SecondaryParatext : MonoBehaviour
         currentPageCounterTMP.text = secondaryInterleafBody.pageToDisplay.ToString();
         totalPageCounterTMP.text = secondaryInterleafBody.textInfo.pageCount.ToString();
     }
-    
+
+    private void UpdateBreadcrumbDisplay()
+    {
+        string primaryText = pickerUpper.currentlyHeldBookName;
+
+        string secondaryText = secondaryInterleafHeader.text;
+
+        breadcrumbTMP.text = primaryText + "/" + secondaryText;
+    }
     public void GoToNextPage()
     {
         if (secondaryInterleafBody.pageToDisplay != secondaryInterleafBody.textInfo.pageCount)
