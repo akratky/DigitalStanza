@@ -139,14 +139,15 @@ public class ScalarBook : MonoBehaviour
         if (pageNum == 0)
             currentPage = _rootNode;
         else
-            currentPage = _rootNode.outgoingRelations[pageNum-1].target;
+            currentPage = _rootNode.outgoingRelations[pageNum - 1].target;
 
 
         bool isRecto;
         isRecto = currentPage.slug.EndsWith("r");
 
-        string imgURL = ScalarUtilities.ExtractImgURLFromScalarNode(currentPage);
-        
+        string imgURL = "";
+        imgURL = ScalarUtilities.ExtractImgURLFromScalarNode(currentPage);
+
         StartCoroutine(DownloadImage(imgURL, !isRecto));
 
         //determine if current page has a corresponding neighbour page
@@ -228,6 +229,7 @@ public class ScalarBook : MonoBehaviour
     
     #region Utility
 
+    //todo - problem here
     //a neighbor page is the corresponding left-hand/right-hand side of a page
     //i.e. 001r and 001v are neighbor pages
     //Constraint: Assumes there are less than 1000 pages in manuscript
@@ -238,11 +240,11 @@ public class ScalarBook : MonoBehaviour
         {
             neighbourURL = neighbourURL.TrimEnd('r');
             
-            //get page number from URL and convert to int then incremement to get url of neighbor page
+            //get page number from URL and convert to int then decrement to get url of neighbor page
             string[] neighbourURLSub = neighbourURL.Split('-');
             
             int neighbourpageNum = int.Parse(neighbourURLSub[neighbourURLSub.Length-1]);
-            neighbourpageNum++;
+            neighbourpageNum--;
 
 
             int numLeadingZeroesNeeded = 0;
