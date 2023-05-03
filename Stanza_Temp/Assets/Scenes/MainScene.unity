@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.52
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.054876722, g: 0.09098678, b: 0.14445513, a: 0.52}
+  m_IndirectSpecularColor: {r: 0.054918468, g: 0.091020264, b: 0.14439556, a: 0.52}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4353,6 +4353,7 @@ MonoBehaviour:
   numDigitsInPageNumber: 3
   bookPickupUI: {fileID: 1481794387}
   bookPickerUp: {fileID: 783147057}
+  bCanBePickedUp: 1
 --- !u!65 &758595354
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4364,7 +4365,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 18.92, y: 57.7, z: 50}
+  m_Size: {x: 18.92, y: 3, z: 50}
   m_Center: {x: -2.6449845, y: 1.2394669, z: 2.4304674}
 --- !u!114 &783147057 stripped
 MonoBehaviour:
@@ -8573,7 +8574,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02, y: -0.07, z: 0.06}
+  m_Size: {x: 0.02, y: -0.003, z: 0.06}
   m_Center: {x: -0.00010266775, y: 0.00021992397, z: 0.00026300707}
 --- !u!114 &1512987597
 MonoBehaviour:
@@ -8594,6 +8595,7 @@ MonoBehaviour:
   numDigitsInPageNumber: 3
   bookPickupUI: {fileID: 1481794387}
   bookPickerUp: {fileID: 783147057}
+  bCanBePickedUp: 1
 --- !u!1 &1540621631
 GameObject:
   m_ObjectHideFlags: 0
@@ -12460,6 +12462,7 @@ MonoBehaviour:
   numDigitsInPageNumber: 0
   bookPickupUI: {fileID: 1481794387}
   bookPickerUp: {fileID: 783147057}
+  bCanBePickedUp: 1
   isVisible: 1
 --- !u!65 &2136874961
 BoxCollider:

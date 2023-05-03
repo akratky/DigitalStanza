@@ -16,39 +16,30 @@ public class BookPickup : MonoBehaviour
     public int numDigitsInPageNumber;
     public TMP_Text bookPickupUI;
     public PlayerBookPickerUp bookPickerUp;
-    
+    public bool bCanBePickedUp = true;
     private Renderer _renderer;
+
+    private BoxCollider _boxCollider;
     // Start is called before the first frame update
     void Start()
     {
         _renderer = GetComponent<Renderer>();
+        _boxCollider = GetComponent<BoxCollider>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void OnBookPickup()
     {
-        
+        _renderer.enabled = false;
+        //_boxCollider.enabled = false;
+        bCanBePickedUp = false;
+
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnBookPutdown()
     {
-        if (other.gameObject.CompareTag("MainCamera") &&
-            !_renderer.enabled)
-        {
-            bookPickupUI.enabled = true;
-            bookPickupUI.text = "Press 'F' to put down " + bookName;
-            bookPickerUp.canPlaceBook = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("MainCamera") &&
-            !_renderer.enabled)
-        {
-            bookPickupUI.enabled = false;
-            bookPickerUp.canPlaceBook = false;
-
-        }
+        _renderer.enabled = true;
+        //_boxCollider.enabled = true;
+        bCanBePickedUp = true;
     }
 }
