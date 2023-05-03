@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>{{{ PRODUCT_NAME }}}</title>
+    <style>
+      html {
+        box-sizing: border-box;
+      }
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+      body {
+        margin: 0;
+        background: #444;
+      }
+      canvas {
+        width: 100% !important;
+        height: 100% !important;
+        display: block;
+      }
+      /* try to handle mobile dialog */
+      canvas + * {
+        z-index: 2;
+      }
+
+      #unity-loading-bar { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: none }
+      #unity-progress-bar-empty { width: 141px; height: 18px; margin-top: 10px; margin-left: 6.5px; background: url('TemplateData/progress-bar-empty-{{{ SPLASH_SCREEN_STYLE.toLowerCase() }}}.png') no-repeat center }
+      #unity-progress-bar-full { width: 0%; height: 18px; margin-top: 10px; background: url('TemplateData/progress-bar-full-{{{ SPLASH_SCREEN_STYLE.toLowerCase() }}}.png') no-repeat center }
+
+    </style>
+  </head>
+
+  <body>
+    <canvas id="unity-canvas" width={{{ WIDTH }}} height={{{ HEIGHT }}} style="width: {{{ WIDTH }}}px; height: {{{ HEIGHT }}}px; background: {{{ BACKGROUND_FILENAME ? 'url(\'Build/' + BACKGROUND_FILENAME.replace(/'/g, '%27') + '\') center / cover' : BACKGROUND_COLOR }}}"></canvas>
+    <div id="unity-loading-bar">
+      <div id="unity-progress-bar-empty">
+        <div id="unity-progress-bar-full"></div>
+      </div>
+    </div>
+    <script src="Build/{{{ LOADER_FILENAME }}}"></script>
+    <script>
+			var gameInstance;
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      loadingBar.style.display = "block";
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+			var canvasElement = document.querySelector("#unity-canvas");
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/{{{ DATA_FILENAME }}}",
+        frameworkUrl: "Build/{{{ FRAMEWORK_FILENAME }}}",
+        codeUrl: "Build/{{{ CODE_FILENAME }}}",
+#if MEMORY_FILENAME
+        memoryUrl: "Build/{{{ MEMORY_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+        symbolsUrl: "Build/{{{ SYMBOLS_FILENAME }}}",
+#endif
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "{{{ COMPANY_NAME }}}",
+        productName: "{{{ PRODUCT_NAME }}}",
+        productVersion: "{{{ PRODUCT_VERSION }}}",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      }, UnityProgress).then((instance) => {
+        loadingBar.style.display = "none";
+      	gameInstance = instance;
+      }).catch((message) => {
+        loadingBar.style.display = "none";
+				alert(message);
+			});
+
+	    function UnityProgress(progress) {
+	      progressBarFull.style.width = 100 * progress + "%";
+	    }
+
+			function resizeCanvas() {
+        canvasElement.width = window.innerWidth;
+        canvasElement.height = window.innerHeight;
+      }
+
+	    window.onload = function() {
+
+	      function receiveMessage(e) {
+	        console.log("HTML template received message: " + e.data);
+	        gameInstance.SendMessage(e.data.objectName, e.data.methodName, JSON.stringify(e.data.message));
+	      }
+
+	      window.addEventListener('message', receiveMessage);
+
+	      window.addEventListener('resize', resizeCanvas, false);
+				resizeCanvas();
+        
+	    }
+
+    </script>
+  </body>
+</html>
