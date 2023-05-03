@@ -49,37 +49,44 @@ public class FreeCam : MonoBehaviour
     /// </summary>
     private bool looking = false;
 
+    private bool moveForward;
+    private bool moveBackward;
+    private bool moveLeft;
+    private bool moveRight;
+    private bool moveUp;
+    private bool moveDown;
+
     void Update()
     {
         var fastMode = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         var movementSpeed = fastMode ? this.fastMovementSpeed : this.movementSpeed;
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || moveLeft)
         {
             transform.position = transform.position + (-transform.right * movementSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)|| moveRight)
         {
             transform.position = transform.position + (transform.right * movementSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || moveForward)
         {
             transform.position = transform.position + (transform.forward * movementSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) || moveBackward)
         {
             transform.position = transform.position + (-transform.forward * movementSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q) || moveUp)
         {
             transform.position = transform.position + (transform.up * movementSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) || moveDown)
         {
             transform.position = transform.position + (-transform.up * movementSpeed * Time.deltaTime);
         }
@@ -117,6 +124,27 @@ public class FreeCam : MonoBehaviour
             StopLooking();
         }
     }
+
+    public void ButtonMoveForward(bool buttonPressed){
+            moveForward = buttonPressed;
+    }
+    public void ButtonMoveBack(bool buttonPressed){
+            moveBackward = buttonPressed;
+    }
+    public void ButtonMoveLeft(bool buttonPressed){
+            moveLeft = buttonPressed;
+    }
+    public void ButtonMoveRight(bool buttonPressed){
+            moveRight = buttonPressed;
+    }
+    public void ButtonMoveUp(bool buttonPressed){
+            moveUp = buttonPressed;
+    }
+    public void ButtonMoveDown(bool buttonPressed){
+            moveDown = buttonPressed;
+    }
+    
+    
 
     void OnDisable()
     {
