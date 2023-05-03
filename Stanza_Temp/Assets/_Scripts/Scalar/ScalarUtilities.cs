@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Web;
 using ANVC.Scalar;
 using SimpleJSON;
+using UnityEngine;
 
 public class ScalarUtilities
 {
@@ -28,15 +30,16 @@ public class ScalarUtilities
         {"</strong>","</b>"},
         {"<em>","<b>"},
         {"</em>","</b>"},
+        {"<p dir=\"ltr\">",""},
     };
 
     //processes the interleaf text into a string that can be used in game
     //i.e. replaces html links with unity hypertext links etc.
     public static string ExtractRichTextFromInterleafBody(string s)
     {
-        
+        s = HttpUtility.HtmlDecode(s);
         //remove embedded unity scene
-        Regex regex = new Regex("<p dir(.*?)>");
+        Regex regex = new Regex("<p dir(.*?)></a>");
         MatchCollection matches;
         matches = regex.Matches(s);
         while (matches.Count > 0)
@@ -89,8 +92,8 @@ public class ScalarUtilities
         }
 
 
-        return HttpUtility.HtmlDecode(s);
-        
+        return s;
+
     }
 
     public static string ExtractImgURLFromScalarNode(ScalarNode node)
