@@ -1,156 +1,92 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Numerics;
 using UnityEngine;
 using SimpleJSON;
 using UnityEngine.Events;
 using System.Runtime.InteropServices;
-using TMPro;
-using Debug = UnityEngine.Debug;
-using Quaternion = UnityEngine.Quaternion;
-using Vector3 = UnityEngine.Vector3;
 
 namespace ANVC.Scalar
 {
     public class ScalarCamera : MonoBehaviour
     {
         public float transitionDuration = 1.5f;
-        public Transform ManuscriptPos;
-        public BookLineRenderer lineRenderer;
-        [SerializeField]
-        private Rigidbody _rb;
+        public AnnotationSelectedExternallyEvent annotationSelectedExternallyEvent;
+        public UnityEvent annotationsUpdatedExternallyEvent;
+        public MessageReceivedEvent messageReceivedEvent;
 
         private Camera _camera;
         private Vector3 _targetPosition;
-        private string _currentLinkID;
 
+        [DllImport("__Internal")]
+        private static extern void ReturnPosition3D(string position3D);
 
         // Use this for initialization
-
-
-        private void Awake()
+        void Start()
         {
-            _rb = GetComponent<Rigidbody>();
             _camera = GetComponent<Camera>();
-            TMP_TextEventHandler.OnSpatialLinkSelected += OnSpatialLinkClicked;
         }
 
-
-
-        #region Hyperlink Handling
-        private void OnSpatialLinkClicked(string spatialLinkSlug)
+        public void HandleAnnotationsUpdated()
         {
-
-            TripleLinkStruct tripleLink = ScalarTripleLink.GetTripleLink(spatialLinkSlug);
-
-            try
-            {
-                if (tripleLink.spatialLink.Length <= 0)
-                {
-                    return;
-                }
-
-                String spatialLink = tripleLink.spatialLink;
-
-
-                if (spatialLink.Contains(ScalarUtilities.roomSpatialAnnotationTag))
-                {
-                    _currentLinkID = spatialLink;
-                    StartCoroutine(ScalarAPI.LoadNode(
-                        spatialLink,
-                        OnPageLoadSuccess,
-                        OnPageLoadFail,
-                        2,
-                        true,
-                        "annotation"
-                    ));
-
-
-                }
-            }
-            catch (NullReferenceException e)
-            {
-                Debug.LogError("Tried to access null spatial link: " + e.Message);
-            }
-
-            
-
+            annotationsUpdatedExternallyEvent.Invoke();
         }
 
-
-        public void JumpToPosition(Vector3 cameraPos, Vector3 targetPos)
+        public void GetTransform()
         {
-            _rb.useGravity = false;
-            _targetPosition = targetPos;
+            JSONObject data = new JSONObject();
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+            {
+                _targetPosition = transform.position + (transform.forward * hit.distance);
+            }
+            else
+            {
+                _targetPosition = transform.position + (transform.forward * 5);
+            }
+            data["targetX"] = _targetPosition.x;
+            data["targetY"] = _targetPosition.y;
+            data["targetZ"] = _targetPosition.z;
+            data["cameraX"] = transform.position.x;
+            data["cameraY"] = transform.position.y;
+            data["cameraZ"] = transform.position.z;
+            data["roll"] = 360 - transform.rotation.eulerAngles.z;
+            data["fieldOfView"] = _camera.fieldOfView;
+            ReturnPosition3D(data.ToString());
+        }
+
+        public void SetTransform(string data)
+        {
+            JSONNode json = JSON.Parse(data);
+            SetTransformNoEvent(json);
+            annotationSelectedExternallyEvent.Invoke(json);
+        }
+
+        public void SetTransformNoEvent(JSONNode node)
+        {
+            _targetPosition = new Vector3(node["targetX"], node["targetY"], node["targetZ"]);
+            Vector3 cameraPosition = new Vector3(node["cameraX"], node["cameraY"], node["cameraZ"]);
             LeanTween.cancel(transform.gameObject);
-            LeanTween.move(transform.gameObject, cameraPos, transitionDuration).setEaseInOutCubic();
-            //Vector3 upwards = new Vector3(Mathf.Sin(node["roll"] * Mathf.Deg2Rad), Mathf.Cos(node["roll"] * Mathf.Deg2Rad), 0);
-            Quaternion rotation = Quaternion.LookRotation(targetPos - cameraPos, Vector3.up);
+            LeanTween.move(transform.gameObject, cameraPosition, transitionDuration).setEaseInOutCubic();
+            Vector3 upwards = new Vector3(Mathf.Sin(node["roll"] * Mathf.Deg2Rad), Mathf.Cos(node["roll"] * Mathf.Deg2Rad), 0);
+            Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, upwards);
             LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
-            //lineRenderer.TrackingLine(PlatoManuscriptAnnotation,TargetPos.gameObject);
-
-        }
-
-
-        public void TurnToManuscript()
-        {
-            _targetPosition = ManuscriptPos.position;
-            Vector3 cameraPosition = transform.position;
-            LeanTween.cancel(transform.gameObject);
-            Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, Vector3.up);
-            LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
-        }
-
-        private void OnPageLoadSuccess(JSONNode node)
-        {
-            ScalarNode spatialNode = ScalarAPI.GetNode(_currentLinkID);
-
-            foreach (var rel in spatialNode.outgoingRelations)
+            LeanTween.value(transform.gameObject, updateFieldOfView, _camera.fieldOfView, node["fieldOfView"], transitionDuration);
+            void updateFieldOfView(float val, float ratio)
             {
-                if (rel.subType == "spatial")
-                {
-                    //SetTransformNoEvent(rel.body.data);
-
-                    float roll = float.Parse(rel.properties.roll);
-                    
-                    //TODO - FIX MATH
-                    _targetPosition = new Vector3(float.Parse(rel.properties.targetX),
-                        float.Parse(rel.properties.targetY), float.Parse(rel.properties.targetZ));
-
-                    _targetPosition.y += .05f;
-                    
-                    Vector3 cameraPosition = new Vector3(float.Parse(rel.properties.cameraX), 
-                        float.Parse(rel.properties.cameraY),float.Parse(rel.properties.cameraZ));
-                    
-                    LeanTween.cancel(transform.gameObject);
-                    LeanTween.move(transform.gameObject, cameraPosition, transitionDuration).setEaseInOutCubic();
-                    //Vector3 upwards = new Vector3(UnityEngine.Mathf.Sin(roll * UnityEngine.Mathf.Deg2Rad), Mathf.Cos(roll)*Mathf.Deg2Rad, 0);
-                    Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, Vector3.up);
-                    LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
-
-                    
-                    
-                    //StartCoroutine(DelayCreateLine(cameraPosition,-(cameraPosition + _targetPosition)));
-                    StartCoroutine(lineRenderer.DelayedTrackingLine(2.0f));
-                }
+                _camera.fieldOfView = val;
             }
-            
         }
 
-        private void OnPageLoadFail(string err)
+        public void HandleMessage(string data)
         {
-            Debug.LogError(err);
+            JSONNode json = JSON.Parse(data);
+            messageReceivedEvent.Invoke(json);
         }
-
-        #endregion
-
-
-
-        
     }
-    
-    
 }
 
+[System.Serializable]
+public class AnnotationSelectedExternallyEvent : UnityEvent<JSONNode> { }
+
+[System.Serializable]
+public class MessageReceivedEvent : UnityEvent<JSONNode> { }

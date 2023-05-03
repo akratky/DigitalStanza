@@ -2331,6 +2331,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &362841974 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8452571778434817830, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+  m_PrefabInstance: {fileID: 516987115}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &362841977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362841974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &392851339
 GameObject:
   m_ObjectHideFlags: 0
@@ -3199,7 +3224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8452571777659649965, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_Name
-      value: UpdatedPlayer
+      value: ScalarCamera
       objectReference: {fileID: 0}
     - target: {fileID: 8452571777659649965, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_IsActive
@@ -3232,6 +3257,10 @@ PrefabInstance:
     - target: {fileID: 8452571777659649967, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: PlatoLineTarget
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452571778353426604, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8550823500526290105, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -12411,7 +12440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2136874960
 MonoBehaviour:
   m_ObjectHideFlags: 0
