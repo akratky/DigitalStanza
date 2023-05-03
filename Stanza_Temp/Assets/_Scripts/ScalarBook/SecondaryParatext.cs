@@ -126,7 +126,7 @@ public class SecondaryParatext : MonoBehaviour
 
     private void UpdateBreadcrumbDisplay()
     {
-        string primaryText = pickerUpper.currentlyHeldBookName;
+        string primaryText = pickerUpper.currentlyHeldBook.bookName;
 
         string secondaryText = secondaryInterleafHeader.text;
 
