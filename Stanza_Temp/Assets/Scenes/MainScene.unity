@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.52
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.054876722, g: 0.09098678, b: 0.14445513, a: 0.52}
+  m_IndirectSpecularColor: {r: 0.054918468, g: 0.091020264, b: 0.14439556, a: 0.52}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4349,8 +4349,8 @@ MonoBehaviour:
   bookHeading: Aristoteles, De moribus (Vat. lat. 2098)
   bookName: Aristotle
   interleafScalarPageURLSlug: aristoteles-index
-  manuscriptScalarPageURLSlug: demoribus-001v
-  numDigitsInPageNumber: 3
+  manuscriptScalarPageURLSlug: de-moribus-page-1v
+  numDigitsInPageNumber: 1
   bookPickupUI: {fileID: 1481794387}
   bookPickerUp: {fileID: 783147057}
   bCanBePickedUp: 1
