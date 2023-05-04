@@ -96,7 +96,7 @@ public class FreeCam : MonoBehaviour
             transform.position = transform.position + (Vector3.up * movementSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.PageDown))
+        if (Input.GetKey(KeyCode.PageDown))
         {
             transform.position = transform.position + (-Vector3.up * movementSpeed * Time.deltaTime);
         }

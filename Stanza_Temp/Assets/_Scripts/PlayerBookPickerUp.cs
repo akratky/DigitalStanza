@@ -34,28 +34,46 @@ public class PlayerBookPickerUp : MonoBehaviour
         //looking at book and press use button
         if (_bookPickupObj && Input.GetKeyDown(_pickupKey))
         {
-
-
-            if (currentlyHeldBook)
+            
+            //put book down
+            if (!_bookPickupObj.GetComponent<BookPickup>().bCanBePickedUp)
             {
-                currentlyHeldBook.OnBookPutdown();
+                if (currentlyHeldBook)
+                {
+                    currentlyHeldBook.OnBookPutdown();
+                    playerBook.SetActive(false);
+                    currentlyHeldBook = null;
+                }
 
             }
-            currentlyHeldBook = _bookPickupObj.GetComponent<BookPickup>();
+            
+            //pick book up
+            else
+            {
+                //swap books
+                if (currentlyHeldBook)
+                {
+                    currentlyHeldBook.OnBookPutdown();
+                }
+            
+                currentlyHeldBook = _bookPickupObj.GetComponent<BookPickup>();
 
-            playerBook.SetActive(true);
-            _bookPickupObj.GetComponent<MeshRenderer>().enabled = false;
-            currentlyHeldBook.OnBookPickup();
-            bookPickUpUI.enabled = false;
+                playerBook.SetActive(true);
+                _bookPickupObj.GetComponent<MeshRenderer>().enabled = false;
+                currentlyHeldBook.OnBookPickup();
+                bookPickUpUI.enabled = false;
     
             
-            BookPickup pickedUpBook = _bookPickupObj.GetComponent<BookPickup>();
-            mPlayerScalarBook.numDigitsInPageNumber = pickedUpBook.numDigitsInPageNumber;
-            mPlayerScalarBook.manuscriptRootURLSlug = pickedUpBook.manuscriptScalarPageURLSlug;
-            playerScalarInterleaf.interleafURLSlug = pickedUpBook.interleafScalarPageURLSlug;
-            bookHeaderUI.text = pickedUpBook.bookHeading;
-            playerScalarInterleaf.LoadInterleafText();
-            mPlayerScalarBook.LoadManuscriptRoot();
+                BookPickup pickedUpBook = _bookPickupObj.GetComponent<BookPickup>();
+                mPlayerScalarBook.numDigitsInPageNumber = pickedUpBook.numDigitsInPageNumber;
+                mPlayerScalarBook.manuscriptRootURLSlug = pickedUpBook.manuscriptScalarPageURLSlug;
+                playerScalarInterleaf.interleafURLSlug = pickedUpBook.interleafScalarPageURLSlug;
+                bookHeaderUI.text = pickedUpBook.bookHeading;
+                playerScalarInterleaf.LoadInterleafText();
+                mPlayerScalarBook.LoadManuscriptRoot(); 
+            }
+
+
             
 
         }
@@ -77,6 +95,12 @@ public class PlayerBookPickerUp : MonoBehaviour
                 bookPickUpUI.enabled = true;
                 _bookPickupObj = other.gameObject;
 
+            }
+            else if (!bookInSight.bCanBePickedUp)
+            {
+                bookPickUpUI.text = "Press 'F' to put book down";
+                bookPickUpUI.enabled = true;
+                _bookPickupObj = other.gameObject;
             }
         }
 
