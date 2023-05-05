@@ -73,7 +73,7 @@ namespace ANVC.Scalar
             yield return request.SendWebRequest();
             if (!request.isNetworkError && !request.isHttpError)
             {
-                Debug.Log(request.downloadHandler.text);
+//                Debug.Log(request.downloadHandler.text);
                 JSONNode data = JSON.Parse(request.downloadHandler.text);
                 ParseNodes(data);
                 ParseRelations(data);

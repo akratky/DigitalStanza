@@ -25,13 +25,16 @@ public class SecondaryParatext : MonoBehaviour
     public TMP_Text breadcrumbTMP;
 
     private string _currentLinkID;
-    
+
+    private ScalarCamera _scalarCamera;
     // Start is called before the first frame update
     void Start()
     {
         //because secondary interleaf text is on the spatial scalar pages
         TMP_TextEventHandler.OnSpatialLinkSelected += OnAnnotationClicked;
 
+        _scalarCamera = GameObject.FindWithTag("MainCamera").GetComponent<ScalarCamera>();
+        
         secondaryInterleafBody.text = string.Empty;
         secondaryInterleafHeader.text = string.Empty;
         UIBackButton.SetActive(false);
@@ -53,7 +56,9 @@ public class SecondaryParatext : MonoBehaviour
             }
 
             string spatialLink = tripleLink.spatialLink;
-
+            string[] splitStrings = spatialLink.Split('#');
+            spatialLink = splitStrings[^1];
+            
             if (spatialLink.Contains(ScalarUtilities.roomSpatialAnnotationTag))
             {
                 _currentLinkID = spatialLink;
@@ -83,7 +88,7 @@ public class SecondaryParatext : MonoBehaviour
         ScalarNode paratextNode = ScalarAPI.GetNode(_currentLinkID);
         
         //determine whether there is actually text on this page in an arbitrary way...
-        if (paratextNode.current.content.Length > 50)
+        if (paratextNode.current.content.Length > 7)
         {
             string parsedInterleafText = ScalarUtilities.ExtractRichTextFromInterleafBody(paratextNode.current.content);
             secondaryInterleafBody.text = parsedInterleafText;
@@ -93,7 +98,11 @@ public class SecondaryParatext : MonoBehaviour
             interleafObj.SetActive(true);
             UIBackButton.SetActive(true);
 
-
+            //update scalar camera to focus on spatial annotation
+            //there should only be one outgoing relationship on the spatial annotation page
+            RelationProperties relProp = paratextNode.outgoingRelations[0].properties;
+            _scalarCamera.SetTransformNoEvent(relProp);
+            
             StartCoroutine(UpdatePageUIDelay());
             UpdateBreadcrumbDisplay();
         }

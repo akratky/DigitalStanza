@@ -49,16 +49,35 @@ public class ScalarUtilities
         }
 
         
-        //remove embedded spatial links -  TODO: remove this when links are standardized
+        //format spatial links
         regex = new Regex("<(a data-(size|align).*?)/a>");
         matches = regex.Matches(s);
         while (matches.Count > 0)
         {
+            //first get target URL
+            Regex targetRegex = new Regex("(href=\")(.*?)\"");
+            Match targetMatch = targetRegex.Match(matches[0].Value);
+            string targetURL = "";
+            
+            if (targetMatch.Success)
+            {
+                targetURL = targetMatch.Value;
+                targetURL = "<a " + targetURL + ">";
+            }
+                            
             Regex tagRegex = new Regex("([a-zA-Z]+)(?=</a>)");
             Match tagMatch = tagRegex.Match(matches[0].Value);
 
             if (tagMatch.Success)
-                s = s.Replace(matches[0].Value, tagMatch.Value);
+            {
+                string spatialTag = "";
+                if (targetMatch.Success)
+                {
+                    spatialTag = targetURL + tagMatch.Value + "</a>";
+                }
+                s = s.Replace(matches[0].Value, spatialTag);
+                                
+            }
             else
                 s = s.Replace(matches[0].Value, "");
             

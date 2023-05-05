@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SimpleJSON;
@@ -71,6 +72,23 @@ namespace ANVC.Scalar
             Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, upwards);
             LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
             LeanTween.value(transform.gameObject, updateFieldOfView, _camera.fieldOfView, node["fieldOfView"], transitionDuration);
+            void updateFieldOfView(float val, float ratio)
+            {
+                _camera.fieldOfView = val;
+            }
+        }
+
+        public void SetTransformNoEvent(RelationProperties prop)
+        {
+            _targetPosition = new Vector3(float.Parse(prop.targetX), float.Parse(prop.targetY),float.Parse(prop.targetZ));
+            Vector3 cameraPosition = new Vector3(float.Parse(prop.cameraX), float.Parse(prop.cameraY),float.Parse(prop.cameraZ));
+            LeanTween.cancel(transform.gameObject);
+            LeanTween.move(transform.gameObject, cameraPosition, transitionDuration).setEaseInOutCubic();
+            Vector3 upwards = new Vector3(Mathf.Sin(float.Parse(prop.roll)* Mathf.Deg2Rad), Mathf.Cos(float.Parse(prop.roll) 
+                * Mathf.Deg2Rad), 0);
+            Quaternion rotation = Quaternion.LookRotation(_targetPosition - cameraPosition, upwards);
+            LeanTween.rotate(transform.gameObject, rotation.eulerAngles, transitionDuration).setEaseInOutCubic();
+            LeanTween.value(transform.gameObject, updateFieldOfView, _camera.fieldOfView, float.Parse(prop.fieldOfView), transitionDuration);
             void updateFieldOfView(float val, float ratio)
             {
                 _camera.fieldOfView = val;
