@@ -84,7 +84,7 @@ public class PlayerBookPickerUp : MonoBehaviour
         BookPickup bookInSight;
 
         other.TryGetComponent<BookPickup>(out bookInSight);
-
+        
         //if we are looking at a book pickup
         if (bookInSight)
         {
