@@ -58,7 +58,7 @@ public class SecondaryParatext : MonoBehaviour
             string spatialLink = tripleLink.spatialLink;
             string[] splitStrings = spatialLink.Split('#');
             spatialLink = splitStrings[^1];
-            
+            Debug.Log("Accessing spatial link: " + spatialLink);
             if (spatialLink.Contains(ScalarUtilities.roomSpatialAnnotationTag))
             {
                 _currentLinkID = spatialLink;
@@ -88,7 +88,7 @@ public class SecondaryParatext : MonoBehaviour
         ScalarNode paratextNode = ScalarAPI.GetNode(_currentLinkID);
         
         //determine whether there is actually text on this page in an arbitrary way...
-        if (paratextNode.current.content.Length > 7)
+        if (paratextNode.current.content.Length > 2)
         {
             string parsedInterleafText = ScalarUtilities.ExtractRichTextFromInterleafBody(paratextNode.current.content);
             secondaryInterleafBody.text = parsedInterleafText;
@@ -99,9 +99,13 @@ public class SecondaryParatext : MonoBehaviour
             UIBackButton.SetActive(true);
 
             //update scalar camera to focus on spatial annotation
-            //there should only be one outgoing relationship on the spatial annotation page
-            RelationProperties relProp = paratextNode.outgoingRelations[0].properties;
-            _scalarCamera.SetTransformNoEvent(relProp);
+            foreach (var rel in paratextNode.outgoingRelations)
+            {
+                if (rel.subType == "spatial")
+                {
+                    _scalarCamera.SetTransformNoEvent(rel.properties);
+                }
+            }
             
             StartCoroutine(UpdatePageUIDelay());
             UpdateBreadcrumbDisplay();
