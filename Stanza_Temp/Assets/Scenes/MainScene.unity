@@ -3124,7 +3124,7 @@ PrefabInstance:
     - target: {fileID: 783147057, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: BookToStartInHand
       value: 
-      objectReference: {fileID: 1512987597}
+      objectReference: {fileID: 1101431639}
     - target: {fileID: 783147057, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: bStartWithBookInHand
       value: 1
@@ -7100,8 +7100,8 @@ MonoBehaviour:
   bookHeading: Gregorius, Moralium in Job (Vat.lat.577)
   bookName: Moralia
   interleafScalarPageURLSlug: moralia
-  manuscriptScalarPageURLSlug: 
-  numDigitsInPageNumber: 0
+  manuscriptScalarPageURLSlug: moralia-000v
+  numDigitsInPageNumber: 3
   bookPickupUI: {fileID: 1481794387}
   bookPickerUp: {fileID: 783147057}
   bCanBePickedUp: 1
