@@ -57,7 +57,7 @@ public class BookLineRenderer : MonoBehaviour
 
     private void ToggleLine()
     {
-        _lineRenderer.enabled = !_lineRenderer.enabled;
+        _lineRenderer.enabled = true;
     }
 
     public void DestroyLine()

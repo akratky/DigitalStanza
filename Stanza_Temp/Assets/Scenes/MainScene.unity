@@ -1138,6 +1138,8 @@ MonoBehaviour:
   currentPageCounterTMP: {fileID: 1755773404}
   totalPageCounterTMP: {fileID: 827951296}
   breadcrumbTMP: {fileID: 1887179482}
+  lineRenderer: {fileID: 806522069}
+  lineStart: {fileID: 2138539623}
 --- !u!1001 &204201779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3120,6 +3122,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7406315954609738193}
     - target: {fileID: 783147057, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: BookToStartInHand
+      value: 
+      objectReference: {fileID: 1512987597}
+    - target: {fileID: 783147057, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+      propertyPath: bStartWithBookInHand
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 783147057, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
       propertyPath: playerScalarInterleaf
       value: 
       objectReference: {fileID: 997273421}
@@ -4799,7 +4809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bookHeading: Aristoteles, De moribus (Vat. lat. 2098)
   bookName: Aristotle
-  interleafScalarPageURLSlug: aristoteles-index
+  interleafScalarPageURLSlug: aristoteles-de-moribus-vat-lat-2098
   manuscriptScalarPageURLSlug: de-moribus-page-1v
   numDigitsInPageNumber: 1
   bookPickupUI: {fileID: 1481794387}
@@ -5079,6 +5089,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8270623508421380546, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
   m_PrefabInstance: {fileID: 516987115}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &806522069 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1496896984, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+  m_PrefabInstance: {fileID: 516987115}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec8becf35fb84eddba3a215cf563755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &815217691
 GameObject:
   m_ObjectHideFlags: 0
@@ -5106,14 +5127,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815217691}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0.9017362, y: -0.292, z: 0.789}
   m_LocalScale: {x: 1.8065, y: 1.5719973, z: 0.082476}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1343606466}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &815217693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5128,7 +5149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frescoImageSlug: wall_disputa
   spatialAnnotationPrefab: {fileID: 8797197286797224872, guid: 6e78ab7b23653db4d990f4d87d9aa43d, type: 3}
-  spatialAnnotationOffset: {x: -0.15, y: -0.15, z: 0}
+  spatialAnnotationOffset: {x: 0.05, y: 0, z: 0}
 --- !u!65 &815217694
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7031,6 +7052,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: eb2389ef187240441b6bdc938f05a6ff, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: eb2389ef187240441b6bdc938f05a6ff, type: 3}
       propertyPath: m_Name
       value: Book_Moralia_430x360
@@ -7060,6 +7085,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.039452296, y: 0.0065556914, z: 0.05710866}
   m_Center: {x: 0.00063287024, y: 0.00189686, z: -0.0006341766}
+--- !u!114 &1101431639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101431637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd86eca431727c4b8468c9f46324e74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bookHeading: Gregorius, Moralium in Job (Vat.lat.577)
+  bookName: Moralia
+  interleafScalarPageURLSlug: moralia
+  manuscriptScalarPageURLSlug: 
+  numDigitsInPageNumber: 0
+  bookPickupUI: {fileID: 1481794387}
+  bookPickerUp: {fileID: 783147057}
+  bCanBePickedUp: 1
 --- !u!1 &1104136449
 GameObject:
   m_ObjectHideFlags: 0
@@ -14512,6 +14557,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 84.234, y: -180, z: 0}
+--- !u!1 &2138539623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2077648450, guid: 98229615916b0474f81bd704220dbd8f, type: 3}
+  m_PrefabInstance: {fileID: 516987115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2139931955
 PrefabInstance:
   m_ObjectHideFlags: 0

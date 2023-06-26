@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class PlayerBookPickerUp : MonoBehaviour
 {
+    [Header("Debug/Fudging")] 
+    public bool bStartWithBookInHand;
+    public BookPickup BookToStartInHand;
+    
+    [Header("Properties")]
     public TMP_Text bookPickUpUI;
     public TMP_Text bookHeaderUI;
     public GameObject playerBook;
@@ -26,8 +31,32 @@ public class PlayerBookPickerUp : MonoBehaviour
         mPlayerScalarBook = playerBook.GetComponent<ScalarBook>();
         playerBook.SetActive(false);
         bookPickUpUI.enabled = false;
+
+        if (bStartWithBookInHand)
+        {
+            StartCoroutine(StartBookInHand());
+        }
     }
 
+    //delayed because we need to give time for Scalar API to update
+    IEnumerator StartBookInHand()
+    {
+        yield return new WaitForSeconds(1);
+        currentlyHeldBook = BookToStartInHand;
+        playerBook.SetActive(true);
+        //_bookPickupObj.GetComponent<MeshRenderer>().enabled = false;
+        BookToStartInHand.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        currentlyHeldBook.OnBookPickup();
+        bookPickUpUI.enabled = false;
+            
+        mPlayerScalarBook.numDigitsInPageNumber = BookToStartInHand.numDigitsInPageNumber;
+        mPlayerScalarBook.manuscriptRootURLSlug = BookToStartInHand.manuscriptScalarPageURLSlug;
+        playerScalarInterleaf.interleafURLSlug = BookToStartInHand.interleafScalarPageURLSlug;
+        bookHeaderUI.text = BookToStartInHand.bookHeading;
+        playerScalarInterleaf.LoadInterleafText();
+        mPlayerScalarBook.LoadManuscriptRoot(); 
+    }
+    
     // Update is called once per frame
     void Update()
     {
@@ -72,10 +101,6 @@ public class PlayerBookPickerUp : MonoBehaviour
                 playerScalarInterleaf.LoadInterleafText();
                 mPlayerScalarBook.LoadManuscriptRoot(); 
             }
-
-
-            
-
         }
     }
 

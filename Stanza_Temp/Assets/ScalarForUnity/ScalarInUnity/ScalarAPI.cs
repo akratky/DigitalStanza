@@ -69,7 +69,7 @@ namespace ANVC.Scalar
             queryString += "&prov=" + (provenance ? 1 : 0);
             queryString += "&versions" + (allVersions ? 1 : 0);
             UnityWebRequest request = UnityWebRequest.Get(urlPrefix + "rdf/node/" + uriSegment + "?" + queryString);
-            //Debug.Log("Load node: " + request.url);
+            Debug.Log("Load node: " + request.url);
             yield return request.SendWebRequest();
             if (!request.isNetworkError && !request.isHttpError)
             {

@@ -24,6 +24,11 @@ public class SecondaryParatext : MonoBehaviour
     public TMP_Text totalPageCounterTMP;
     public TMP_Text breadcrumbTMP;
 
+    [Header("Line Renderer")]
+    public BookLineRenderer lineRenderer;
+
+    public GameObject lineStart;
+    
     private string _currentLinkID;
 
     private ScalarCamera _scalarCamera;
@@ -77,10 +82,6 @@ public class SecondaryParatext : MonoBehaviour
         {
             Debug.LogError("Tried to access null spatial link: " + e.Message);
         }
-
-
-
-
     }
 
     private void OnPageLoadSuccess(JSONNode node)
@@ -108,10 +109,19 @@ public class SecondaryParatext : MonoBehaviour
             }
             
             StartCoroutine(UpdatePageUIDelay());
+            StartCoroutine(WaitToCreateLine());
             UpdateBreadcrumbDisplay();
+            
+
         }
     }
 
+    IEnumerator WaitToCreateLine()
+    {
+        yield return new WaitForSeconds(1);
+        GameObject wallFrame = GameObject.FindWithTag("WallAnnotation");
+        lineRenderer.TrackingLine(lineStart,wallFrame);
+    }
     private void OnPageLoadFail(string err)
     {
         Debug.LogError(err);
@@ -166,7 +176,7 @@ public class SecondaryParatext : MonoBehaviour
     public void BackButton()
     {
         interleafObj.SetActive(!interleafObj.activeSelf);
-        BookLineRenderer.ToggleLineEvent?.Invoke();
+        BookLineRenderer.DestroyLineEvent?.Invoke();
     }
     
 

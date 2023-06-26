@@ -84,10 +84,20 @@ public class WallAnnotationHandler : MonoBehaviour
                 float yCoordf = Int32.Parse(yCoord);
 
                 Vector3 worldCoord = new Vector3();
-                worldCoord.x = colliderBounds.max.x - (xCoordf / 100) * colliderBounds.size.x;
-                worldCoord.y = colliderBounds.max.y - (yCoordf / 100) * colliderBounds.size.y;
-                worldCoord.z = colliderBounds.center.z;
 
+                //wall is facing "other" direction
+                if (gameObject.transform.rotation.eulerAngles.y > 150)
+                {
+                    worldCoord.x = colliderBounds.min.x + (xCoordf / 100) * colliderBounds.size.x;
+                }
+                else
+                {
+                    worldCoord.x = colliderBounds.max.x - (xCoordf / 100) * colliderBounds.size.x;
+                }
+                
+                worldCoord.y = colliderBounds.max.y - (yCoordf / 100) * colliderBounds.size.y;
+                worldCoord.z = colliderBounds.center.z;     
+                
                 worldCoord.x += spatialAnnotationOffset.x;
                 worldCoord.y += spatialAnnotationOffset.y;
                 worldCoord.z += spatialAnnotationOffset.z;
