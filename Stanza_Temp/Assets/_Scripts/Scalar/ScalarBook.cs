@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using ANVC.Scalar;
 using SimpleJSON;
 using TMPro;
@@ -141,13 +142,14 @@ public class ScalarBook : MonoBehaviour
         else
             currentPage = _rootNode.outgoingRelations[pageNum - 1].target;
 
-
         bool isRecto;
         isRecto = currentPage.slug.EndsWith("r");
 
         string imgURL = "";
         imgURL = ScalarUtilities.ExtractImgURLFromScalarNode(currentPage);
 
+        print("the verso page " + imgURL + " of " + currentPage); // my addition
+        
         StartCoroutine(DownloadImage(imgURL, !isRecto));
 
         //determine if current page has a corresponding neighbour page
@@ -163,6 +165,7 @@ public class ScalarBook : MonoBehaviour
         if (neighborNode != null)
         {
             StartCoroutine(DownloadImage(imgURL, isRecto));
+            print("the recto page " + imgURL + " of " + neighborNode); // my addition
         }
 
     }
@@ -246,16 +249,17 @@ public class ScalarBook : MonoBehaviour
             int neighbourpageNum = int.Parse(neighbourURLSub[neighbourURLSub.Length-1]);
             neighbourpageNum--;
 
-
             int numLeadingZeroesNeeded = 0;
             //figure out how many leading zeroes are needed for URL - defs an easier way 
             for (int i = 1; i < numDigitsInPageNumber - 1; i++)
             {
+
                 if (neighbourpageNum < (10 ^ i))
                 {
                     numLeadingZeroesNeeded = numDigitsInPageNumber - i;
                     break;
                 }
+   
             }
 
             string neighbourPageString = neighbourpageNum.ToString();
@@ -359,7 +363,7 @@ public class ScalarBook : MonoBehaviour
         {
             if (rel.type.id == "path")
             {
-                _pageSlugToIndexDict[rel.target.slug] = i;        
+                _pageSlugToIndexDict[rel.target.slug] = i;
                 i++;    
             }
             
